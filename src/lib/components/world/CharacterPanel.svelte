@@ -667,8 +667,7 @@
                       onclick={removePortrait}
                     >
                       {t('common.remove')}
-                      class="ring-border bg-background h-16 w-16 rounded-md object-cover ring-1"
-                    />
+                    </Button>
                   {:else}
                     <div
                       class="border-border bg-background/50 flex h-16 w-16 items-center justify-center rounded-md border border-dashed"
