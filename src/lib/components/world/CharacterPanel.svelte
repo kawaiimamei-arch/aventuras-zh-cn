@@ -583,6 +583,7 @@
 
               <div class="space-y-1">
                 <Label class="text-xs">{t('common.status')}</Label>
+                <ToggleGroup.Root
                   type="single"
                   value={editStatus}
                   onValueChange={(v) => {
@@ -848,6 +849,8 @@
                     {t('common.swap')}
                   </Button>
                   <Button variant="ghost" size="sm" class="h-7 px-2 text-xs" onclick={cancelSwap}>
+                    <X class="h-3.5 w-3.5" />
+                  </Button>
                 {#if swapError}
                   <p class="text-destructive mt-1 text-xs">{swapError}</p>
                 {/if}

@@ -203,6 +203,99 @@ const zhCN: Record<string, string> = {
   'settings.generation.context_window': '上下文窗口',
   'settings.generation.recent_entries': '最近条目数',
 
+  // Settings - translation
+
+  // Settings - UI
+  'settings.api.setup': 'API 设置',
+
+  // Character - common
+  'character.add': '添加角色',
+  'character.add_first': '添加你的第一个角色',
+  'character.none': '暂无角色',
+  'character.protagonist': '主角',
+  'character.portrait': '头像',
+  'character.traits': '特质',
+  'character.traits_placeholder': '用逗号分隔…',
+  'character.status_active': '活跃',
+  'character.status_inactive': '不活跃',
+  'character.status_deceased': '已故',
+  'character.you': '你',
+  'character.make_protagonist': '设为主角',
+  'character.add_appearance_first': '请先添加外观描述',
+  'character.generate_from_appearance': '根据外观生成',
+  'character.expanded_portrait': '展开头像',
+  'character.appearance_placeholder': '描述角色的外貌…',
+  'character.new_role_for': '新角色标签（例如：盟友、伙伴）',
+  'character.relationship_example': '例：主角的导师',
+  'character.description_placeholder': '描述角色的背景…',
+  'character.relationship_placeholder': '与主角的关系…',
+
+  // Location - common
+  'location.add': '添加地点',
+  'location.add_first': '添加你的第一个地点',
+  'location.none': '暂无地点',
+  'location.current_location': '当前位置',
+  'location.edit_current': '编辑当前位置',
+  'location.editing_current': '编辑当前位置',
+  'location.mark_visited': '标记为已访问',
+  'location.mark_unvisited': '标记为未访问',
+  'location.visited': '已访问',
+  'location.unvisited': '未访问',
+  'location.travel_to': '前往此地',
+  'location.name_placeholder': '地点名称',
+  'location.description_placeholder': '描述（可选）',
+
+  // Item - common
+  'item.add': '添加物品',
+  'item.add_first': '添加你的第一个物品',
+  'item.none': '暂无物品',
+  'item.backpack': '背包',
+  'item.empty_inventory': '背包为空',
+  'item.world_items': '世界物品',
+  'item.equipped': '已装备',
+  'item.drop_at': '丢弃在…',
+  'item.drop_item': '丢弃物品',
+  'item.move_to': '移动到…',
+  'item.move_item': '移动物品',
+  'item.pick_up': '拾取',
+  'item.no_locations': '无可用地点',
+  'item.select_location': '选择地点',
+  'item.name_placeholder': '物品名称',
+  'item.description_placeholder': '描述（可选）',
+
+  // Quest - common
+  'quest.add': '添加任务',
+  'quest.add_first': '添加你的第一个任务',
+  'quest.none': '暂无任务',
+  'quest.active': '进行中',
+  'quest.history': '历史',
+  'quest.description_placeholder': '描述（可选）',
+
+  // Common additions
+  'common.relationship': '关系',
+  'common.swap': '交换',
+  'common.travel': '旅行',
+  'common.quantity': '数量',
+  'common.equipped': '已装备',
+  'common.appearance': '外观',
+  'common.editing': '编辑 {name}',
+  'common.generating': '生成中…',
+  'common.uploading': '上传中…',
+  'common.save_changes': '保存更改',
+  'common.save_to_vault': '保存到库',
+  'common.show_details': '显示详情',
+  'common.hide_details': '隐藏详情',
+
+  // Common additions needed by components
+  'common.title': '标题',
+  'common.move': '移动',
+
+  // Memory additions
+  'memory.chapter_number': '第 {number} 章',
+
+  // Settings interface name
+}
+
   // =============================================
   // Lorebook
   // =============================================
@@ -236,7 +329,6 @@ const zhCN: Record<string, string> = {
   // =============================================
   'memory.title': '记忆',
   'memory.chapters': '篇章',
-  'memory.chapter_number': '第 {number} 章',
   'memory.create_chapter': '创建篇章',
   'memory.auto_summarize': '自动摘要',
   'memory.retrieval': '检索',
@@ -252,46 +344,34 @@ const zhCN: Record<string, string> = {
   // =============================================
   // World State (Characters, Locations, Items, Quests)
   // =============================================
-  'character.add': '添加角色',
   'character.edit': '编辑角色',
   'character.delete': '删除角色',
   'character.name': '角色名',
   'character.description': '描述',
   'character.relationship': '关系',
-  'character.traits': '特质',
   'character.status': '状态',
-  'character.status_active': '活跃',
-  'character.status_inactive': '不活跃',
-  'character.status_deceased': '已故',
-  'character.portrait': '头像',
   'character.visual_descriptors': '外观描述',
   'character.set_protagonist': '设为主角',
-  'character.protagonist': '主角',
   'character.no_characters': '暂无角色',
 
-  'location.add': '添加地点',
   'location.edit': '编辑地点',
   'location.delete': '删除地点',
   'location.name': '地点名',
   'location.description': '描述',
-  'location.visited': '已探索',
   'location.current': '当前位置',
   'location.connections': '连接',
   'location.no_locations': '暂无地点',
 
-  'item.add': '添加物品',
   'item.edit': '编辑物品',
   'item.delete': '删除物品',
   'item.name': '物品名',
   'item.description': '描述',
   'item.quantity': '数量',
-  'item.equipped': '已装备',
   'item.location': '位置',
   'item.inventory': '背包',
   'item.no_items': '暂无物品',
 
   'quest.title': '任务',
-  'quest.add': '添加任务',
   'quest.edit': '编辑任务',
   'quest.delete': '删除任务',
   'quest.type_milestone': '里程碑',

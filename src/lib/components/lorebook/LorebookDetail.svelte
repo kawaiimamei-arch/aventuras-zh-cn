@@ -46,9 +46,9 @@
   }
 
   const injectionLabels: Record<string, string> = {
-    always: 'Always Active',
-    keyword: 'Automatic (keywords + AI)',
-    never: 'Disabled',
+    always: t('lorebook.injection_mode_always'),
+    keyword: t('lorebook.injection_mode_keyword'),
+    never: t('lorebook.injection_mode_never'),
   }
 
   const Icon = $derived(typeIcons[entry.type] || BookOpen)
@@ -120,7 +120,7 @@
 
       <div class="min-w-0">
         <h2 class="text-surface-100 truncate font-semibold">
-          {ui.lorebookEditMode ? 'Edit Entry' : entry.name}
+          {ui.lorebookEditMode ? t('lorebook.edit_entry') : entry.name}
         </h2>
         {#if !ui.lorebookEditMode}
           <span class="text-surface-500 text-xs capitalize">{entry.type}</span>
@@ -143,14 +143,14 @@
             onclick={handleDelete}
             disabled={deleting}
           >
-            Confirm Delete
+            {t('common.delete')}
           </button>
         {:else}
           <button
             class="btn-ghost rounded-lg p-2"
             onclick={() => ui.setLorebookEditMode(true)}
             disabled={isLoreManagementActive}
-            title={isLoreManagementActive ? 'Editing disabled during lore management' : 'Edit'}
+            title={isLoreManagementActive ? 'Editing disabled during lore management' : t('common.edit')}
           >
             <Pencil class="h-4 w-4" />
           </button>
@@ -158,7 +158,7 @@
             class="btn-ghost rounded-lg p-2 text-red-400 hover:text-red-300"
             onclick={handleConfirmDelete}
             disabled={isLoreManagementActive}
-            title={isLoreManagementActive ? 'Deletion disabled during lore management' : 'Delete'}
+            title={isLoreManagementActive ? 'Deletion disabled during lore management' : t('common.delete')}
           >
             <Trash2 class="h-4 w-4" />
           </button>
@@ -242,7 +242,7 @@
         <!-- Hidden Info -->
         {#if entry.hiddenInfo}
           <div>
-            <h3 class="text-surface-400 mb-2 text-sm font-medium">Hidden Info</h3>
+            <h3 class="text-surface-400 mb-2 text-sm font-medium">{t('lorebook.hidden_info')}</h3>
             <div class="bg-surface-800/50 border-surface-700 rounded-lg border p-3">
               <p class="text-surface-300 text-sm whitespace-pre-wrap">{entry.hiddenInfo}</p>
             </div>

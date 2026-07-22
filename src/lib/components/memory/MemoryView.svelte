@@ -219,7 +219,7 @@
       <div class="py-12">
         <EmptyState
           icon={BookOpen}
-          title="No Chapters Yet"
+          title={t('memory.no_chapters')}
           description="Chapters are created automatically when the story grows beyond the token threshold, or you can create one manually using the button above."
         />
       </div>

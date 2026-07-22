@@ -312,11 +312,7 @@
             </Button>
           </div>
         </div>
-      </div>
-    {/if}
-  </div>
-        </div>
-      </div>
+      {/if>
     </div>
   {/if}
 
@@ -520,3 +516,9 @@
                 </Button>
               </IconRow>
             </div>
+          {/if}
+        </div>
+      {/each}
+    </div>
+  {/if}
+</div>

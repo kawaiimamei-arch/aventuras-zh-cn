@@ -304,16 +304,10 @@
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-    <Button
-      variant="outline"
-      size="icon"
-      onclick={() => ui.openLorebookImport()}
-      disabled={isLoreManagementActive}
-      title={isLoreManagementActive ? 'Import disabled during lore management' : 'Import from file'}
-    >
+    <Button variant="outline" size="icon" onclick={() => ui.openLorebookImport()} disabled={isLoreManagementActive} title={t('lorebook.import')}>
       <Upload class="h-4 w-4" />
     </Button>
-    <Button variant="outline" size="icon" onclick={() => ui.openLorebookExport()} title="Export">
+    <Button variant="outline" size="icon" onclick={() => ui.openLorebookExport()} title={t('lorebook.export')}>
       <Download class="h-4 w-4" />
     </Button>
     {#if story.lorebookEntries.length > 0 && !isLoreManagementActive}

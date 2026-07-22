@@ -108,7 +108,7 @@
     <div class="min-w-0 flex-1">
       <div class="flex flex-wrap items-center gap-x-2 gap-y-0.5">
         <span class="text-foreground shrink-0 text-sm font-medium">
-          Chapter {chapter.number}
+          {t('memory.chapter_number', {number: chapter.number})}
         </span>
         {#if chapter.title}
           <span class="text-muted-foreground hidden text-sm sm:inline">—</span>

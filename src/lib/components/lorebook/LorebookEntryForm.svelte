@@ -218,14 +218,14 @@
   <!-- Name -->
   <div class="space-y-2">
     <Label for="entry-name">
-      Name <span class="text-red-500">*</span>
+      {t('common.name')} <span class="text-red-500">*</span>
     </Label>
     <Input id="entry-name" type="text" bind:value={name} placeholder="Entry name" />
   </div>
 
   <!-- Type -->
   <div class="space-y-2">
-    <Label for="entry-type">Type</Label>
+    <Label for="entry-type">{t('common.type')}</Label>
     <Select type="single" value={type} onValueChange={(v) => (type = v as EntryType)}>
       <SelectTrigger id="entry-type">
         {entryTypes.find((t) => t.value === type)?.label ?? 'Select type'}
@@ -240,7 +240,7 @@
 
   <!-- Description -->
   <div class="space-y-2">
-    <Label for="entry-description">Description</Label>
+    <Label for="entry-description">{t('common.description')}</Label>
     <Textarea
       id="entry-description"
       bind:value={description}
@@ -253,7 +253,7 @@
   <!-- Aliases -->
   <div class="space-y-2">
     <Label>
-      Aliases
+      {t('lorebook.aliases')}
       <span class="text-muted-foreground ml-1 text-xs font-normal">
         Alternative names for matching
       </span>
@@ -285,7 +285,7 @@
   <!-- Keywords -->
   <div class="space-y-2">
     <Label>
-      Keywords
+      {t('lorebook.keywords')}
       <span class="text-muted-foreground ml-1 text-xs font-normal">
         Trigger words for injection
       </span>
@@ -363,7 +363,7 @@
   <div class="space-y-4">
     <div class="flex items-center justify-between">
       <Label>
-        Priority
+        {t('lorebook.priority')}
         <span class="text-muted-foreground ml-1 text-xs font-normal">
           Higher priority entries are injected first
         </span>
@@ -401,7 +401,7 @@
           class="flex w-full justify-between px-0 hover:bg-transparent"
         >
           <span class="flex items-center gap-2 text-sm font-medium">
-            Hidden Info
+            {t('lorebook.hidden_info')}
             <span class="text-muted-foreground text-xs font-normal"
               >(secrets the protagonist doesn't know)</span
             >
@@ -426,9 +426,9 @@
 
   <!-- Actions -->
   <div class="mt-4 flex gap-2 border-t pt-4">
-    <Button variant="outline" class="flex-1" onclick={onCancel} disabled={saving}>Cancel</Button>
+    <Button variant="outline" class="flex-1" onclick={onCancel} disabled={saving}>{t('common.cancel')}</Button>
     <Button class="flex-1" onclick={handleSave} disabled={saving || !name.trim()}>
-      {saving ? 'Saving...' : entry ? 'Save Changes' : 'Create Entry'}
+      {saving ? 'Saving...' : entry ? t('common.save') : t('lorebook.add_entry')}
     </Button>
   </div>
 </div>
