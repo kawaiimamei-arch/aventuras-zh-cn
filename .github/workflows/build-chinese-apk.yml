@@ -1,4 +1,4 @@
-name: Build Chinese APK (简体中文)
+name: Build Chinese APK (简体中文 Debug)
 
 on:
   push:
@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   build-android:
-    name: Build Android APK (Chinese)
+    name: Build Android Debug APK
     runs-on: ubuntu-latest
 
     steps:
@@ -52,46 +52,56 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Android APK (Release)
+      - name: Build Android Debug APK
         env:
           NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
-        run: npx tauri android build --target aarch64
+        run: npx tauri android build --debug --target aarch64
 
-      - name: Upload APK Artifact
+      - name: Locate Debug APK
+        id: apk-path
+        run: |
+          APK_FILE=$(find src-tauri/gen/android/app/build/outputs/apk -name '*.apk' | head -1)
+          echo "apk=$APK_FILE" >> "$GITHUB_OUTPUT"
+          echo "APK found at: $APK_FILE"
+
+      - name: Upload Debug APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: aventuras-zh-cn-release
-          path: src-tauri/gen/android/app/build/outputs/apk/universal/release/app-universal-release-unsigned.apk
+          name: aventuras-zh-cn-debug-apk
+          path: ${{ steps.apk-path.outputs.apk }}
           if-no-files-found: error
 
-      - name: Create Release and Upload APK
+      - name: Delete old zh-cn-latest release
+        run: |
+          RELEASE_ID=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/tags/zh-cn-latest" | \
+            jq -r '.id // empty')
+          if [ -n "$RELEASE_ID" ]; then
+            curl -s -X DELETE -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              "https://api.github.com/repos/${{ github.repository }}/releases/$RELEASE_ID"
+            echo "Deleted old release id=$RELEASE_ID"
+          fi
+          # Also delete the old tag so we can re-create it
+          git push origin :refs/tags/zh-cn-latest 2>/dev/null || true
+
+      - name: Publish Debug APK Release
         uses: softprops/action-gh-release@v1
         with:
-          name: "Aventuras 简体中文版 - Latest Build"
+          name: "Aventuras 简体中文版 - Debug APK"
           tag_name: zh-cn-latest
           body: |
-            # Aventuras 简体中文版 APK
+            # Aventuras 简体中文版 APK（Debug 签名）
 
-            此版本已修改为默认使用简体中文界面和输出。
+            ✅ **可直接安装** — 使用 Android Debug 签名
 
             ## 修改内容
-            - 所有 AI 系统提示词已添加中文输出指令
-            - 翻译系统默认启用，目标语言为简体中文 (zh)
-            - 叙事情境构建器默认使用中文语言环境
-            - 所有叙事引导消息包含中文输出要求
-
-            ## 安装说明
-            1. 下载下方 APK 文件
-            2. 允许安装未知来源应用
-            3. 安装并打开应用
-            4. 在设置中配置 API（例如 OpenRouter）
-
-            ## 注意
-            这是基于 Aventuras v0.7.6 的修改版本。
-            原始项目: https://github.com/AventurasTeam/Aventuras
+            - AI 系统提示词全部添加简体中文输出指令
+            - 翻译系统默认启用，目标语言为 zh（简体中文）
+            - 叙事引导消息包含中文输出要求
+            - 基于 Aventuras v0.7.6 | 原始项目: https://github.com/AventurasTeam/Aventuras
           draft: false
           prerelease: false
-          files: src-tauri/gen/android/app/build/outputs/apk/universal/release/app-universal-release-unsigned.apk
+          files: ${{ steps.apk-path.outputs.apk }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
