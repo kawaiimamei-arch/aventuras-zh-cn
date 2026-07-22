@@ -19,6 +19,7 @@
   import { Slider } from '$lib/components/ui/slider'
   import * as Collapsible from '$lib/components/ui/collapsible'
   import { Separator } from '$lib/components/ui/separator'
+  import { t } from '$lib/i18n'
 
   // Section visibility state
   let showLorebookImportSection = $state(false)

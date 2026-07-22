@@ -1,6 +1,7 @@
 <script lang="ts">
   import { ui } from '$lib/stores/ui.svelte'
   import { settings } from '$lib/stores/settings.svelte'
+  import { t } from '$lib/i18n'
   import {
     Users,
     MapPin,
@@ -26,12 +27,12 @@
   import { Button } from '$lib/components/ui/button'
 
   const tabs = [
-    { id: 'characters' as const, icon: Users, label: 'Characters' },
-    { id: 'locations' as const, icon: MapPin, label: 'Locations' },
-    { id: 'inventory' as const, icon: Backpack, label: 'Inventory' },
-    { id: 'quests' as const, icon: Scroll, label: 'Quests' },
-    { id: 'time' as const, icon: Clock, label: 'Time' },
-    { id: 'branches' as const, icon: GitBranch, label: 'Branches' },
+    { id: 'characters' as const, icon: Users, label: t('sidebar.characters') },
+    { id: 'locations' as const, icon: MapPin, label: t('sidebar.locations') },
+    { id: 'inventory' as const, icon: Backpack, label: t('sidebar.inventory') },
+    { id: 'quests' as const, icon: Scroll, label: t('sidebar.quests') },
+    { id: 'time' as const, icon: Clock, label: t('sidebar.time') },
+    { id: 'branches' as const, icon: GitBranch, label: t('sidebar.branches') },
   ]
 
   function handleSwipeLeft() {

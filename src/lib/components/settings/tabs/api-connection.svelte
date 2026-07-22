@@ -8,6 +8,7 @@
   import { pingProfileModels, isPingEligible } from '$lib/services/modelHealthOrchestrator'
   import { isPingEligibleProvider } from '$lib/constants/modelHealth'
   import { Plus, Check, ChevronRight, Key as KeyIcon, Star } from 'lucide-svelte'
+  import { t } from '$lib/i18n'
 
   import { Button } from '$lib/components/ui/button'
   import { Card, CardContent } from '$lib/components/ui/card'
@@ -305,12 +306,12 @@
   <div>
     <div class="flex items-center justify-between">
       <div>
-        <h3 class="text-lg font-semibold">API Profiles</h3>
-        <p class="text-muted-foreground text-sm">Setup your API endpoints</p>
+        <h3 class="text-lg font-semibold">{t('settings.tab.api')}</h3>
+        <p class="text-muted-foreground text-sm">{t('settings.api.setup')}</p>
       </div>
       <Button onclick={startNewProfile}>
         <Plus class="h-4 w-4" />
-        Add Profile
+        {t('settings.api.add_profile')}
       </Button>
     </div>
   </div>
@@ -348,7 +349,7 @@
         >
           {#snippet footer()}
             <div class="flex gap-2 pt-2">
-              <Button variant="outline" onclick={cancelEdit} class="flex-1">Cancel</Button>
+              <Button variant="outline" onclick={cancelEdit} class="flex-1">{t('common.cancel')}</Button>
               <Button
                 onclick={handleSave}
                 disabled={!formName.trim() ||

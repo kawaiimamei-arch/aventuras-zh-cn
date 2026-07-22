@@ -22,6 +22,7 @@
   import { Textarea } from '$lib/components/ui/textarea'
   import { Badge } from '$lib/components/ui/badge'
   import { cn } from '$lib/utils/cn'
+  import { t } from '$lib/i18n'
 
   interface Props {
     chapter: Chapter

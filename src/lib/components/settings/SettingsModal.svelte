@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n'
   import { onMount } from 'svelte'
   import { getVersion } from '@tauri-apps/api/app'
   import { ask } from '@tauri-apps/plugin-dialog'
@@ -39,16 +40,16 @@
   import StorySettingsTab from './tabs/story-settings.svelte'
 
   const baseTabs = [
-    { id: 'api' as const, label: 'API', icon: Key },
-    { id: 'generation' as const, label: 'Generation', icon: Cpu },
-    { id: 'interface' as const, label: 'Interface', icon: Palette },
-    { id: 'images' as const, label: 'Images', icon: Image },
+    { id: 'api' as const, label: t('settings.tab.api'), icon: Key },
+    { id: 'generation' as const, label: t('settings.tab.generation'), icon: Cpu },
+    { id: 'interface' as const, label: t('settings.tab.interface'), icon: Palette },
+    { id: 'images' as const, label: t('settings.tab.images'), icon: Image },
     { id: 'tts' as const, label: 'TTS', icon: Volume2 },
-    { id: 'advanced' as const, label: 'Advanced', icon: SettingsIcon },
-    { id: 'experimental' as const, label: 'Labs', icon: FlaskConical },
+    { id: 'advanced' as const, label: t('settings.tab.advanced'), icon: SettingsIcon },
+    { id: 'experimental' as const, label: t('settings.tab.experimental'), icon: FlaskConical },
   ]
 
-  const storyTab = { id: 'story-settings' as const, label: 'Story', icon: BookOpen }
+  const storyTab = { id: 'story-settings' as const, label: t('settings.tab.story'), icon: BookOpen }
 
   let tabs = $derived(story.currentStory ? [storyTab, ...baseTabs] : baseTabs)
 
@@ -60,7 +61,7 @@
   })
 
   let manualBodyEditorOpen = $state(false)
-  let manualBodyEditorTitle = $state('Manual Request Body')
+  let manualBodyEditorTitle = $state(t('settings.manual_body_title'))
   let manualBodyEditorValue = $state('')
   let manualBodyEditorSave = $state<(value: string) => void>((_) => {})
 
@@ -131,7 +132,7 @@
 
   function closeManualBodyEditor() {
     manualBodyEditorOpen = false
-    manualBodyEditorTitle = 'Manual Request Body'
+    manualBodyEditorTitle = t('settings.manual_body_title')
     manualBodyEditorValue = ''
     manualBodyEditorSave = (_) => {}
   }
@@ -147,10 +148,7 @@
   }
 
   async function handleResetAll() {
-    const confirmed = await ask(
-      'Reset all settings to their default values?\n\nYour API key will be preserved, but all other settings (models, temperatures, prompts, UI preferences) will be reset.\n\nThis cannot be undone.',
-      { title: 'Reset All Settings', kind: 'warning' },
-    )
+    const confirmed = await ask(t('settings.reset_all_confirm'), { title: t('settings.reset_all'), kind: 'warning' })
     if (!confirmed) return
 
     isResettingSettings = true
@@ -186,10 +184,10 @@
         </div>
         <div class="flex-1 text-center md:text-left">
           <ResponsiveModal.Title class="text-2xl font-semibold sm:text-xl"
-            >Settings</ResponsiveModal.Title
+            >{t('settings.title')}</ResponsiveModal.Title
           >
           <p class="text-muted-foreground hidden text-sm md:block">
-            Configure your Aventuras experience
+            {t('settings.subtitle')}
           </p>
         </div>
       </div>
@@ -223,10 +221,10 @@
           >
             {#if isResettingSettings}
               <Loader2 class="h-4 w-4 animate-spin" />
-              Resetting...
+              {t('settings.resetting')}
             {:else}
               <RotateCcw class="h-4 w-4" />
-              Reset All
+              {t('settings.reset')}
             {/if}
           </Button>
         </div>
@@ -275,9 +273,9 @@
                           class="border-destructive/50 flex items-center justify-between rounded-lg border p-4"
                         >
                           <div class="space-y-0.5">
-                            <p class="text-destructive font-medium">Reset All Settings</p>
+                            <p class="text-destructive font-medium">{t('settings.reset_all')}</p>
                             <p class="text-muted-foreground text-xs">
-                              Resets all settings to defaults. API key is preserved.
+                              {t('settings.reset_all_desc')}
                             </p>
                           </div>
                           <Button
@@ -288,10 +286,10 @@
                           >
                             {#if isResettingSettings}
                               <Loader2 class="mr-2 h-4 w-4 animate-spin" />
-                              Resetting...
+                              {t('settings.resetting')}
                             {:else}
                               <RotateCcw class="mr-2 h-4 w-4" />
-                              Reset
+                              {t('settings.reset')}
                             {/if}
                           </Button>
                         </div>
@@ -342,8 +340,7 @@
     <Dialog.Header>
       <Dialog.Title>{manualBodyEditorTitle}</Dialog.Title>
       <Dialog.Description>
-        Edit the manual request body. This overrides request parameters; messages and tools are
-        managed by Aventuras.
+        {t('settings.manual_body_desc')}
       </Dialog.Description>
     </Dialog.Header>
 
@@ -356,8 +353,8 @@
     </div>
 
     <Dialog.Footer>
-      <Button variant="outline" onclick={closeManualBodyEditor}>Cancel</Button>
-      <Button onclick={applyManualBodyEditor}>Save</Button>
+      <Button variant="outline" onclick={closeManualBodyEditor}>{t('settings.cancel')}</Button>
+      <Button onclick={applyManualBodyEditor}>{t('settings.save')}</Button>
     </Dialog.Footer>
   </Dialog.Content>
 </Dialog.Root>

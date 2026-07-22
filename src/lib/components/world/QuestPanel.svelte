@@ -24,6 +24,7 @@
   import { cn } from '$lib/utils/cn'
   import { database } from '$lib/services/database'
   import RuntimeVariableDisplay from './RuntimeVariableDisplay.svelte'
+  import { t } from '$lib/i18n'
 
   let showAddForm = $state(false)
   let newTitle = $state('')
@@ -188,13 +189,13 @@
 <div class="flex flex-col gap-1 pb-12">
   <!-- Header -->
   <div class="mb-2 flex items-center justify-between">
-    <h3 class="text-foreground text-xl font-bold tracking-tight">Story Beats</h3>
+    <h3 class="text-foreground text-xl font-bold tracking-tight">{t('sidebar.quests')}</h3>
     <Button
       variant="text"
       size="icon"
       class="text-muted-foreground hover:text-foreground h-6 w-6"
       onclick={() => (showAddForm = !showAddForm)}
-      title="Add story beat"
+      title={t('quest.add')}
     >
       <Plus class="h-6! w-6!" />
     </Button>
@@ -204,7 +205,7 @@
   {#if showAddForm}
     <div class="border-border bg-card mb-2 rounded-lg border p-3 shadow-sm">
       <div class="space-y-3">
-        <Input type="text" bind:value={newTitle} placeholder="Title" class="h-8 text-sm" />
+        <Input type="text" bind:value={newTitle} placeholder={t('common.title')} class="h-8 text-sm" />
 
         <Select.Root type="single" bind:value={newType}>
           <Select.Trigger class="h-8 w-full text-xs">
@@ -223,16 +224,16 @@
 
         <Textarea
           bind:value={newDescription}
-          placeholder="Description (optional)"
+          placeholder={t('quest.description_placeholder')}
           class="min-h-15 resize-none text-sm"
           rows={2}
         />
       </div>
       <div class="mt-3 flex justify-end gap-2">
         <Button variant="text" size="sm" class="h-7" onclick={() => (showAddForm = false)}>
-          Cancel
+          {t('common.cancel')}
         </Button>
-        <Button size="sm" class="h-7" onclick={addBeat} disabled={!newTitle.trim()}>Add</Button>
+        <Button size="sm" class="h-7" onclick={addBeat} disabled={!newTitle.trim()}>{t('common.add')}</Button>
       </div>
     </div>
   {/if}
@@ -241,7 +242,7 @@
   {#if story.pendingQuests.length > 0}
     <div class="mb-4 flex flex-col gap-2">
       <h4 class="text-muted-foreground pl-1 text-xs font-semibold tracking-wider uppercase">
-        Active
+        {t('quest.active')}
       </h4>
       {#each story.pendingQuests as beat (beat.id)}
         {@const statusConfig = getStatusConfig(beat.status)}
@@ -262,7 +263,7 @@
             <div class="space-y-3">
               <div class="mb-2 flex items-center justify-between">
                 <h4 class="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
-                  Editing Beat
+                  {t('common.editing')}
                 </h4>
                 <Button variant="text" size="icon" class="h-6 w-6" onclick={cancelEdit}>
                   <X class="h-4 w-4" />
@@ -271,18 +272,18 @@
 
               <div class="space-y-2">
                 <div class="space-y-1">
-                  <Label class="text-xs">Title</Label>
+                  <Label class="text-xs">{t('common.title')}</Label>
                   <Input
                     type="text"
                     bind:value={editTitle}
-                    placeholder="Title"
+                    placeholder={t('common.title')}
                     class="h-8 text-sm"
                   />
                 </div>
 
                 <div class="grid grid-cols-2 gap-2">
                   <div class="space-y-1">
-                    <Label class="text-xs">Type</Label>
+                    <Label class="text-xs">{t('common.type')}</Label>
                     <Select.Root type="single" bind:value={editType}>
                       <Select.Trigger class="h-8 w-full text-xs">
                         <div class="flex items-center gap-2 overflow-hidden">
@@ -299,7 +300,7 @@
                     </Select.Root>
                   </div>
                   <div class="space-y-1">
-                    <Label class="text-xs">Status</Label>
+                    <Label class="text-xs">{t('common.status')}</Label>
                     <Select.Root type="single" bind:value={editStatus}>
                       <Select.Trigger class="h-8 w-full text-xs">
                         <div class="flex items-center gap-2 overflow-hidden">
@@ -317,10 +318,10 @@
                 </div>
 
                 <div class="space-y-1">
-                  <Label class="text-xs">Description</Label>
+                  <Label class="text-xs">{t('common.description')}</Label>
                   <Textarea
                     bind:value={editDescription}
-                    placeholder="Description"
+                    placeholder={t('common.description')}
                     class="min-h-[60px] resize-none text-xs"
                   />
                 </div>
@@ -341,7 +342,7 @@
 
               <div class="border-border flex justify-end gap-2 border-t pt-2">
                 <Button variant="text" size="sm" class="h-7 text-xs" onclick={cancelEdit}>
-                  Cancel
+                  {t('common.cancel')}
                 </Button>
                 <Button
                   size="sm"
@@ -350,7 +351,7 @@
                   disabled={!editTitle.trim()}
                 >
                   <Save class="mr-1.5 h-3.5 w-3.5" />
-                  Save
+                  {t('common.save')}
                 </Button>
               </div>
             </div>
@@ -417,7 +418,7 @@
                     size="icon"
                     class="text-muted-foreground hover:text-foreground h-6 w-6"
                     onclick={() => toggleCollapse(beat.id)}
-                    title={isCollapsed ? 'Show details' : 'Hide details'}
+                    title={isCollapsed ? t('common.show_details') : t('common.hide_details')}
                   >
                     <ChevronDown
                       class={cn(
@@ -435,7 +436,7 @@
                   size="icon"
                   class="text-muted-foreground hover:text-foreground h-6 w-6"
                   onclick={() => startEdit(beat)}
-                  title="Edit"
+                  title={t('common.edit')}
                 >
                   <Pencil class="h-3.5 w-3.5" />
                 </Button>
@@ -455,7 +456,7 @@
       <div class="bg-muted mb-3 rounded-full p-3">
         <Target class="text-muted-foreground h-6 w-6" />
       </div>
-      <p class="text-muted-foreground text-sm">No story beats yet</p>
+      <p class="text-muted-foreground text-sm">{t('quest.none')}</p>
       <Button
         variant="text"
         size="sm"
@@ -463,7 +464,7 @@
         onclick={() => (showAddForm = true)}
       >
         <Plus class="h-3.5 w-3.5" />
-        Add your first beat
+        {t('quest.add_first')}
       </Button>
     </div>
   {:else}
@@ -474,7 +475,7 @@
     {#if completedBeats.length > 0}
       <div class="flex flex-col gap-2">
         <h4 class="text-muted-foreground pl-1 text-xs font-semibold tracking-wider uppercase">
-          History
+          {t('quest.history')}
         </h4>
         {#each completedBeats as beat (beat.id)}
           {@const statusConfig = getStatusConfig(beat.status)}
@@ -505,18 +506,18 @@
 
                 <div class="space-y-2">
                   <div class="space-y-1">
-                    <Label class="text-xs">Title</Label>
+                    <Label class="text-xs">{t('common.title')}</Label>
                     <Input
                       type="text"
                       bind:value={editTitle}
-                      placeholder="Title"
+                      placeholder={t('common.title')}
                       class="h-8 text-sm"
                     />
                   </div>
 
                   <div class="grid grid-cols-2 gap-2">
                     <div class="space-y-1">
-                      <Label class="text-xs">Type</Label>
+                      <Label class="text-xs">{t('common.type')}</Label>
                       <Select.Root type="single" bind:value={editType}>
                         <Select.Trigger class="h-8 w-full text-xs">
                           <div class="flex items-center gap-2 overflow-hidden">
@@ -533,7 +534,7 @@
                       </Select.Root>
                     </div>
                     <div class="space-y-1">
-                      <Label class="text-xs">Status</Label>
+                      <Label class="text-xs">{t('common.status')}</Label>
                       <Select.Root type="single" bind:value={editStatus}>
                         <Select.Trigger class="h-8 w-full text-xs">
                           <div class="flex items-center gap-2 overflow-hidden">
@@ -551,10 +552,10 @@
                   </div>
 
                   <div class="space-y-1">
-                    <Label class="text-xs">Description</Label>
+                    <Label class="text-xs">{t('common.description')}</Label>
                     <Textarea
                       bind:value={editDescription}
-                      placeholder="Description"
+                      placeholder={t('common.description')}
                       class="min-h-[60px] resize-none text-xs"
                     />
                   </div>
@@ -657,7 +658,7 @@
                       size="icon"
                       class="text-muted-foreground hover:text-foreground h-6 w-6"
                       onclick={() => toggleCollapse(beat.id)}
-                      title={isCollapsed ? 'Show details' : 'Hide details'}
+                      title={isCollapsed ? t('common.show_details') : t('common.hide_details')}
                     >
                       <ChevronDown
                         class={cn(
@@ -675,7 +676,7 @@
                     size="icon"
                     class="text-muted-foreground hover:text-foreground h-6 w-6"
                     onclick={() => startEdit(beat)}
-                    title="Edit"
+                    title={t('common.edit')}
                   >
                     <Pencil class="h-3.5 w-3.5" />
                   </Button>

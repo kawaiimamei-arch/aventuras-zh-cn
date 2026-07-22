@@ -32,6 +32,7 @@
   import { tagStore } from '$lib/stores/tags.svelte'
   import { fade } from 'svelte/transition'
   import { tick } from 'svelte'
+  import { t } from '$lib/i18n'
   import PromptPackList from './prompts/PromptPackList.svelte'
   import PromptPackEditor from './prompts/PromptPackEditor.svelte'
   import ImportPreviewDialog from './prompts/ImportPreviewDialog.svelte'
@@ -437,7 +438,7 @@
         </Button>
         <div class="flex items-center gap-2">
           <Archive class="text-muted-foreground h-5 w-5" />
-          <h2 class="text-lg font-semibold tracking-tight">Vault</h2>
+          <h2 class="text-lg font-semibold tracking-tight">{t('vault.title')}</h2>
         </div>
       </div>
 
@@ -457,7 +458,7 @@
         {#if activeTab === 'prompts' && promptsViewState.mode === 'browsing'}
           <Button
             icon={Download}
-            label="Import"
+            label={t('vault.import')}
             variant="outline"
             size="sm"
             class="h-9"
@@ -474,7 +475,7 @@
         {:else if activeTab !== 'prompts'}
           <Button
             icon={Tags}
-            label="Tags"
+            label={t('vault.tags')}
             variant="outline"
             size="sm"
             class="h-9"
@@ -495,7 +496,7 @@
               <div class="relative">
                 <Button
                   icon={Upload}
-                  label={section.importLabel}
+                  label={t('vault.import')}
                   variant="outline"
                   size="sm"
                   class="h-9 cursor-pointer"
@@ -529,7 +530,7 @@
         {#each sections as section (section.id)}
           <TabsTrigger value={section.id} class="flex items-center gap-2">
             <section.icon class="h-4 w-4" />
-            <span class="hidden sm:inline">{section.label}</span>
+            <span class="hidden sm:inline">{t(`vault.${section.id}`)}</span>
             <Badge variant="secondary" class="ml-1 h-5 px-1 py-0 text-[10px]">
               {section.store.items.length}
             </Badge>
@@ -552,7 +553,7 @@
       <Input
         type="text"
         bind:value={searchInput}
-        placeholder={`Search ${activeTab}...`}
+        placeholder={t('vault.search')}
         class="bg-muted/40 flex-1"
         leftIcon={SearchIcon}
       />
@@ -570,7 +571,7 @@
 
         <Button
           icon={Star}
-          label="Favorites"
+          label={t('vault.favorites')}
           variant="outline"
           size="default"
           class={cn(

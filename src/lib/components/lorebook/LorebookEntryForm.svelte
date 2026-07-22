@@ -26,6 +26,7 @@
     CollapsibleTrigger,
   } from '$lib/components/ui/collapsible'
   import { cn } from '$lib/utils/cn'
+  import { t } from '$lib/i18n'
 
   interface Props {
     entry?: Entry | null

@@ -17,6 +17,7 @@
   import { Alert, AlertDescription, AlertTitle } from '$lib/components/ui/alert'
   import { EmptyState } from '$lib/components/ui/empty-state'
   import { cn } from '$lib/utils/cn'
+  import { t } from '$lib/i18n'
 
   // Lore management active state
   const isLoreManagementActive = $derived(ui.loreManagementActive)
@@ -195,7 +196,7 @@
               <div class="bg-primary/10 text-primary rounded-lg p-2">
                 <Plus class="h-5 w-5" />
               </div>
-              <h2 class="text-foreground font-semibold">New Entry</h2>
+              <h2 class="text-foreground font-semibold">{t('lorebook.add_entry')}</h2>
             </div>
             <div class="flex-1 overflow-y-auto p-4">
               <LorebookEntryForm onSave={handleSaveNew} onCancel={handleCancelNew} />

@@ -15,6 +15,7 @@
     ArrowLeft,
   } from 'lucide-svelte'
   import LorebookEntryForm from './LorebookEntryForm.svelte'
+  import { t } from '$lib/i18n'
 
   interface Props {
     entry: Entry

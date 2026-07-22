@@ -14,6 +14,7 @@
   import { characterToRecord, scenarioToRecord } from '$lib/utils/vaultMerge'
   import { SvelteMap } from 'svelte/reactivity'
   import { ui } from '$lib/stores/ui.svelte'
+  import { t } from '$lib/i18n'
 
   interface Props {
     change: VaultPendingChange
@@ -454,7 +455,7 @@
     >
       {#if isViewMode}
         <Button variant="outline" size="sm" class="border-surface-600 h-7 text-xs" onclick={onClose}
-          >Close</Button
+          >{t('common.close')}</Button
         >
         <Button
           size="sm"
@@ -462,11 +463,11 @@
           onclick={handleViewModeSave}
         >
           <Save class="h-3 w-3" />
-          Save
+          {t('common.save')}
         </Button>
       {:else}
         <Button variant="outline" size="sm" class="border-surface-600 h-7 text-xs" onclick={onClose}
-          >Cancel</Button
+          >{t('common.cancel')}</Button
         >
         <Button
           size="sm"

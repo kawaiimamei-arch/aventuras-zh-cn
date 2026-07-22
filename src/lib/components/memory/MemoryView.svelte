@@ -11,6 +11,7 @@
   import { BookOpen, ArrowLeft } from 'lucide-svelte'
   import { Button } from '$lib/components/ui/button'
   import { EmptyState } from '$lib/components/ui/empty-state'
+  import { t } from '$lib/i18n'
 
   // Get chapters sorted by number (descending - newest first)
 

@@ -17,6 +17,7 @@
   import { getSupportedLanguages } from '$lib/services/ai/utils/TranslationService'
   import { updaterService } from '$lib/services/updater'
   import { RefreshCw, Loader2, Languages, Plus, X, Trash2 } from 'lucide-svelte'
+  import { t } from '$lib/i18n'
 
   const storyWidthIndex = $derived(
     Math.max(
@@ -143,16 +144,16 @@
   }
 
   const fontSizes = [
-    { value: 'small', label: 'Small' },
-    { value: 'medium', label: 'Medium' },
-    { value: 'large', label: 'Large' },
+    { value: 'small', label: t('settings.interface.font_small') },
+    { value: 'medium', label: t('settings.interface.font_medium') },
+    { value: 'large', label: t('settings.interface.font_large') },
   ] as const
 </script>
 
 <div class="space-y-4">
   <!-- Theme Selection -->
   <div>
-    <Label class="mb-2 block">Theme</Label>
+    <Label class="mb-2 block">{t('settings.interface.theme')}</Label>
     <Select.Root
       type="single"
       value={settings.uiSettings.theme}
@@ -176,7 +177,7 @@
 
   <!-- Font Size -->
   <div>
-    <Label class="mb-2 block">Font Size</Label>
+    <Label class="mb-2 block">{t('settings.interface.font_size')}</Label>
     <Select.Root
       type="single"
       value={settings.uiSettings.fontSize}
@@ -198,7 +199,7 @@
   <!-- Story Content Width -->
   <div class="space-y-2">
     <div class="flex items-center justify-between">
-      <Label>Story Content Width</Label>
+      <Label>{t('settings.interface.story_width')}</Label>
       <span class="text-muted-foreground text-sm">
         {STORY_WIDTH_OPTIONS[storyWidthIndex]?.label ?? 'Default'}
       </span>
@@ -223,7 +224,7 @@
   <!-- Word Count Toggle -->
   <div class="flex items-center justify-between">
     <div>
-      <Label>Word Count</Label>
+      <Label>{t('settings.interface.show_word_count')}</Label>
       <p class="text-muted-foreground text-xs">
         Display current story word count in the status bar
       </p>
@@ -240,7 +241,7 @@
   <!-- Spellcheck Toggle -->
   <div class="flex items-center justify-between">
     <div>
-      <Label>Spellcheck</Label>
+      <Label>{t('settings.interface.spellcheck')}</Label>
       <p class="text-muted-foreground text-xs">Grammar and spelling suggestions while typing</p>
     </div>
     <Switch
@@ -352,7 +353,7 @@
   <!-- Auto Scroll Toggle -->
   <div class="flex items-center justify-between">
     <div>
-      <Label>Auto Scroll</Label>
+      <Label>{t('settings.interface.auto_scroll')}</Label>
       <p class="text-muted-foreground text-xs">
         Automatically scroll to the latest message during generation
       </p>
@@ -395,15 +396,14 @@
   <div class="space-y-3">
     <div class="flex items-center gap-2">
       <Languages class="text-muted-foreground h-4 w-4" />
-      <Label class="text-base font-medium">Translation</Label>
+      <Label class="text-base font-medium">{t('settings.translation.enable')}</Label>
     </div>
 
     <div class="flex items-center justify-between">
       <div>
-        <Label>Enable Translation</Label>
+        <Label>{t('settings.translation.enable')}</Label>
         <p class="text-muted-foreground text-xs">
-          Translate AI responses to your language while keeping English prompts for optimal LLM
-          performance
+          {t('settings.translation.description')}
         </p>
       </div>
       <Switch
@@ -418,7 +418,7 @@
     {#if settings.translationSettings.enabled}
       <!-- Target Language -->
       <div>
-        <Label class="mb-2 block">Target Language</Label>
+        <Label class="mb-2 block">{t('settings.translation.target_language')}</Label>
         <Select.Root
           type="single"
           value={settings.translationSettings.targetLanguage}
@@ -446,7 +446,7 @@
       <!-- Translate Narration -->
       <div class="flex items-center justify-between">
         <div>
-          <Label>Translate Narration</Label>
+          <Label>{t('settings.translation.translate_narration')}</Label>
           <p class="text-muted-foreground text-xs">
             Translate AI-generated story content after generation
           </p>
@@ -463,7 +463,7 @@
       <!-- Translate User Input -->
       <div class="flex items-center justify-between">
         <div>
-          <Label>Translate User Input</Label>
+          <Label>{t('settings.translation.translate_input')}</Label>
           <p class="text-muted-foreground text-xs">
             Translate your input to English before sending to the AI
           </p>
@@ -480,7 +480,7 @@
       <!-- Translate World State -->
       <div class="flex items-center justify-between">
         <div>
-          <Label>Translate World State</Label>
+          <Label>{t('settings.translation.translate_world_state')}</Label>
           <p class="text-muted-foreground text-xs">
             Translate character names, locations, and items in the UI
           </p>

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { ui } from '$lib/stores/ui.svelte'
   import { X, AlertTriangle, Info, AlertCircle } from 'lucide-svelte'
+  import { t } from '$lib/i18n'
 
   function getIcon() {
     switch (ui.toastType) {
@@ -53,7 +54,7 @@
         e.stopPropagation()
         handleClick()
       }}
-      aria-label="Close notification"
+      aria-label={t('common.dismiss')}
     >
       <X class="h-4 w-4 sm:h-5 sm:w-5" />
     </button>

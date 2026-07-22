@@ -37,6 +37,7 @@
   } from '$lib/services/events'
   import { isTouchDevice } from '$lib/utils/swipe'
   import { isAndroid } from '$lib/utils/platform'
+  import { t, _ as _ } from '$lib/i18n'
   import {
     GenerationPipeline,
     retryService,
@@ -116,7 +117,7 @@
   const isCreativeMode = $derived(story.storyMode === 'creative-writing')
 
   const sendKeyHint = $derived(
-    isTouchDevice() ? 'Shift+Enter to send' : 'Enter to send, Shift+Enter for new line',
+    isTouchDevice() ? t('story.send_key_hint') : t('story.send_key_hint'),
   )
 
   // Block generation when any service is missing a model or has an invalid profile
@@ -136,11 +137,11 @@
     free: PenLine,
   }
   const actionLabels: Record<ActionType, string> = {
-    do: 'Do',
-    say: 'Say',
-    think: 'Think',
-    story: 'Story',
-    free: 'Free',
+    do: t('story.action_do'),
+    say: t('story.action_say'),
+    think: t('story.action_think'),
+    story: t('story.action_story'),
+    free: t('story.action_free'),
   }
   const actionBorderColors: Record<ActionType, string> = {
     do: 'border-l-emerald-500',

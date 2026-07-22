@@ -30,6 +30,16 @@
     DropdownMenuSeparator,
     DropdownMenuTrigger,
   } from '$lib/components/ui/dropdown-menu'
+  import { t } from '$lib/i18n'
+
+  const typeLabels: Record<string, string> = {
+    character: t('lorebook.type_character'),
+    location: t('lorebook.type_location'),
+    item: t('lorebook.type_item'),
+    faction: t('lorebook.type_faction'),
+    concept: t('lorebook.type_concept'),
+    event: t('lorebook.type_event'),
+  }
 
   interface Props {
     onNewEntry?: () => void
@@ -178,7 +188,7 @@
     <div class="relative">
       <Input
         type="text"
-        placeholder="Search entries..."
+        placeholder={t('lorebook.search')}
         value={ui.lorebookSearchQuery}
         oninput={handleSearchInput}
         class="w-full pr-8 pl-9"
@@ -203,7 +213,7 @@
             <Button {...props} variant="outline" class="w-full justify-between font-normal">
               <span class="flex items-center gap-2 capitalize">
                 <Filter class="text-muted-foreground h-4 w-4" />
-                {ui.lorebookTypeFilter === 'all' ? 'All Types' : ui.lorebookTypeFilter}
+                {ui.lorebookTypeFilter === 'all' ? 'All Types' : typeLabels[ui.lorebookTypeFilter] ?? ui.lorebookTypeFilter}
               </span>
             </Button>
           {/snippet}
@@ -217,7 +227,7 @@
           >
             {#each entryTypes as entryType (entryType)}
               <DropdownMenuRadioItem value={entryType} class="capitalize">
-                <span>{entryType === 'all' ? 'All Types' : entryType}</span>
+                <span>{entryType === 'all' ? 'All Types' : typeLabels[entryType] ?? entryType}</span>
               </DropdownMenuRadioItem>
             {/each}
           </DropdownMenuRadioGroup>
