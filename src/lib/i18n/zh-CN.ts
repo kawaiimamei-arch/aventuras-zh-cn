@@ -294,7 +294,7 @@ const zhCN: Record<string, string> = {
   'memory.chapter_number': '第 {number} 章',
 
   // Settings interface name
-}
+  'settings.interface.auto_save': '自动保存',
 
   // =============================================
   // Lorebook
