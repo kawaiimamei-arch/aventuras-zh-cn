@@ -144,7 +144,10 @@ DerivedData/
 .Trashes
 .AppleDouble
 .LSOverride
-Icon?
+!src-tauri/icons/*.png
+!src-tauri/icons/*.icns
+!src-tauri/icons/*.ico
+!src-tauri/icons/ios/*.png
 
 # Windows
 Thumbs.db
