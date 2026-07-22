@@ -8,11 +8,11 @@
   import { Input } from '$lib/components/ui/input'
   import { Textarea } from '$lib/components/ui/textarea'
   import { Label } from '$lib/components/ui/label'
+  import { t } from '$lib/i18n'
   import { cn } from '$lib/utils/cn'
   import IconRow from '$lib/components/ui/icon-row.svelte'
   import { database } from '$lib/services/database'
   import RuntimeVariableDisplay from './RuntimeVariableDisplay.svelte'
-  import { t } from '$lib/i18n'
 
   let showAddForm = $state(false)
   let newName = $state('')
@@ -127,13 +127,13 @@
 <div class="flex flex-col gap-1 pb-12">
   <!-- Header -->
   <div class="mb-2 flex items-center justify-between">
-    <h3 class="text-foreground text-xl font-bold tracking-tight">{t('sidebar.locations')}</h3>
+    <h3 class="text-foreground text-xl font-bold tracking-tight">Locations</h3>
     <Button
       variant="text"
       size="icon"
       class="text-muted-foreground hover:text-foreground h-6 w-6"
       onclick={() => (showAddForm = !showAddForm)}
-      title={t('location.add')}
+      title="Add location"
     >
       <Plus class="h-6! w-6!" />
     </Button>
@@ -143,19 +143,19 @@
   {#if showAddForm}
     <div class="border-border bg-card rounded-lg border p-3 shadow-sm">
       <div class="space-y-3">
-        <Input type="text" bind:value={newName} placeholder={t('location.name_placeholder')} class="h-8 text-sm" />
+        <Input type="text" bind:value={newName} placeholder="Location name" class="h-8 text-sm" />
         <Textarea
           bind:value={newDescription}
-          placeholder={t('location.description_placeholder')}
+          placeholder="Description (optional)"
           class="min-h-[60px] resize-none text-sm"
           rows={2}
         />
       </div>
       <div class="mt-3 flex justify-end gap-2">
         <Button variant="text" size="sm" class="h-7" onclick={() => (showAddForm = false)}>
-          {t('common.cancel')}
+          Cancel
         </Button>
-        <Button size="sm" class="h-7" onclick={addLocation} disabled={!newName.trim()}>{t('common.add')}</Button>
+        <Button size="sm" class="h-7" onclick={addLocation} disabled={!newName.trim()}>Add</Button>
       </div>
     </div>
   {/if}
@@ -177,7 +177,7 @@
         <div class="space-y-3">
           <div class="mb-2 flex items-center justify-between">
             <h4 class="text-accent-400 text-xs font-semibold tracking-wider uppercase">
-              {t('location.editing_current')}
+              Editing Current Location
             </h4>
             <Button variant="text" size="icon" class="h-6 w-6" onclick={cancelEdit}
               ><X class="h-4 w-4" /></Button
@@ -188,7 +188,7 @@
             <Input
               type="text"
               bind:value={editName}
-              placeholder={t('common.name')}
+              placeholder="Location name"
               class="h-8 text-sm"
             />
           </div>
@@ -196,7 +196,7 @@
           <div class="space-y-1">
             <Textarea
               bind:value={editDescription}
-              placeholder={t('common.description')}
+              placeholder="Description"
               class="min-h-[60px] resize-none text-xs"
             />
           </div>
@@ -216,7 +216,7 @@
 
           <div class="border-accent-500/30 flex justify-end gap-2 border-t pt-2">
             <Button variant="text" size="sm" class="h-7 text-xs" onclick={cancelEdit}>
-              {t('common.cancel')}
+              Cancel
             </Button>
             <Button
               size="sm"
@@ -225,7 +225,7 @@
               disabled={!editName.trim()}
             >
               <Save class="mr-1.5 h-3.5 w-3.5" />
-              {t('common.save')}
+              Save
             </Button>
           </div>
         </div>
@@ -245,7 +245,7 @@
               {currentLocation.translatedName ?? currentLocation.name}
             </span>
             <span class="text-accent-500 w-fit text-[10px] font-bold tracking-wider uppercase">
-              {t('location.current_location')}
+              Current Location
             </span>
           </div>
         </div>
@@ -288,7 +288,7 @@
                 size="icon"
                 class="text-accent-500 hover:text-accent-600 h-6 w-6"
                 onclick={() => toggleCollapse(currentLocation.id)}
-                title={isCollapsed ? t('common.show_details') : t('common.hide_details')}
+                title={isCollapsed ? 'Show details' : 'Hide details'}
               >
                 <ChevronDown
                   class={cn(
@@ -306,13 +306,13 @@
               size="icon"
               class="text-accent-500 hover:text-accent-600 h-6 w-6"
               onclick={() => startEdit(currentLocation)}
-              title={t('location.edit_current')}
+              title="Edit location"
             >
               <Pencil class="h-3.5 w-3.5" />
             </Button>
           </div>
         </div>
-      {/if>
+      {/if}
     </div>
   {/if}
 
@@ -324,14 +324,14 @@
       <div class="bg-muted mb-3 rounded-full p-3">
         <MapPin class="text-muted-foreground h-6 w-6" />
       </div>
-      <p class="text-muted-foreground text-sm">{t('location.none')}</p>
+      <p class="text-muted-foreground text-sm">No locations yet</p>
       <Button
         variant="link"
         class="text-primary mt-1 h-auto p-0 text-xs"
         onclick={() => (showAddForm = true)}
       >
         <Plus class="mr-1.5 h-3.5 w-3.5" />
-        {t('location.add_first')}
+        Add your first location
       </Button>
     </div>
   {:else}
@@ -353,7 +353,7 @@
             <div class="space-y-3">
               <div class="mb-2 flex items-center justify-between">
                 <h4 class="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
-                  {t('common.editing', { name: location.name })}
+                  Editing {location.name}
                 </h4>
                 <Button variant="text" size="icon" class="h-6 w-6" onclick={cancelEdit}
                   ><X class="h-4 w-4" /></Button
@@ -361,20 +361,20 @@
               </div>
 
               <div class="space-y-1">
-                <Label class="text-xs">{t('common.name')}</Label>
+                <Label class="text-xs">Name</Label>
                 <Input
                   type="text"
                   bind:value={editName}
-                  placeholder={t('common.name')}
+                  placeholder="Location name"
                   class="h-8 text-sm"
                 />
               </div>
 
               <div class="space-y-1">
-                <Label class="text-xs">{t('common.description')}</Label>
+                <Label class="text-xs">Description</Label>
                 <Textarea
                   bind:value={editDescription}
-                  placeholder={t('common.description')}
+                  placeholder="Description"
                   class="min-h-[60px] resize-none text-xs"
                 />
               </div>
@@ -394,7 +394,7 @@
 
               <div class="border-border flex justify-end gap-2 border-t pt-2">
                 <Button variant="text" size="sm" class="h-7 text-xs" onclick={cancelEdit}>
-                  {t('common.cancel')}
+                  Cancel
                 </Button>
                 <Button
                   size="sm"
@@ -403,7 +403,7 @@
                   disabled={!editName.trim()}
                 >
                   <Save class="mr-1.5 h-3.5 w-3.5" />
-                  {t('common.save_changes')}
+                  Save Changes
                 </Button>
               </div>
             </div>
@@ -419,7 +419,7 @@
                     : 'bg-primary/10 ring-primary/50 text-primary hover:bg-primary/20',
                 )}
                 onclick={() => toggleVisited(location.id)}
-                title={location.visited ? t('location.mark_unvisited') : t('location.mark_visited')}
+                title={location.visited ? 'Mark as unvisited' : 'Mark as visited'}
               >
                 <MapPin class={cn('h-3.5 w-3.5', location.visited && 'opacity-60')} />
               </button>
@@ -439,7 +439,7 @@
                     location.visited ? 'text-muted-foreground/70' : 'text-primary',
                   )}
                 >
-                  {location.visited ? t('location.visited') : t('location.unvisited')}
+                  {location.visited ? 'Visited' : 'Unvisited'}
                 </span>
               </div>
             </div>
@@ -482,7 +482,7 @@
                     size="icon"
                     class="text-muted-foreground hover:text-foreground h-6 w-6"
                     onclick={() => toggleCollapse(location.id)}
-                    title={isCollapsed ? t('common.show_details') : t('common.hide_details')}
+                    title={isCollapsed ? 'Show details' : 'Hide details'}
                   >
                     <ChevronDown
                       class={cn(
@@ -500,17 +500,17 @@
                   size="sm"
                   class="text-muted-foreground hover:text-primary h-6 text-xs"
                   onclick={() => goToLocation(location.id)}
-                  title={t('location.travel_to')}
+                  title="Travel to location"
                 >
                   <Navigation class="mr-1 h-3 w-3" />
-                  {t('common.travel')}
+                  Travel
                 </Button>
                 <Button
                   variant="text"
                   size="icon"
                   class="text-muted-foreground hover:text-foreground h-6 w-6"
                   onclick={() => startEdit(location)}
-                  title={t('common.edit')}
+                  title="Edit"
                 >
                   <Pencil class="h-3.5 w-3.5" />
                 </Button>

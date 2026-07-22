@@ -21,12 +21,12 @@
   import { Badge } from '$lib/components/ui/badge'
   import { Checkbox } from '$lib/components/ui/checkbox'
   import { Label } from '$lib/components/ui/label'
+import { t } from '$lib/i18n'
   import * as Select from '$lib/components/ui/select'
   import IconRow from '$lib/components/ui/icon-row.svelte'
   import { cn } from '$lib/utils/cn'
   import { database } from '$lib/services/database'
   import RuntimeVariableDisplay from './RuntimeVariableDisplay.svelte'
-  import { t } from '$lib/i18n'
 
   let showAddForm = $state(false)
   let newName = $state('')
@@ -197,13 +197,13 @@
 <div class="flex flex-col gap-1 pb-12">
   <!-- Header -->
   <div class="mb-2 flex items-center justify-between">
-    <h3 class="text-foreground text-xl font-bold tracking-tight">{t('sidebar.inventory')}</h3>
+    <h3 class="text-foreground text-xl font-bold tracking-tight">Inventory</h3>
     <Button
       variant="text"
       size="icon"
       class="text-muted-foreground hover:text-foreground h-6 w-6"
       onclick={() => (showAddForm = !showAddForm)}
-      title={t('item.add')}
+      title="Add item"
     >
       <Plus class="h-6! w-6!" />
     </Button>
@@ -212,25 +212,25 @@
   {#if showAddForm}
     <div class="border-border bg-card mb-2 rounded-lg border p-3 shadow-sm">
       <div class="space-y-3">
-        <Input type="text" bind:value={newName} placeholder={t('item.name_placeholder')} class="h-8 text-sm" />
+        <Input type="text" bind:value={newName} placeholder="Item name" class="h-8 text-sm" />
         <Textarea
           bind:value={newDescription}
-          placeholder={t('item.description_placeholder')}
+          placeholder="Description (optional)"
           class="min-h-15 resize-none text-sm"
           rows={2}
         />
         <div class="flex items-center justify-end gap-3">
           <div class="flex items-center gap-2">
-            <Label class="text-muted-foreground text-xs">{t('common.quantity')}</Label>
+            <Label class="text-muted-foreground text-xs">Quantity</Label>
             <Input type="number" bind:value={newQuantity} min="1" class="h-8 w-20 text-sm" />
           </div>
         </div>
       </div>
       <div class="mt-3 flex justify-end gap-2">
         <Button variant="text" size="sm" class="h-7" onclick={() => (showAddForm = false)}>
-          {t('common.cancel')}
+          Cancel
         </Button>
-        <Button size="sm" class="h-7" onclick={addItem} disabled={!newName.trim()}>{t('common.add')}</Button>
+        <Button size="sm" class="h-7" onclick={addItem} disabled={!newName.trim()}>Add</Button>
       </div>
     </div>
   {/if}
@@ -239,9 +239,10 @@
   {#if story.equippedItems.length > 0}
     <div class="mb-4 space-y-2">
       <h4 class="text-muted-foreground pl-1 text-xs font-semibold tracking-wider uppercase">
-        {t('item.equipped')}
+        Equipped
       </h4>
       {#each story.equippedItems as item (item.id)}
+        {@const isCollapsed = ui.isEntityCollapsed(item.id)}
         {@const isEditing = editingId === item.id}
 
         <div
@@ -255,7 +256,7 @@
             <div class="space-y-3">
               <div class="mb-2 flex items-center justify-between">
                 <h4 class="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
-                  {t('common.editing', { name: item.name })}
+                  Editing {item.name}
                 </h4>
                 <Button variant="text" size="icon" class="h-6 w-6" onclick={cancelEdit}
                   ><X class="h-4 w-4" /></Button
@@ -264,16 +265,16 @@
 
               <div class="grid grid-cols-2 gap-3">
                 <div class="col-span-2 space-y-1 sm:col-span-1">
-                  <Label class="text-xs">{t('common.name')}</Label>
+                  <Label class="text-xs">Name</Label>
                   <Input
                     type="text"
                     bind:value={editName}
-                    placeholder={t('common.name')}
+                    placeholder="Item name"
                     class="h-8 text-sm"
                   />
                 </div>
                 <div class="col-span-2 space-y-1 sm:col-span-1">
-                  <Label class="text-xs">{t('common.quantity')}</Label>
+                  <Label class="text-xs">Quantity</Label>
                   <Input type="number" bind:value={editQuantity} min="1" class="h-8 text-sm" />
                 </div>
               </div>
@@ -284,15 +285,15 @@
                   for="edit-equipped-{item.id}"
                   class="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  {t('common.equipped')}
+                  Equipped
                 </Label>
               </div>
 
               <div class="space-y-1">
-                <Label class="text-xs">{t('common.description')}</Label>
+                <Label class="text-xs">Description</Label>
                 <Textarea
                   bind:value={editDescription}
-                  placeholder={t('common.description')}
+                  placeholder="Description"
                   class="min-h-15 resize-none text-xs"
                 />
               </div>
@@ -312,7 +313,7 @@
 
               <div class="border-border flex justify-end gap-2 border-t pt-2">
                 <Button variant="text" size="sm" class="h-7 text-xs" onclick={cancelEdit}>
-                  {t('common.cancel')}
+                  Cancel
                 </Button>
                 <Button
                   size="sm"
@@ -321,7 +322,7 @@
                   disabled={!editName.trim()}
                 >
                   <Save class="mr-1.5 h-3.5 w-3.5" />
-                  {t('common.save')}
+                  Save
                 </Button>
               </div>
             </div>
@@ -330,7 +331,7 @@
             <div class="space-y-3">
               <div class="text-muted-foreground mb-2 flex items-center gap-2 text-sm">
                 <MapPin class="h-3.5 w-3.5" />
-                <span>{t('item.drop_at')}</span>
+                <span>Drop item at...</span>
               </div>
 
               <Select.Root type="single" bind:value={dropLocationId}>
@@ -338,13 +339,13 @@
                   <div class="flex items-center gap-2 overflow-hidden">
                     <span class="truncate">
                       {story.locations.find((l) => l.id === dropLocationId)?.name ||
-                        {t('item.select_location')}}
+                        'Select location'}
                     </span>
                   </div>
                 </Select.Trigger>
                 <Select.Content class="max-h-50">
                   {#if story.locations.length === 0}
-                    <Select.Item value="" disabled>{t('item.no_locations')}</Select.Item>
+                    <Select.Item value="" disabled>No locations available</Select.Item>
                   {:else}
                     {#each story.locations as location (location.id)}
                       <Select.Item value={location.id} label={location.name}
@@ -357,7 +358,7 @@
 
               <div class="flex justify-end gap-2">
                 <Button variant="text" size="sm" class="h-7 text-xs" onclick={cancelDrop}>
-                  {t('common.cancel')}
+                  Cancel
                 </Button>
                 <Button
                   size="sm"
@@ -389,9 +390,10 @@
                     variant="default"
                     class="h-4 w-fit px-1.5 py-0 text-[10px] tracking-wide uppercase"
                   >
-                    {t('item.equipped')}
+                    Equipped
                   </Badge>
                   {#if item.quantity > 1}
+                    <Badge variant="secondary" class="h-4 px-1.5 text-[10px]">
                       x{item.quantity}
                     </Badge>
                   {/if}
@@ -437,7 +439,7 @@
                     size="icon"
                     class="text-muted-foreground hover:text-foreground h-6 w-6"
                     onclick={() => toggleCollapse(item.id)}
-                    title={isCollapsed ? t('common.show_details') : t('common.hide_details')}
+                    title={isCollapsed ? 'Show details' : 'Hide details'}
                   >
                     <ChevronDown
                       class={cn(
@@ -455,7 +457,7 @@
                   size="icon"
                   class="text-muted-foreground hover:text-foreground h-6 w-6"
                   onclick={() => beginDrop(item)}
-                  title={t('item.drop_item')}
+                  title="Drop item"
                 >
                   <ArrowDown class="h-3.5 w-3.5" />
                 </Button>
@@ -464,7 +466,27 @@
                   size="icon"
                   class="text-muted-foreground hover:text-foreground h-6 w-6"
                   onclick={() => startEdit(item)}
-                  title={t('common.edit')}
+                  title="Edit"
+                >
+                  <Pencil class="h-3.5 w-3.5" />
+                </Button>
+              </IconRow>
+            </div>
+          {/if}
+        </div>
+      {/each}
+    </div>
+  {/if}
+
+  <!-- Inventory Items -->
+  {#if story.inventoryItems.filter((item) => !item.equipped).length > 0}
+    <div class="space-y-2">
+      {#if story.equippedItems.length > 0}
+        <h4 class="text-muted-foreground mt-4 pl-1 text-xs font-semibold tracking-wider uppercase">
+          Backpack
+        </h4>
+      {/if}
+      {#each story.inventoryItems.filter((item) => !item.equipped) as item (item.id)}
         {@const isCollapsed = ui.isEntityCollapsed(item.id)}
         {@const isEditing = editingId === item.id}
 
@@ -479,7 +501,7 @@
             <div class="space-y-3">
               <div class="mb-2 flex items-center justify-between">
                 <h4 class="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
-                  {t('common.editing', { name: item.name })}
+                  Editing {item.name}
                 </h4>
                 <Button variant="text" size="icon" class="h-6 w-6" onclick={cancelEdit}
                   ><X class="h-4 w-4" /></Button
@@ -488,16 +510,16 @@
 
               <div class="grid grid-cols-2 gap-3">
                 <div class="col-span-2 space-y-1 sm:col-span-1">
-                  <Label class="text-xs">{t('common.name')}</Label>
+                  <Label class="text-xs">Name</Label>
                   <Input
                     type="text"
                     bind:value={editName}
-                    placeholder={t('common.name')}
+                    placeholder="Item name"
                     class="h-8 text-sm"
                   />
                 </div>
                 <div class="col-span-2 space-y-1 sm:col-span-1">
-                  <Label class="text-xs">{t('common.quantity')}</Label>
+                  <Label class="text-xs">Quantity</Label>
                   <Input type="number" bind:value={editQuantity} min="1" class="h-8 text-sm" />
                 </div>
               </div>
@@ -508,15 +530,15 @@
                   for="edit-equipped-{item.id}"
                   class="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  {t('common.equipped')}
+                  Equipped
                 </Label>
               </div>
 
               <div class="space-y-1">
-                <Label class="text-xs">{t('common.description')}</Label>
+                <Label class="text-xs">Description</Label>
                 <Textarea
                   bind:value={editDescription}
-                  placeholder={t('common.description')}
+                  placeholder="Description"
                   class="min-h-[60px] resize-none text-xs"
                 />
               </div>
@@ -536,7 +558,7 @@
 
               <div class="border-border flex justify-end gap-2 border-t pt-2">
                 <Button variant="text" size="sm" class="h-7 text-xs" onclick={cancelEdit}>
-                  {t('common.cancel')}
+                  Cancel
                 </Button>
                 <Button
                   size="sm"
@@ -545,7 +567,7 @@
                   disabled={!editName.trim()}
                 >
                   <Save class="mr-1.5 h-3.5 w-3.5" />
-                  {t('common.save')}
+                  Save
                 </Button>
               </div>
             </div>
@@ -554,7 +576,7 @@
             <div class="space-y-3">
               <div class="text-muted-foreground mb-2 flex items-center gap-2 text-sm">
                 <MapPin class="h-3.5 w-3.5" />
-                <span>{t('item.drop_at')}</span>
+                <span>Drop item at...</span>
               </div>
 
               <Select.Root type="single" bind:value={dropLocationId}>
@@ -562,13 +584,13 @@
                   <div class="flex items-center gap-2 overflow-hidden">
                     <span class="truncate">
                       {story.locations.find((l) => l.id === dropLocationId)?.name ||
-                        {t('item.select_location')}}
+                        'Select location'}
                     </span>
                   </div>
                 </Select.Trigger>
                 <Select.Content class="max-h-[200px]">
                   {#if story.locations.length === 0}
-                    <Select.Item value="" disabled>{t('item.no_locations')}</Select.Item>
+                    <Select.Item value="" disabled>No locations available</Select.Item>
                   {:else}
                     {#each story.locations as location (location.id)}
                       <Select.Item value={location.id} label={location.name}
@@ -581,7 +603,7 @@
 
               <div class="flex justify-end gap-2">
                 <Button variant="text" size="sm" class="h-7 text-xs" onclick={cancelDrop}>
-                  {t('common.cancel')}
+                  Cancel
                 </Button>
                 <Button
                   size="sm"
@@ -654,7 +676,7 @@
                     size="icon"
                     class="text-muted-foreground hover:text-foreground h-6 w-6"
                     onclick={() => toggleCollapse(item.id)}
-                    title={isCollapsed ? t('common.show_details') : t('common.hide_details')}
+                    title={isCollapsed ? 'Show details' : 'Hide details'}
                   >
                     <ChevronDown
                       class={cn(
@@ -672,7 +694,7 @@
                   size="icon"
                   class="text-muted-foreground hover:text-foreground h-6 w-6"
                   onclick={() => beginDrop(item)}
-                  title={t('item.drop_item')}
+                  title="Drop item"
                 >
                   <ArrowDown class="h-3.5 w-3.5" />
                 </Button>
@@ -681,7 +703,7 @@
                   size="icon"
                   class="text-muted-foreground hover:text-foreground h-6 w-6"
                   onclick={() => startEdit(item)}
-                  title={t('common.edit')}
+                  title="Edit"
                 >
                   <Pencil class="h-3.5 w-3.5" />
                 </Button>
@@ -701,14 +723,14 @@
       <div class="bg-muted mb-3 rounded-full p-3">
         <Package class="text-muted-foreground h-6 w-6" />
       </div>
-      <p class="text-muted-foreground text-sm">{t('item.empty_inventory')}</p>
+      <p class="text-muted-foreground text-sm">Empty inventory</p>
       <Button
         variant="text"
         class="text-primary mt-1 h-auto p-0 text-xs"
         onclick={() => (showAddForm = true)}
       >
         <Plus class="h-3.5 w-3.5" />
-        {t('item.add_first')}
+        Add first item
       </Button>
     </div>
   {/if}
@@ -717,7 +739,7 @@
   {#if worldItems.length > 0}
     <div class="mt-4 space-y-2">
       <h4 class="text-muted-foreground pl-1 text-xs font-semibold tracking-wider uppercase">
-        {t('item.world_items')}
+        World Items
       </h4>
       {#each worldItems as item (item.id)}
         {@const isCollapsed = ui.isEntityCollapsed(item.id)}
@@ -734,7 +756,7 @@
             <div class="space-y-3">
               <div class="mb-2 flex items-center justify-between">
                 <h4 class="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
-                  {t('common.editing', { name: item.name })}
+                  Editing {item.name}
                 </h4>
                 <Button variant="text" size="icon" class="h-6 w-6" onclick={cancelEdit}
                   ><X class="h-4 w-4" /></Button
@@ -743,16 +765,16 @@
 
               <div class="grid grid-cols-2 gap-3">
                 <div class="col-span-2 space-y-1 sm:col-span-1">
-                  <Label class="text-xs">{t('common.name')}</Label>
+                  <Label class="text-xs">Name</Label>
                   <Input
                     type="text"
                     bind:value={editName}
-                    placeholder={t('common.name')}
+                    placeholder="Item name"
                     class="h-8 text-sm"
                   />
                 </div>
                 <div class="col-span-2 space-y-1 sm:col-span-1">
-                  <Label class="text-xs">{t('common.quantity')}</Label>
+                  <Label class="text-xs">Quantity</Label>
                   <Input type="number" bind:value={editQuantity} min="1" class="h-8 text-sm" />
                 </div>
               </div>
@@ -761,10 +783,10 @@
               <!-- The saveEdit function handles forcing equipped=false for non-inventory items -->
 
               <div class="space-y-1">
-                <Label class="text-xs">{t('common.description')}</Label>
+                <Label class="text-xs">Description</Label>
                 <Textarea
                   bind:value={editDescription}
-                  placeholder={t('common.description')}
+                  placeholder="Description"
                   class="min-h-15 resize-none text-xs"
                 />
               </div>
@@ -784,7 +806,7 @@
 
               <div class="border-border flex justify-end gap-2 border-t pt-2">
                 <Button variant="text" size="sm" class="h-7 text-xs" onclick={cancelEdit}>
-                  {t('common.cancel')}
+                  Cancel
                 </Button>
                 <Button
                   size="sm"
@@ -793,7 +815,7 @@
                   disabled={!editName.trim()}
                 >
                   <Save class="mr-1.5 h-3.5 w-3.5" />
-                  {t('common.save')}
+                  Save
                 </Button>
               </div>
             </div>
@@ -802,7 +824,7 @@
             <div class="space-y-3">
               <div class="text-muted-foreground mb-2 flex items-center gap-2 text-sm">
                 <MapPin class="h-3.5 w-3.5" />
-                <span>{t('item.move_to')}</span>
+                <span>Move item to...</span>
               </div>
 
               <Select.Root type="single" bind:value={dropLocationId}>
@@ -810,13 +832,13 @@
                   <div class="flex items-center gap-2 overflow-hidden">
                     <span class="truncate">
                       {story.locations.find((l) => l.id === dropLocationId)?.name ||
-                        {t('item.select_location')}}
+                        'Select location'}
                     </span>
                   </div>
                 </Select.Trigger>
                 <Select.Content class="max-h-[200px]">
                   {#if story.locations.length === 0}
-                    <Select.Item value="" disabled>{t('item.no_locations')}</Select.Item>
+                    <Select.Item value="" disabled>No locations available</Select.Item>
                   {:else}
                     {#each story.locations as location (location.id)}
                       <Select.Item value={location.id} label={location.name}
@@ -829,7 +851,7 @@
 
               <div class="flex justify-end gap-2">
                 <Button variant="text" size="sm" class="h-7 text-xs" onclick={cancelDrop}>
-                  {t('common.cancel')}
+                  Cancel
                 </Button>
                 <Button
                   size="sm"
@@ -837,7 +859,7 @@
                   onclick={() => moveItemToLocation(item)}
                   disabled={!dropLocationId}
                 >
-                  {t('common.move')}
+                  Move
                 </Button>
               </div>
             </div>
@@ -910,7 +932,7 @@
                     size="icon"
                     class="text-muted-foreground hover:text-foreground h-6 w-6"
                     onclick={() => toggleCollapse(item.id)}
-                    title={isCollapsed ? t('common.show_details') : t('common.hide_details')}
+                    title={isCollapsed ? 'Show details' : 'Hide details'}
                   >
                     <ChevronDown
                       class={cn(
@@ -928,7 +950,7 @@
                   size="icon"
                   class="text-muted-foreground hover:text-foreground h-6 w-6"
                   onclick={() => pickUpItem(item)}
-                  title={t('item.pick_up')}
+                  title="Pick up"
                 >
                   <ArrowUp class="h-3.5 w-3.5" />
                 </Button>
@@ -937,7 +959,7 @@
                   size="icon"
                   class="text-muted-foreground hover:text-foreground h-6 w-6"
                   onclick={() => beginDrop(item)}
-                  title={t('item.move_item')}
+                  title="Move item"
                 >
                   <MapPin class="h-3.5 w-3.5" />
                 </Button>
@@ -946,7 +968,7 @@
                   size="icon"
                   class="text-muted-foreground hover:text-foreground h-6 w-6"
                   onclick={() => startEdit(item)}
-                  title={t('common.edit')}
+                  title="Edit"
                 >
                   <Pencil class="h-3.5 w-3.5" />
                 </Button>
