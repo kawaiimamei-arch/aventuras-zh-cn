@@ -2,6 +2,7 @@
   import { story } from '$lib/stores/story.svelte'
   import { settings } from '$lib/stores/settings.svelte'
   import { ui } from '$lib/stores/ui.svelte'
+  import { t } from '$lib/i18n'
   import { characterVault } from '$lib/stores/characterVault.svelte'
   import {
     Plus,
@@ -43,7 +44,6 @@
   import { cn } from '$lib/utils/cn'
   import IconRow from '$lib/components/ui/icon-row.svelte'
   import { DEFAULT_FALLBACK_STYLE_PROMPT } from '$lib/services/ai/image/constants'
-  import { t } from '$lib/i18n'
 
   let showAddForm = $state(false)
   let newName = $state('')
@@ -477,13 +477,13 @@
 <div class="flex flex-col gap-1 pb-12">
   <!-- Header -->
   <div class="mb-2 flex items-center justify-between">
-    <h3 class="text-foreground text-xl font-bold tracking-tight">{t('sidebar.characters')}</h3>
+    <h3 class="text-foreground text-xl font-bold tracking-tight">Characters</h3>
     <Button
       variant="text"
       size="icon"
       class="text-muted-foreground hover:text-foreground h-6 w-6"
       onclick={() => (showAddForm = !showAddForm)}
-      title={t('character.add')}
+      title="Add character"
     >
       <Plus class="h-6! w-6!" />
     </Button>
@@ -493,25 +493,25 @@
   {#if showAddForm}
     <div class="border-border bg-card rounded-lg border p-3 shadow-sm">
       <div class="space-y-3">
-        <Input type="text" bind:value={newName} placeholder={t('common.name')} class="h-8 text-sm" />
+        <Input type="text" bind:value={newName} placeholder="Name" class="h-8 text-sm" />
         <Input
           type="text"
           bind:value={newRelationship}
-          placeholder={t('character.relationship_placeholder')}
+          placeholder="Relationship (ally, enemy...)"
           class="h-8 text-sm"
         />
         <Textarea
           bind:value={newDescription}
-          placeholder={t('character.description_placeholder')}
+          placeholder="Description (optional)"
           class="min-h-15 resize-none text-sm"
           rows={2}
         />
       </div>
       <div class="mt-3 flex justify-end gap-2">
         <Button variant="text" size="sm" class="h-7" onclick={() => (showAddForm = false)}>
-          {t('common.cancel')}
+          Cancel
         </Button>
-        <Button size="sm" class="h-7" onclick={addCharacter} disabled={!newName.trim()}>{t('common.add')}</Button>
+        <Button size="sm" class="h-7" onclick={addCharacter} disabled={!newName.trim()}>Add</Button>
       </div>
     </div>
   {/if}
@@ -524,14 +524,14 @@
       <div class="bg-muted mb-3 rounded-full p-3">
         <UserPlus class="text-muted-foreground h-6 w-6" />
       </div>
-      <p class="text-muted-foreground text-sm">{t('character.none')}</p>
+      <p class="text-muted-foreground text-sm">No characters yet</p>
       <Button
         variant="link"
         class="text-primary mt-1 h-auto p-0 text-xs"
         onclick={() => (showAddForm = true)}
       >
         <Plus class="mr-1.5 h-3.5 w-3.5" />
-        {t('character.add_first')}
+        Add your first character
       </Button>
     </div>
   {:else}
@@ -557,7 +557,7 @@
             <div class="space-y-3">
               <div class="mb-2 flex items-center justify-between">
                 <h4 class="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
-                  {t('common.editing', { name: character.name })}
+                  Editing {character.name}
                 </h4>
                 <Button variant="text" size="icon" class="h-6 w-6" onclick={cancelEdit}
                   ><X class="h-4 w-4" /></Button
@@ -566,15 +566,15 @@
 
               <div class="grid grid-cols-2 gap-3">
                 <div class="col-span-2 space-y-1 sm:col-span-1">
-                  <Label class="text-xs">{t('common.name')}</Label>
-                  <Input type="text" bind:value={editName} placeholder={t('common.name')} class="h-8 text-sm" />
+                  <Label class="text-xs">Name</Label>
+                  <Input type="text" bind:value={editName} placeholder="Name" class="h-8 text-sm" />
                 </div>
                 <div class="col-span-2 space-y-1 sm:col-span-1">
-                  <Label class="text-xs">{t('common.relationship')}</Label>
+                  <Label class="text-xs">Relationship</Label>
                   <Input
                     type="text"
                     bind:value={editRelationship}
-                    placeholder={isProtagonist ? t('character.protagonist') : t('common.relationship')}
+                    placeholder={isProtagonist ? 'Protagonist' : 'Relationship'}
                     class="h-8 text-sm"
                     disabled={isProtagonist}
                   />
@@ -582,7 +582,7 @@
               </div>
 
               <div class="space-y-1">
-                <Label class="text-xs">{t('common.status')}</Label>
+                <Label class="text-xs">Status</Label>
                 <ToggleGroup.Root
                   type="single"
                   value={editStatus}
@@ -596,46 +596,46 @@
                     class="h-7 flex-1 text-xs data-[state=on]:bg-green-500/10 data-[state=on]:text-green-600"
                   >
                     <!-- <User class="h-3 w-3" /> -->
-                    {t('character.status_active')}
+                    Active
                   </ToggleGroup.Item>
                   <ToggleGroup.Item
                     value="inactive"
                     class="data-[state=on]:bg-muted data-[state=on]:text-foreground h-7 flex-1 text-xs"
                   >
                     <!-- <UserX class="h-3 w-3" /> -->
-                    {t('character.status_inactive')}
+                    Inactive
                   </ToggleGroup.Item>
                   <ToggleGroup.Item
                     value="deceased"
                     class="data-[state=on]:bg-destructive/10 data-[state=on]:text-destructive h-7 flex-1 text-xs"
                   >
                     <!-- <Skull class="h-3 w-3" /> -->
-                    {t('character.status_deceased')}
+                    Deceased
                   </ToggleGroup.Item>
                 </ToggleGroup.Root>
               </div>
 
               <div class="space-y-1">
-                <Label class="text-xs">{t('character.traits')}</Label>
+                <Label class="text-xs">Traits & Appearance</Label>
                 <Input
                   type="text"
                   bind:value={editTraits}
-                  placeholder={t('character.traits_placeholder')}
+                  placeholder="Traits (comma separated)"
                   class="mb-2 h-8 text-xs"
                 />
                 <Input
                   type="text"
                   bind:value={editVisualDescriptors}
-                  placeholder={t('character.appearance_placeholder')}
+                  placeholder="Appearance (comma separated)"
                   class="h-8 text-xs"
                 />
               </div>
 
               <div class="space-y-1">
-                <Label class="text-xs">{t('common.description')}</Label>
+                <Label class="text-xs">Description</Label>
                 <Textarea
                   bind:value={editDescription}
-                  placeholder={t('common.description')}
+                  placeholder="Description"
                   class="min-h-[60px] resize-none text-xs"
                 />
               </div>
@@ -658,7 +658,7 @@
                 <div
                   class="text-muted-foreground mb-2 flex items-center justify-between text-xs font-medium"
                 >
-                  <span>{t('character.portrait')}</span>
+                  <span>Portrait</span>
                   {#if editPortrait}
                     <Button
                       variant="destructive"
@@ -666,8 +666,17 @@
                       class="h-5 px-1.5 text-xs"
                       onclick={removePortrait}
                     >
-                      {t('common.remove')}
+                      Remove
                     </Button>
+                  {/if}
+                </div>
+                <div class="flex items-start gap-3">
+                  {#if editPortrait}
+                    <img
+                      src={normalizeImageDataUrl(editPortrait) ?? ''}
+                      alt="Portrait preview"
+                      class="ring-border bg-background h-16 w-16 rounded-md object-cover ring-1"
+                    />
                   {:else}
                     <div
                       class="border-border bg-background/50 flex h-16 w-16 items-center justify-center rounded-md border border-dashed"
@@ -684,10 +693,10 @@
                     >
                       {#if uploadingPortraitId === character.id}
                         <Loader2 class="h-3.5 w-3.5 animate-spin" />
-                        <span>{t('common.uploading')}</span>
+                        <span>Uploading...</span>
                       {:else}
                         <ImageUp class="h-3.5 w-3.5" />
-                        <span>{t('common.upload')}</span>
+                        <span>Upload</span>
                       {/if}
                       <input
                         type="file"
@@ -706,15 +715,16 @@
                         uploadingPortraitId !== null ||
                         !editVisualDescriptors.trim()}
                       title={!editVisualDescriptors.trim()
-                        ? t('character.add_appearance_first')
-                        : t('character.generate_from_appearance')}
+                        ? 'Add appearance first'
+                        : 'Generate from appearance'}
                     >
                       {#if generatingPortraitId === character.id}
                         <Loader2 class="h-3.5 w-3.5 animate-spin" />
-                        <span>{t('common.generating')}</span>
+                        <span>Generating...</span>
                       {:else}
                         <Wand2 class="h-3.5 w-3.5" />
-                        <span>{t('common.generate')}</span>
+                        <span>Generate</span>
+                      {/if}
                     </Button>
                   </div>
                 </div>
@@ -725,7 +735,7 @@
 
               <div class="border-border flex justify-end gap-2 border-t pt-2">
                 <Button variant="text" size="sm" class="h-7 text-xs" onclick={cancelEdit}>
-                  {t('common.cancel')}
+                  Cancel
                 </Button>
                 <Button
                   size="sm"
@@ -734,7 +744,7 @@
                   disabled={!editName.trim()}
                 >
                   <Save class="mr-1.5 h-3.5 w-3.5" />
-                  {t('common.save_changes')}
+                  Save Changes
                 </Button>
               </div>
             </div>
@@ -811,7 +821,7 @@
                     class="h-4 w-fit px-1.5 py-0 text-[10px] tracking-wide uppercase"
                   >
                     <Star class="mr-0.5 h-2.5 w-2.5" />
-                    {t('character.you')}
+                    You
                   </Badge>
                 {:else if character.relationship || character.translatedRelationship}
                   <Badge
@@ -828,7 +838,7 @@
             {#if pendingProtagonistId === character.id}
               <div class="border-border bg-muted/40 mt-2 rounded-md border p-2.5">
                 <p class="text-muted-foreground mb-1.5 text-xs">
-                  {t('character.new_role_for')} <span class="text-foreground font-medium"
+                  New role for <span class="text-foreground font-medium"
                     >{currentProtagonistName}</span
                   >:
                 </p>
@@ -836,7 +846,7 @@
                   <Input
                     type="text"
                     bind:value={previousRelationshipLabel}
-                    placeholder={t('character.relationship_example')}
+                    placeholder="e.g., ally, companion"
                     class="h-7 flex-1 text-xs"
                   />
                   <Button
@@ -845,11 +855,12 @@
                     onclick={() => confirmSwap(character)}
                     disabled={!previousRelationshipLabel.trim()}
                   >
-                    {t('common.swap')}
+                    Swap
                   </Button>
                   <Button variant="ghost" size="sm" class="h-7 px-2 text-xs" onclick={cancelSwap}>
                     <X class="h-3.5 w-3.5" />
                   </Button>
+                </div>
                 {#if swapError}
                   <p class="text-destructive mt-1 text-xs">{swapError}</p>
                 {/if}
@@ -892,7 +903,7 @@
                           descriptorsExpanded && 'rotate-180',
                         )}
                       />
-                      <span class="font-medium">{t('common.appearance')}</span>
+                      <span class="font-medium">Appearance</span>
                     </button>
                     {#if descriptorsExpanded}
                       <div class="flex flex-col gap-1">
@@ -949,7 +960,7 @@
                     size="icon"
                     class="text-muted-foreground hover:text-foreground h-6 w-6"
                     onclick={() => toggleCollapse(character.id)}
-                    title={isCollapsed ? t('common.show_details') : t('common.hide_details')}
+                    title={isCollapsed ? 'Show details' : 'Hide details'}
                   >
                     <ChevronDown
                       class={cn(
@@ -972,7 +983,7 @@
                     size="icon"
                     class="text-muted-foreground h-6 w-6 hover:text-amber-500"
                     onclick={() => beginSwap(character)}
-                    title={t('character.make_protagonist')}
+                    title="Make protagonist"
                   >
                     <Star class="h-3.5 w-3.5" />
                   </Button>
@@ -982,7 +993,7 @@
                   size="icon"
                   class="text-muted-foreground hover:text-foreground h-6 w-6"
                   onclick={() => startEdit(character)}
-                  title={t('common.edit')}
+                  title="Edit"
                 >
                   <Pencil class="h-3.5 w-3.5" />
                 </Button>
@@ -996,7 +1007,7 @@
                       : 'text-muted-foreground hover:text-primary',
                   )}
                   onclick={() => saveCharacterToVault(character)}
-                  title={t('common.save_to_vault')}
+                  title="Save to vault"
                 >
                   <Archive class="h-3.5 w-3.5" />
                 </Button>
@@ -1016,7 +1027,7 @@
     class="bg-background/80 animate-in fade-in fixed inset-0 z-50 flex cursor-pointer items-center justify-center p-4 backdrop-blur-sm duration-200"
     onclick={() => (expandedPortrait = null)}
     role="dialog"
-    aria-label={t('character.expanded_portrait')}
+    aria-label="Expanded portrait"
     tabindex="0"
   >
     <div class="relative w-full max-w-sm">
