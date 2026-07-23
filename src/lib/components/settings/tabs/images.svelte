@@ -1087,7 +1087,7 @@
             <Label>
               {t('images.max_images_per_message')}: {settings.systemServicesSettings.imageGeneration
                 .maxImagesPerMessage === 0
-                ? {t('images.unlimited')}
+                ? t('images.unlimited')
                 : settings.systemServicesSettings.imageGeneration.maxImagesPerMessage}
             </Label>
             <Slider

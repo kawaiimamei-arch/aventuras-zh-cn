@@ -1,5 +1,6 @@
 <script lang="ts">
   import MainNarrative from '../MainNarrative.svelte'
+import { t } from '$lib/i18n'
   import AgentProfiles from '../AgentProfiles.svelte'
   import { settings } from '$lib/stores/settings.svelte'
   import {
@@ -19,7 +20,6 @@
     LLM_TIMEOUT_MIN_SECONDS,
     LLM_TIMEOUT_MAX_SECONDS,
   } from '$lib/constants/timeout'
-  import { t } from '$lib/i18n'
 
   interface Props {
     onOpenManualBodyEditor: (title: string, value: string, onSave: (v: string) => void) => void
@@ -39,17 +39,17 @@
   <!-- Global API Settings -->
   <Card>
     <CardHeader>
-      <CardTitle>{t('generation.global_api_settings')}</CardTitle>
-      <CardDescription>{t('generation.global_api_settings_description')}</CardDescription>
+      <CardTitle>Global API Settings</CardTitle>
+      <CardDescription>Settings that apply to all API requests</CardDescription>
     </CardHeader>
     <CardContent class="space-y-4">
       <!-- Request Timeout -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
           <div class="space-y-1">
-            <Label>{t('generation.request_timeout')}</Label>
+            <Label>Request Timeout</Label>
             <p class="text-muted-foreground text-xs">
-              {t('generation.request_timeout_description')}
+              Maximum time to wait for any LLM response (applies to all services)
             </p>
           </div>
           <span class="text-muted-foreground text-xs font-medium">
