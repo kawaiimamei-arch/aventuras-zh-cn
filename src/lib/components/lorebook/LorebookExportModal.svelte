@@ -10,8 +10,9 @@
   import { RadioGroup, RadioGroupItem } from '$lib/components/ui/radio-group'
   import { Label } from '$lib/components/ui/label'
   import { cn } from '$lib/utils/cn'
-  import { t } from '$lib/i18n' = $state<LorebookImportExport.ExportFormat>('aventura')
-  let exportSelected = $state(false)
+  import { t } from '$lib/i18n'
+
+  let selectedFormat = $state<LorebookImportExport.ExportFormat>('aventura')
   let exporting = $state(false)
 
   const formats: LorebookImportExport.ExportFormat[] = ['aventura', 'sillytavern', 'text']
@@ -82,7 +83,7 @@
               <Label for="scope-all" class="flex-1 cursor-pointer">
                 <div class="font-medium">{t('lorebook.all_entries')}</div>
                 <div class="text-muted-foreground text-xs">
-                  {story.lorebookEntries.length} entries
+                  {story.lorebookEntries.length} {t('lorebook.entries')}
                 </div>
               </Label>
             </div>
@@ -97,7 +98,7 @@
               <Label for="scope-selected" class="flex-1 cursor-pointer">
                 <div class="font-medium">{t('lorebook.selected_only')}</div>
                 <div class="text-muted-foreground text-xs">
-                  {ui.lorebookBulkSelection.size} entries
+                  {ui.lorebookBulkSelection.size} {t('lorebook.entries')}
                 </div>
               </Label>
             </div>

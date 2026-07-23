@@ -49,14 +49,14 @@
       <div class="space-y-0.5">
         <div class="flex items-center gap-2">
           <Code2 class="text-muted-foreground h-4 w-4" />
-          <Label>Manual Request Mode</Label>
+          <Label>{t('advanced.manual_request_mode')}</Label>
         </div>
         <p class="text-muted-foreground text-xs">
-          Edit full request body parameters for advanced models.
+          {t('advanced.manual_request_mode_description')}
         </p>
         {#if settings.advancedRequestSettings.manualMode}
           <p class="pt-1 text-xs font-medium text-amber-500">
-            Manual mode active. Temperature and max token controls are locked.
+            {t('advanced.manual_mode_active')}
           </p>
         {/if}
       </div>
@@ -71,12 +71,12 @@
       <div class="space-y-0.5">
         <div class="flex items-center gap-2">
           <Bug class="text-muted-foreground h-4 w-4" />
-          <Label>Debug Mode</Label>
+          <Label>{t('advanced.debug_mode')}</Label>
         </div>
-        <p class="text-muted-foreground text-xs">Log API requests and responses for debugging.</p>
+        <p class="text-muted-foreground text-xs">{t('advanced.debug_mode_description')}</p>
         {#if settings.uiSettings.debugMode}
           <p class="pt-1 text-xs font-medium text-amber-500">
-            Logs are session-only and not persisted.
+            {t('advanced.logs_session_only')}
           </p>
         {/if}
       </div>
@@ -99,8 +99,8 @@
               <FolderOpen class="h-4 w-4 text-green-500" />
             </div>
             <div class="flex-1">
-              <Label class="leading-none font-medium">Lorebook Import</Label>
-              <p class="text-muted-foreground mt-1 text-xs">Batch size and concurrency</p>
+              <Label class="leading-none font-medium">{t('advanced.lorebook_import')}</Label>
+              <p class="text-muted-foreground mt-1 text-xs">{t('advanced.lorebook_import_description')}</p>
             </div>
           </Collapsible.Trigger>
           <div class="flex shrink-0 items-center gap-1">
@@ -109,7 +109,7 @@
               size="icon"
               class="h-8 w-8"
               onclick={() => settings.resetLorebookClassifierSpecificSettings()}
-              title="Reset to default"
+              title={t('common.reset_to_default')}
             >
               <RotateCcw class="h-3.5 w-3.5" />
             </Button>
@@ -121,7 +121,7 @@
                   {:else}
                     <ChevronDown class="h-4 w-4 transition-transform duration-200" />
                   {/if}
-                  <span class="sr-only">Toggle</span>
+                  <span class="sr-only">{t('common.toggle')}</span>
                 </Button>
               {/snippet}
             </Collapsible.Trigger>
@@ -133,7 +133,7 @@
             <!-- Batch Size -->
             <div class="space-y-3">
               <div class="flex justify-between">
-                <Label>Batch Size</Label>
+                <Label>{t('advanced.batch_size')}</Label>
                 <span class="bg-muted rounded px-2 py-0.5 text-xs font-medium">
                   {settings.serviceSpecificSettings.lorebookClassifier?.batchSize ?? 50}
                 </span>
@@ -152,15 +152,15 @@
               <div
                 class="text-muted-foreground flex justify-between text-[10px] font-medium tracking-wider uppercase"
               >
-                <span>Reliable</span>
-                <span>Fast</span>
+                <span>{t('advanced.reliable')}</span>
+                <span>{t('advanced.fast')}</span>
               </div>
             </div>
 
             <!-- Max Concurrent -->
             <div class="space-y-3">
               <div class="flex justify-between">
-                <Label>Max Concurrent Requests</Label>
+                <Label>{t('advanced.max_concurrent_requests')}</Label>
                 <span class="bg-muted rounded px-2 py-0.5 text-xs font-medium">
                   {settings.serviceSpecificSettings.lorebookClassifier?.maxConcurrent ?? 5}
                 </span>
@@ -179,8 +179,8 @@
               <div
                 class="text-muted-foreground flex justify-between text-[10px] font-medium tracking-wider uppercase"
               >
-                <span>Sequential</span>
-                <span>Parallel</span>
+                <span>{t('advanced.sequential')}</span>
+                <span>{t('advanced.parallel')}</span>
               </div>
             </div>
           </div>
@@ -199,8 +199,8 @@
               <BookOpen class="h-4 w-4 text-purple-500" />
             </div>
             <div class="flex-1">
-              <Label class="leading-none font-medium">Lore Management</Label>
-              <p class="text-muted-foreground mt-1 text-xs">Autonomous agent iteration limits</p>
+              <Label class="leading-none font-medium">{t('advanced.lore_management')}</Label>
+              <p class="text-muted-foreground mt-1 text-xs">{t('advanced.lore_management_description')}</p>
             </div>
           </Collapsible.Trigger>
           <div class="flex shrink-0 items-center gap-1">
@@ -209,7 +209,7 @@
               size="icon"
               class="h-8 w-8"
               onclick={() => settings.resetLoreManagementSettings()}
-              title="Reset to default"
+              title={t('common.reset_to_default')}
             >
               <RotateCcw class="h-3.5 w-3.5" />
             </Button>
@@ -221,7 +221,7 @@
                   {:else}
                     <ChevronDown class="h-4 w-4 transition-transform duration-200" />
                   {/if}
-                  <span class="sr-only">Toggle</span>
+                  <span class="sr-only">{t('common.toggle')}</span>
                 </Button>
               {/snippet}
             </Collapsible.Trigger>
@@ -233,7 +233,7 @@
             <!-- Max Iterations -->
             <div class="space-y-3">
               <div class="flex justify-between">
-                <Label>Max Iterations</Label>
+                <Label>{t('advanced.max_iterations')}</Label>
                 <span class="bg-muted rounded px-2 py-0.5 text-xs font-medium">
                   {settings.systemServicesSettings.loreManagement?.maxIterations ?? 50}
                 </span>
@@ -252,8 +252,8 @@
               <div
                 class="text-muted-foreground flex justify-between text-[10px] font-medium tracking-wider uppercase"
               >
-                <span>Conservative</span>
-                <span>Extensive</span>
+                <span>{t('advanced.conservative')}</span>
+                <span>{t('advanced.extensive')}</span>
               </div>
             </div>
           </div>
@@ -272,8 +272,8 @@
               <Brain class="h-4 w-4 text-cyan-500" />
             </div>
             <div class="flex-1">
-              <Label class="leading-none font-medium">World State Classifier</Label>
-              <p class="text-muted-foreground mt-1 text-xs">Context window management</p>
+              <Label class="leading-none font-medium">{t('advanced.world_state_classifier')}</Label>
+              <p class="text-muted-foreground mt-1 text-xs">{t('advanced.world_state_classifier_description')}</p>
             </div>
           </Collapsible.Trigger>
           <div class="flex shrink-0 items-center gap-1">
@@ -282,7 +282,7 @@
               size="icon"
               class="h-8 w-8"
               onclick={() => settings.resetClassifierSettings()}
-              title="Reset to default"
+              title={t('common.reset_to_default')}
             >
               <RotateCcw class="h-3.5 w-3.5" />
             </Button>
@@ -294,7 +294,7 @@
                   {:else}
                     <ChevronDown class="h-4 w-4 transition-transform duration-200" />
                   {/if}
-                  <span class="sr-only">Toggle</span>
+                  <span class="sr-only">{t('common.toggle')}</span>
                 </Button>
               {/snippet}
             </Collapsible.Trigger>
@@ -306,10 +306,10 @@
             <!-- Chat History Truncation -->
             <div class="space-y-3">
               <div class="flex justify-between">
-                <Label>Chat History Truncation (Words)</Label>
+                <Label>{t('advanced.chat_history_truncation')}</Label>
                 <span class="bg-muted rounded px-2 py-0.5 text-xs font-medium">
                   {settings.systemServicesSettings.classifier?.chatHistoryTruncation === 0
-                    ? 'No Limit'
+                    ? t('advanced.no_limit')
                     : (settings.systemServicesSettings.classifier?.chatHistoryTruncation ?? 0)}
                 </span>
               </div>
@@ -327,8 +327,8 @@
               <div
                 class="text-muted-foreground flex justify-between text-[10px] font-medium tracking-wider uppercase"
               >
-                <span>Unlimited</span>
-                <span>500 Words</span>
+                <span>{t('advanced.unlimited')}</span>
+                <span>{t('advanced.words_500')}</span>
               </div>
             </div>
           </div>
@@ -347,8 +347,8 @@
               <Search class="h-4 w-4 text-amber-500" />
             </div>
             <div class="flex-1">
-              <Label class="leading-none font-medium">Entry Retrieval</Label>
-              <p class="text-muted-foreground mt-1 text-xs">LLM-based selection settings</p>
+              <Label class="leading-none font-medium">{t('advanced.entry_retrieval')}</Label>
+              <p class="text-muted-foreground mt-1 text-xs">{t('advanced.entry_retrieval_description')}</p>
             </div>
           </Collapsible.Trigger>
           <div class="flex shrink-0 items-center gap-1">
@@ -357,7 +357,7 @@
               size="icon"
               class="h-8 w-8"
               onclick={() => settings.resetEntryRetrievalSettings()}
-              title="Reset to default"
+              title={t('common.reset_to_default')}
             >
               <RotateCcw class="h-3.5 w-3.5" />
             </Button>
@@ -369,7 +369,7 @@
                   {:else}
                     <ChevronDown class="h-4 w-4 transition-transform duration-200" />
                   {/if}
-                  <span class="sr-only">Toggle</span>
+                  <span class="sr-only">{t('common.toggle')}</span>
                 </Button>
               {/snippet}
             </Collapsible.Trigger>
@@ -381,9 +381,9 @@
             <!-- Enable LLM Selection -->
             <div class="flex flex-row items-center justify-between">
               <div class="space-y-0.5">
-                <Label class="text-sm">Enable LLM Selection</Label>
+                <Label class="text-sm">{t('advanced.enable_llm_selection')}</Label>
                 <p class="text-muted-foreground text-xs">
-                  Use LLM to intelligently select lorebook entries
+                  {t('advanced.enable_llm_selection_description')}
                 </p>
               </div>
               <Switch
@@ -398,10 +398,10 @@
             <!-- Max Tier 3 Entries -->
             <div class="space-y-3">
               <div class="flex justify-between">
-                <Label>Max Tier 3 Entries</Label>
+                <Label>{t('advanced.max_tier3_entries')}</Label>
                 <span class="bg-muted rounded px-2 py-0.5 text-xs font-medium">
                   {settings.systemServicesSettings.entryRetrieval?.maxTier3Entries === 0
-                    ? 'Unlimited'
+                    ? t('advanced.unlimited')
                     : (settings.systemServicesSettings.entryRetrieval?.maxTier3Entries ?? 0)}
                 </span>
               </div>
@@ -419,18 +419,18 @@
               <div
                 class="text-muted-foreground flex justify-between text-[10px] font-medium tracking-wider uppercase"
               >
-                <span>Unlimited</span>
-                <span>20 Entries</span>
+                <span>{t('advanced.unlimited')}</span>
+                <span>{t('advanced.entries_20')}</span>
               </div>
             </div>
 
             <!-- Max Words Per Entry -->
             <div class="space-y-3">
               <div class="flex justify-between">
-                <Label>Max Words Per Entry</Label>
+                <Label>{t('advanced.max_words_per_entry')}</Label>
                 <span class="bg-muted rounded px-2 py-0.5 text-xs font-medium">
                   {settings.systemServicesSettings.entryRetrieval?.maxWordsPerEntry === 0
-                    ? 'Unlimited'
+                    ? t('advanced.unlimited')
                     : (settings.systemServicesSettings.entryRetrieval?.maxWordsPerEntry ?? 0)}
                 </span>
               </div>
@@ -448,8 +448,8 @@
               <div
                 class="text-muted-foreground flex justify-between text-[10px] font-medium tracking-wider uppercase"
               >
-                <span>Unlimited</span>
-                <span>1000 Words</span>
+                <span>{t('advanced.unlimited')}</span>
+                <span>{t('advanced.words_1000')}</span>
               </div>
             </div>
           </div>
@@ -468,9 +468,9 @@
               <Sparkles class="h-4 w-4 text-pink-500" />
             </div>
             <div class="flex-1">
-              <Label class="leading-none font-medium">Memory Retrieval</Label>
+              <Label class="leading-none font-medium">{t('advanced.memory_retrieval')}</Label>
               <p class="text-muted-foreground mt-1 text-xs">
-                How past chapters are retrieved for context
+                {t('advanced.memory_retrieval_description')}
               </p>
             </div>
           </Collapsible.Trigger>
@@ -483,7 +483,7 @@
                 settings.resetTimelineFillSettings()
                 settings.resetAgenticRetrievalSpecificSettings()
               }}
-              title="Reset to default"
+              title={t('common.reset_to_default')}
             >
               <RotateCcw class="h-3.5 w-3.5" />
             </Button>
@@ -495,7 +495,7 @@
                   {:else}
                     <ChevronDown class="h-4 w-4 transition-transform duration-200" />
                   {/if}
-                  <span class="sr-only">Toggle</span>
+                  <span class="sr-only">{t('common.toggle')}</span>
                 </Button>
               {/snippet}
             </Collapsible.Trigger>
@@ -507,9 +507,9 @@
             <!-- Enable Memory Retrieval -->
             <div class="flex flex-row items-center justify-between">
               <div class="space-y-0.5">
-                <Label class="text-sm">Enable Memory Retrieval</Label>
+                <Label class="text-sm">{t('advanced.enable_memory_retrieval')}</Label>
                 <p class="text-muted-foreground text-xs">
-                  Retrieve context from past chapters during generation
+                  {t('advanced.enable_memory_retrieval_description')}
                 </p>
               </div>
               <Switch
@@ -524,7 +524,7 @@
             {#if settings.systemServicesSettings.timelineFill?.enabled}
               <!-- Mode Selection -->
               <div class="space-y-3">
-                <Label>Retrieval Mode</Label>
+                <Label>{t('advanced.retrieval_mode')}</Label>
                 <div class="grid grid-cols-2 gap-2">
                   <button
                     class="flex flex-col items-start gap-1 rounded-lg border p-3 text-left transition-colors {settings
@@ -537,9 +537,9 @@
                       settings.saveSystemServicesSettings()
                     }}
                   >
-                    <span class="text-sm font-medium">Static</span>
+                    <span class="text-sm font-medium">{t('advanced.static')}</span>
                     <span class="text-muted-foreground text-xs">
-                      Generates questions, then answers them from chapters
+                      {t('advanced.static_description')}
                     </span>
                   </button>
                   <button
@@ -552,9 +552,9 @@
                       settings.saveSystemServicesSettings()
                     }}
                   >
-                    <span class="text-sm font-medium">Agentic</span>
+                    <span class="text-sm font-medium">{t('advanced.agentic')}</span>
                     <span class="text-muted-foreground text-xs">
-                      LLM agent explores chapters and entries with tools
+                      {t('advanced.agentic_description')}
                     </span>
                   </button>
                 </div>
@@ -564,7 +564,7 @@
               {#if settings.systemServicesSettings.timelineFill?.mode === 'static' || !settings.systemServicesSettings.timelineFill?.mode}
                 <div class="space-y-3">
                   <div class="flex justify-between">
-                    <Label>Max Queries</Label>
+                    <Label>{t('advanced.max_queries')}</Label>
                     <span class="bg-muted rounded px-2 py-0.5 text-xs font-medium">
                       {settings.systemServicesSettings.timelineFill?.maxQueries ?? 5}
                     </span>
@@ -581,7 +581,7 @@
                     }}
                   />
                   <p class="text-muted-foreground text-xs">
-                    Number of questions generated to query chapter history
+                    {t('advanced.max_queries_description')}
                   </p>
                 </div>
               {/if}
@@ -590,7 +590,7 @@
               {#if settings.systemServicesSettings.timelineFill?.mode === 'agentic'}
                 <div class="space-y-3">
                   <div class="flex justify-between">
-                    <Label>Max Iterations</Label>
+                    <Label>{t('advanced.max_iterations')}</Label>
                     <span class="bg-muted rounded px-2 py-0.5 text-xs font-medium">
                       {settings.systemServicesSettings.agenticRetrieval?.maxIterations ?? 30}
                     </span>
@@ -607,7 +607,7 @@
                     }}
                   />
                   <p class="text-muted-foreground text-xs">
-                    Maximum tool-calling rounds for the retrieval agent
+                    {t('advanced.max_iterations_retrieval_description')}
                   </p>
                 </div>
               {/if}
@@ -628,9 +628,9 @@
               <Layers class="h-4 w-4 text-blue-500" />
             </div>
             <div class="flex-1">
-              <Label class="leading-none font-medium">Context Window</Label>
+              <Label class="leading-none font-medium">{t('advanced.context_window')}</Label>
               <p class="text-muted-foreground mt-1 text-xs">
-                Recent entries included in AI operations
+                {t('advanced.context_window_description')}
               </p>
             </div>
           </Collapsible.Trigger>
@@ -640,7 +640,7 @@
               size="icon"
               class="h-8 w-8"
               onclick={() => settings.resetContextWindowSettings()}
-              title="Reset to default"
+              title={t('common.reset_to_default')}
             >
               <RotateCcw class="h-3.5 w-3.5" />
             </Button>
@@ -652,7 +652,7 @@
                   {:else}
                     <ChevronDown class="h-4 w-4 transition-transform duration-200" />
                   {/if}
-                  <span class="sr-only">Toggle</span>
+                  <span class="sr-only">{t('common.toggle')}</span>
                 </Button>
               {/snippet}
             </Collapsible.Trigger>
@@ -664,9 +664,9 @@
             <!-- Retrieval Context -->
             <div class="space-y-3">
               <div class="flex justify-between">
-                <Label>Retrieval/Classification</Label>
+                <Label>{t('advanced.retrieval_classification')}</Label>
                 <span class="bg-muted rounded px-2 py-0.5 text-xs font-medium">
-                  {settings.serviceSpecificSettings.contextWindow?.recentEntriesForRetrieval ?? 5} entries
+                  {settings.serviceSpecificSettings.contextWindow?.recentEntriesForRetrieval ?? 5} {t('advanced.entries_lower')}
                 </span>
               </div>
               <Slider
@@ -682,16 +682,16 @@
                 }}
               />
               <p class="text-muted-foreground text-xs">
-                Entries for retrieval and classification operations
+                {t('advanced.retrieval_classification_description')}
               </p>
             </div>
 
             <!-- Tiered Context -->
             <div class="space-y-3">
               <div class="flex justify-between">
-                <Label>Tiered Context Building</Label>
+                <Label>{t('advanced.tiered_context_building')}</Label>
                 <span class="bg-muted rounded px-2 py-0.5 text-xs font-medium">
-                  {settings.serviceSpecificSettings.contextWindow?.recentEntriesForTiered ?? 10} entries
+                  {settings.serviceSpecificSettings.contextWindow?.recentEntriesForTiered ?? 10} {t('advanced.entries_lower')}
                 </span>
               </div>
               <Slider
@@ -705,15 +705,15 @@
                   settings.saveServiceSpecificSettings()
                 }}
               />
-              <p class="text-muted-foreground text-xs">Entries for lorebook entry injection</p>
+              <p class="text-muted-foreground text-xs">{t('advanced.tiered_context_description')}</p>
             </div>
 
             <!-- Action Choices Context -->
             <div class="space-y-3">
               <div class="flex justify-between">
-                <Label>Action Choices</Label>
+                <Label>{t('advanced.action_choices')}</Label>
                 <span class="bg-muted rounded px-2 py-0.5 text-xs font-medium">
-                  {settings.serviceSpecificSettings.contextWindow?.recentEntriesForChoices ?? 5} entries
+                  {settings.serviceSpecificSettings.contextWindow?.recentEntriesForChoices ?? 5} {t('advanced.entries_lower')}
                 </span>
               </div>
               <Slider
@@ -727,7 +727,7 @@
                   settings.saveServiceSpecificSettings()
                 }}
               />
-              <p class="text-muted-foreground text-xs">Entries for generating action choices</p>
+              <p class="text-muted-foreground text-xs">{t('advanced.action_choices_description')}</p>
             </div>
           </div>
         </Collapsible.Content>
@@ -745,8 +745,8 @@
               <ListTree class="h-4 w-4 text-orange-500" />
             </div>
             <div class="flex-1">
-              <Label class="leading-none font-medium">Lorebook Limits</Label>
-              <p class="text-muted-foreground mt-1 text-xs">Max entries injected per operation</p>
+              <Label class="leading-none font-medium">{t('advanced.lorebook_limits')}</Label>
+              <p class="text-muted-foreground mt-1 text-xs">{t('advanced.lorebook_limits_description')}</p>
             </div>
           </Collapsible.Trigger>
           <div class="flex shrink-0 items-center gap-1">
@@ -755,7 +755,7 @@
               size="icon"
               class="h-8 w-8"
               onclick={() => settings.resetLorebookLimitsSettings()}
-              title="Reset to default"
+              title={t('common.reset_to_default')}
             >
               <RotateCcw class="h-3.5 w-3.5" />
             </Button>
@@ -767,7 +767,7 @@
                   {:else}
                     <ChevronDown class="h-4 w-4 transition-transform duration-200" />
                   {/if}
-                  <span class="sr-only">Toggle</span>
+                  <span class="sr-only">{t('common.toggle')}</span>
                 </Button>
               {/snippet}
             </Collapsible.Trigger>
@@ -779,9 +779,9 @@
             <!-- Max for Suggestions -->
             <div class="space-y-3">
               <div class="flex justify-between">
-                <Label>Suggestions</Label>
+                <Label>{t('advanced.suggestions')}</Label>
                 <span class="bg-muted rounded px-2 py-0.5 text-xs font-medium">
-                  {settings.serviceSpecificSettings.lorebookLimits?.maxForSuggestions ?? 15} entries
+                  {settings.serviceSpecificSettings.lorebookLimits?.maxForSuggestions ?? 15} {t('advanced.entries_lower')}
                 </span>
               </div>
               <Slider
@@ -795,15 +795,15 @@
                   settings.saveServiceSpecificSettings()
                 }}
               />
-              <p class="text-muted-foreground text-xs">Max entries for suggestion generation</p>
+              <p class="text-muted-foreground text-xs">{t('advanced.suggestions_description')}</p>
             </div>
 
             <!-- Max for Action Choices -->
             <div class="space-y-3">
               <div class="flex justify-between">
-                <Label>Action Choices</Label>
+                <Label>{t('advanced.action_choices')}</Label>
                 <span class="bg-muted rounded px-2 py-0.5 text-xs font-medium">
-                  {settings.serviceSpecificSettings.lorebookLimits?.maxForActionChoices ?? 12} entries
+                  {settings.serviceSpecificSettings.lorebookLimits?.maxForActionChoices ?? 12} {t('advanced.entries_lower')}
                 </span>
               </div>
               <Slider
@@ -817,15 +817,15 @@
                   settings.saveServiceSpecificSettings()
                 }}
               />
-              <p class="text-muted-foreground text-xs">Max entries for action choice generation</p>
+              <p class="text-muted-foreground text-xs">{t('advanced.action_choices_limits_description')}</p>
             </div>
 
             <!-- Max per Tier -->
             <div class="space-y-3">
               <div class="flex justify-between">
-                <Label>Per Tier</Label>
+                <Label>{t('advanced.per_tier')}</Label>
                 <span class="bg-muted rounded px-2 py-0.5 text-xs font-medium">
-                  {settings.serviceSpecificSettings.lorebookLimits?.maxEntriesPerTier ?? 20} entries
+                  {settings.serviceSpecificSettings.lorebookLimits?.maxEntriesPerTier ?? 20} {t('advanced.entries_lower')}
                 </span>
               </div>
               <Slider
@@ -839,15 +839,15 @@
                   settings.saveServiceSpecificSettings()
                 }}
               />
-              <p class="text-muted-foreground text-xs">Max entries per injection tier</p>
+              <p class="text-muted-foreground text-xs">{t('advanced.per_tier_description')}</p>
             </div>
 
             <!-- LLM Threshold -->
             <div class="space-y-3">
               <div class="flex justify-between">
-                <Label>LLM Selection Threshold</Label>
+                <Label>{t('advanced.llm_selection_threshold')}</Label>
                 <span class="bg-muted rounded px-2 py-0.5 text-xs font-medium">
-                  {settings.serviceSpecificSettings.lorebookLimits?.llmThreshold ?? 30} entries
+                  {settings.serviceSpecificSettings.lorebookLimits?.llmThreshold ?? 30} {t('advanced.entries_lower')}
                 </span>
               </div>
               <Slider
@@ -862,7 +862,7 @@
                 }}
               />
               <p class="text-muted-foreground text-xs">
-                Entry count that triggers LLM-based selection
+                {t('advanced.llm_threshold_description')}
               </p>
             </div>
           </div>

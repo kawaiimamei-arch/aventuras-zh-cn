@@ -220,7 +220,7 @@
     <Label for="entry-name">
       {t('common.name')} <span class="text-red-500">*</span>
     </Label>
-    <Input id="entry-name" type="text" bind:value={name} placeholder="Entry name" />
+    <Input id="entry-name" type="text" bind:value={name} placeholder={t('lorebook.entry_name_placeholder')} />
   </div>
 
   <!-- Type -->
@@ -228,7 +228,7 @@
     <Label for="entry-type">{t('common.type')}</Label>
     <Select type="single" value={type} onValueChange={(v) => (type = v as EntryType)}>
       <SelectTrigger id="entry-type">
-        {entryTypes.find((t) => t.value === type)?.label ?? 'Select type'}
+        {entryTypes.find((t) => t.value === type)?.label ?? t('lorebook.select_type')}
       </SelectTrigger>
       <SelectContent>
         {#each entryTypes as option ((option.value, option.label))}
@@ -244,7 +244,7 @@
     <Textarea
       id="entry-description"
       bind:value={description}
-      placeholder="Describe this entry..."
+      placeholder={t('lorebook.description_placeholder')}
       rows={4}
       class="resize-none"
     />
@@ -255,7 +255,7 @@
     <Label>
       {t('lorebook.aliases')}
       <span class="text-muted-foreground ml-1 text-xs font-normal">
-        Alternative names for matching
+        {t('lorebook.alternative_names_hint')}
       </span>
     </Label>
     <div class="mb-2 flex flex-wrap gap-2">
@@ -272,7 +272,7 @@
       <Input
         type="text"
         bind:value={newAlias}
-        placeholder="Add alias..."
+        placeholder={t('lorebook.add_alias_placeholder')}
         class="flex-1"
         onkeydown={handleAliasKeydown}
       />
@@ -287,7 +287,7 @@
     <Label>
       {t('lorebook.keywords')}
       <span class="text-muted-foreground ml-1 text-xs font-normal">
-        Trigger words for injection
+        {t('lorebook.keywords_hint')}
       </span>
     </Label>
     <div class="mb-2 flex flex-wrap gap-2">
@@ -310,7 +310,7 @@
       <Input
         type="text"
         bind:value={newKeyword}
-        placeholder="Add keyword..."
+        placeholder={t('lorebook.add_keyword_placeholder')}
         class="flex-1"
         onkeydown={handleKeywordKeydown}
       />
@@ -322,7 +322,7 @@
 
   <!-- Context Inclusion Mode -->
   <div class="space-y-3">
-    <Label>Context Inclusion</Label>
+    <Label>{t('lorebook.context_inclusion')}</Label>
     <RadioGroup
       value={injectionMode}
       onValueChange={(v) => (injectionMode = v as EntryInjectionMode)}
@@ -353,8 +353,7 @@
 
     {#if injectionMode === 'keyword'}
       <p class="text-muted-foreground mt-2 text-xs">
-        Entry will be included when keywords/aliases match the story, or when the AI determines it's
-        contextually relevant.
+        {t('lorebook.keyword_mode_description')}
       </p>
     {/if}
   </div>
@@ -365,7 +364,7 @@
       <Label>
         {t('lorebook.priority')}
         <span class="text-muted-foreground ml-1 text-xs font-normal">
-          Higher priority entries are injected first
+        {t('lorebook.priority_hint')}
         </span>
       </Label>
       <span class="w-8 text-right text-sm font-medium">{priority}</span>
@@ -383,9 +382,9 @@
   <!-- Lore Management Blacklist -->
   <div class="bg-muted/30 flex items-center justify-between rounded-lg border p-3">
     <div class="space-y-0.5">
-      <Label class="text-base">Hide from AI Lore Management</Label>
+      <Label class="text-base">{t('lorebook.hide_from_ai')}</Label>
       <p class="text-muted-foreground text-xs">
-        When enabled, the AI won't see or modify this entry during lore management
+        {t('lorebook.hide_from_ai_description')}
       </p>
     </div>
     <Switch bind:checked={loreManagementBlacklisted} />
@@ -403,7 +402,7 @@
           <span class="flex items-center gap-2 text-sm font-medium">
             {t('lorebook.hidden_info')}
             <span class="text-muted-foreground text-xs font-normal"
-              >(secrets the protagonist doesn't know)</span
+              >{t('lorebook.secrets_hint')}</span
             >
           </span>
           {#if showHiddenInfo}
@@ -417,7 +416,7 @@
     <CollapsibleContent>
       <Textarea
         bind:value={hiddenInfo}
-        placeholder="Hidden information, revealed secrets, etc..."
+        placeholder={t('lorebook.hidden_info_placeholder')}
         rows={3}
         class="mt-2 resize-none"
       />
@@ -428,7 +427,7 @@
   <div class="mt-4 flex gap-2 border-t pt-4">
     <Button variant="outline" class="flex-1" onclick={onCancel} disabled={saving}>{t('common.cancel')}</Button>
     <Button class="flex-1" onclick={handleSave} disabled={saving || !name.trim()}>
-      {saving ? 'Saving...' : entry ? t('common.save') : t('lorebook.add_entry')}
+      {saving ? t('common.saving') : entry ? t('common.save') : t('lorebook.add_entry')}
     </Button>
   </div>
 </div>

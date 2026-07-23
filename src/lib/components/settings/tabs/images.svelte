@@ -33,6 +33,7 @@
   import * as Collapsible from '$lib/components/ui/collapsible'
   import { SvelteSet } from 'svelte/reactivity'
   import IconRow from '$lib/components/ui/icon-row.svelte'
+  import { t } from '$lib/i18n'
 
   const imageStyles = [
     { value: 'image-style-soft-anime', label: 'Soft Anime' },
@@ -835,18 +836,18 @@
   <div class="flex items-center justify-end">
     <Button variant="ghost" size="sm" onclick={() => settings.resetImageGenerationSettings()}>
       <RotateCcw class="mr-1 h-3 w-3" />
-      Reset to Defaults
+      {t('common.reset_to_defaults')}
     </Button>
   </div>
 
   <Tabs.Root value={activeTab} onValueChange={(v) => (activeTab = v as typeof activeTab)}>
     <Tabs.List class="grid w-full {settings.uiSettings.debugMode ? 'grid-cols-5' : 'grid-cols-4'}">
-      <Tabs.Trigger value="profiles">Profiles</Tabs.Trigger>
-      <Tabs.Trigger value="general">Story Images</Tabs.Trigger>
-      <Tabs.Trigger value="characters">Characters</Tabs.Trigger>
-      <Tabs.Trigger value="backgrounds">Backgrounds</Tabs.Trigger>
+      <Tabs.Trigger value="profiles">{t('images.profiles')}</Tabs.Trigger>
+      <Tabs.Trigger value="general">{t('images.story_images')}</Tabs.Trigger>
+      <Tabs.Trigger value="characters">{t('images.characters')}</Tabs.Trigger>
+      <Tabs.Trigger value="backgrounds">{t('images.backgrounds')}</Tabs.Trigger>
       {#if settings.uiSettings.debugMode}
-        <Tabs.Trigger value="testing">Testing</Tabs.Trigger>
+        <Tabs.Trigger value="testing">{t('images.testing')}</Tabs.Trigger>
       {/if}
     </Tabs.List>
 
@@ -855,11 +856,11 @@
       <Tabs.Content value="profiles" class="space-y-4">
         <div class="flex items-center justify-between">
           <p class="text-muted-foreground text-sm">
-            Image profiles configure which provider and API key to use for image generation.
+            {t('images.profiles_description')}
           </p>
           <Button size="sm" onclick={startNewProfile}>
             <Plus class="mr-1 h-3 w-3" />
-            Add Profile
+            {t('images.add_profile')}
           </Button>
         </div>
 
@@ -870,14 +871,14 @@
               {@render profileForm()}
               {#if needsWorkflow}
                 <p class="text-destructive pt-2 text-xs">
-                  Upload and confirm a workflow before saving.
+                  {t('images.upload_confirm_workflow')}
                 </p>
               {/if}
               <div class="flex gap-2 pt-2">
-                <Button variant="outline" onclick={resetEditState} class="flex-1">Cancel</Button>
+                <Button variant="outline" onclick={resetEditState} class="flex-1">{t('common.cancel')}</Button>
                 <Button onclick={handleSaveProfile} disabled={!canSaveProfile} class="flex-1">
                   <Check class="h-4 w-4" />
-                  Create Profile
+                  {t('images.create_profile')}
                 </Button>
               </div>
             </CardContent>
@@ -887,10 +888,9 @@
         {#if settings.imageProfiles.length === 0 && !isNewProfile}
           <Alert.Root>
             <Info class="h-4 w-4" />
-            <Alert.Title>No Image Profiles</Alert.Title>
+            <Alert.Title>{t('images.no_profiles')}</Alert.Title>
             <Alert.Description class="text-xs">
-              Create an image profile to start generating images. You can have multiple profiles for
-              different providers or use cases (e.g., portraits vs backgrounds).
+              {t('images.no_profiles_description')}
             </Alert.Description>
           </Alert.Root>
         {:else}
@@ -914,7 +914,7 @@
                           {providerTypes.find((p) => p.value === profile.providerType)?.label ||
                             profile.providerType}
                           {profile.model ? ` · ${profile.model}` : ''}
-                          {profile.apiKey ? ' · Key configured' : ' · No API key'}
+                          {profile.apiKey ? ' · ' + t('images.key_configured') : ' · ' + t('images.no_api_key')}
                         </p>
                       </div>
                     </Collapsible.Trigger>
@@ -944,19 +944,17 @@
             <div class="space-y-3">
               <Alert.Root>
                 <Info class="h-4 w-4" />
-                <Alert.Title>Story Image Profile Selection</Alert.Title>
+                <Alert.Title>{t('images.story_image_profile_selection')}</Alert.Title>
                 <Alert.Description class="text-xs">
                   <ul class="mt-2 list-inside list-disc space-y-1">
                     <li>
-                      <strong>Reference Profile</strong>: Used when "Portrait Mode" is enabled in
-                      your current story. Generates images based on the character portraits.
+                      <strong>{t('images.reference_profile')}</strong>: {t('images.reference_profile_description')}
                     </li>
                     <li>
-                      <strong>Regular Image Profile</strong>: Used when "Portrait Mode" is disabled
-                      in your current story.
+                      <strong>{t('images.regular_image_profile')}</strong>: {t('images.regular_image_profile_description')}
                     </li>
                   </ul>
-                  <p class="mt-2">Models are configured in each profile on the Profiles tab.</p>
+                  <p class="mt-2">{t('images.models_configured_in_profiles')}</p>
                 </Alert.Description>
               </Alert.Root>
             </div>
@@ -965,7 +963,7 @@
               <!-- Standard Image Configuration -->
               <div class="space-y-4">
                 <div class="space-y-2">
-                  <Label>Regular Image Profile</Label>
+                  <Label>{t('images.regular_image_profile')}</Label>
                   <Autocomplete
                     items={settings.imageProfiles}
                     selected={getSelectedImageProfile('standard')}
@@ -973,13 +971,13 @@
                     itemLabel={(p: ImageProfile) =>
                       `${p.name} (${providerTypes.find((t) => t.value === p.providerType)?.label || p.providerType}${p.model ? ` · ${p.model}` : ''})`}
                     itemValue={(p: ImageProfile) => p.id}
-                    placeholder="Select an image profile"
+                    placeholder={t('images.select_profile_placeholder')}
                   />
                 </div>
 
                 {#if settings.systemServicesSettings.imageGeneration.profileId}
                   <div class="space-y-2">
-                    <Label>Regular Image Size</Label>
+                    <Label>{t('images.regular_image_size')}</Label>
                     <Autocomplete
                       items={standardSizes}
                       selected={standardSizes.find(
@@ -1004,7 +1002,7 @@
                       }}
                       itemLabel={(s: { label: string }) => s.label}
                       itemValue={(s: { value: string }) => s.value}
-                      placeholder="Select size"
+                      placeholder={t('images.select_size')}
                     />
                   </div>
                 {/if}
@@ -1013,7 +1011,7 @@
               <!-- Reference Image Configuration -->
               <div class="space-y-4">
                 <div class="space-y-2">
-                  <Label>Reference (Img2Img) Profile</Label>
+                  <Label>{t('images.reference_img2img_profile')}</Label>
                   <Autocomplete
                     items={settings.imageProfiles}
                     selected={getSelectedImageProfile('reference')}
@@ -1021,13 +1019,13 @@
                     itemLabel={(p: ImageProfile) =>
                       `${p.name} (${providerTypes.find((t) => t.value === p.providerType)?.label || p.providerType}${p.model ? ` · ${p.model}` : ''})`}
                     itemValue={(p: ImageProfile) => p.id}
-                    placeholder="Select an image profile"
+                    placeholder={t('images.select_profile_placeholder')}
                   />
                 </div>
 
                 {#if settings.systemServicesSettings.imageGeneration.referenceProfileId || settings.systemServicesSettings.imageGeneration.profileId}
                   <div class="space-y-2">
-                    <Label>Reference Image Size</Label>
+                    <Label>{t('images.reference_image_size')}</Label>
                     <Autocomplete
                       items={referenceSizes}
                       selected={referenceSizes.find(
@@ -1053,7 +1051,7 @@
                       }}
                       itemLabel={(s: { label: string }) => s.label}
                       itemValue={(s: { value: string }) => s.value}
-                      placeholder="Select size"
+                      placeholder={t('images.select_size')}
                     />
                   </div>
                 {/if}
@@ -1063,7 +1061,7 @@
 
           <!-- Image Style -->
           <div class="space-y-2">
-            <Label>Story Image Style</Label>
+            <Label>{t('images.story_image_style')}</Label>
             <Autocomplete
               items={imageStyles}
               selected={imageStyles.find(
@@ -1077,19 +1075,19 @@
               }}
               itemLabel={(s: { label: string }) => s.label}
               itemValue={(s: { value: string }) => s.value}
-              placeholder="Select style"
+              placeholder={t('images.select_style')}
             />
             <p class="text-muted-foreground mt-1 text-xs">
-              Visual style for generated story images. Edit styles in the Prompts tab.
+              {t('images.story_image_style_description')}
             </p>
           </div>
 
           <!-- Max Images Per Message -->
           <div class="space-y-2">
             <Label>
-              Max Images Per Message: {settings.systemServicesSettings.imageGeneration
+              {t('images.max_images_per_message')}: {settings.systemServicesSettings.imageGeneration
                 .maxImagesPerMessage === 0
-                ? 'Unlimited'
+                ? {t('images.unlimited')}
                 : settings.systemServicesSettings.imageGeneration.maxImagesPerMessage}
             </Label>
             <Slider
@@ -1111,7 +1109,7 @@
       <Tabs.Content value="characters" class="space-y-6">
         <section class="space-y-4">
           <div class="space-y-2">
-            <Label>Character Portrait Profile</Label>
+            <Label>{t('images.character_portrait_profile')}</Label>
             <Autocomplete
               items={settings.imageProfiles}
               selected={getSelectedImageProfile('portrait')}
@@ -1122,13 +1120,13 @@
               placeholder="Select an image profile"
             />
             <p class="text-muted-foreground mt-1 text-xs">
-              Profile used for generating character portraits. Model is configured in the profile.
+              {t('images.character_portrait_profile_description')}
             </p>
           </div>
 
           {#if settings.systemServicesSettings.imageGeneration.portraitProfileId || settings.systemServicesSettings.imageGeneration.profileId}
             <div class="space-y-2">
-              <Label>Character Portrait Size</Label>
+              <Label>{t('images.character_portrait_size')}</Label>
               <Autocomplete
                 items={portraitSizes}
                 selected={portraitSizes.find(
@@ -1159,7 +1157,7 @@
           {/if}
 
           <div class="space-y-2">
-            <Label>Character Portrait Style</Label>
+            <Label>{t('images.character_portrait_style')}</Label>
             <Autocomplete
               items={imageStyles}
               selected={imageStyles.find(
@@ -1173,10 +1171,10 @@
               }}
               itemLabel={(s: { label: string }) => s.label}
               itemValue={(s: { value: string }) => s.value}
-              placeholder="Select style"
+              placeholder={t('images.select_style')}
             />
             <p class="text-muted-foreground mt-1 text-xs">
-              Visual style for character portraits. Edit styles in the Prompts tab.
+              {t('images.character_portrait_style_description')}
             </p>
           </div>
         </section>
@@ -1186,7 +1184,7 @@
       <Tabs.Content value="backgrounds" class="space-y-6">
         <section class="space-y-4">
           <div class="space-y-2">
-            <Label>Background Profile</Label>
+            <Label>{t('images.background_profile')}</Label>
             <Autocomplete
               items={settings.imageProfiles}
               selected={getSelectedImageProfile('background')}
@@ -1197,12 +1195,12 @@
               placeholder="Select an image profile"
             />
             <p class="text-muted-foreground mt-1 text-xs">
-              Profile used for generating background scenes. Model is configured in the profile.
+              {t('images.background_profile_description')}
             </p>
           </div>
 
           <div class="space-y-2">
-            <Label>Background Size</Label>
+            <Label>{t('images.background_size')}</Label>
             <Autocomplete
               items={bgSupportedSizes}
               selected={bgSupportedSizes.find(
@@ -1233,7 +1231,7 @@
 
           <div class="space-y-2">
             <Label>
-              Background Blur: {settings.systemServicesSettings.imageGeneration.backgroundBlur}px
+              {t('images.background_blur')}: {settings.systemServicesSettings.imageGeneration.backgroundBlur}px
             </Label>
             <Slider
               type="multiple"
@@ -1246,7 +1244,7 @@
               max={20}
               step={1}
             />
-            <p class="text-muted-foreground mt-1 text-xs">Blur amount for the background image.</p>
+            <p class="text-muted-foreground mt-1 text-xs">{t('images.background_blur_description')}</p>
           </div>
         </section>
       </Tabs.Content>
@@ -1255,7 +1253,7 @@
         <Tabs.Content value="testing" class="space-y-6">
           <section class="space-y-4">
             <div class="space-y-2">
-              <Label>Test Profile</Label>
+              <Label>{t('images.test_profile')}</Label>
               <Autocomplete
                 items={settings.imageProfiles}
                 selected={settings.imageProfiles.find((p) => p.id === testProfileId)}
@@ -1263,17 +1261,17 @@
                 itemLabel={(p: ImageProfile) =>
                   `${p.name} (${providerTypes.find((t) => t.value === p.providerType)?.label || p.providerType}${p.model ? ` · ${p.model}` : ''})`}
                 itemValue={(p: ImageProfile) => p.id}
-                placeholder="Select a profile to test"
+                placeholder={t('images.select_profile_to_test')}
               />
             </div>
 
             <div class="space-y-2">
-              <Label>Prompt</Label>
-              <Textarea bind:value={testPrompt} placeholder="Enter a test prompt..." rows={4} />
+              <Label>{t('images.prompt')}</Label>
+              <Textarea bind:value={testPrompt} placeholder={t('images.enter_test_prompt')} rows={4} />
             </div>
 
             <div class="space-y-2">
-              <Label>Size</Label>
+              <Label>{t('images.size')}</Label>
               <Autocomplete
                 items={testingSizes}
                 selected={testingSizes.find((s) => s.value === testSize) || {
@@ -1296,26 +1294,26 @@
             >
               {#if isGeneratingTestImage}
                 <RotateCcw class="mr-2 h-4 w-4 animate-spin" />
-                Generating...
+                {t('images.generating')}
               {:else}
-                Generate Test Image
+                {t('images.generate_test_image')}
               {/if}
             </Button>
 
             {#if testError}
               <Alert.Root variant="destructive">
-                <Alert.Title>Generation Error</Alert.Title>
+                <Alert.Title>{t('images.generation_error')}</Alert.Title>
                 <Alert.Description>{testError}</Alert.Description>
               </Alert.Root>
             {/if}
 
             {#if testImageResult}
               <div class="mt-4 space-y-2">
-                <Label>Result Image</Label>
+                <Label>{t('images.result_image')}</Label>
                 <div class="overflow-hidden rounded-lg border bg-black/5">
                   <img
                     src="data:image/png;base64,{testImageResult}"
-                    alt="Generated test"
+                    alt={t('images.generated_test_alt')}
                     class="mx-auto block h-auto max-w-full"
                   />
                 </div>
@@ -1331,12 +1329,12 @@
 {#snippet profileForm()}
   <div class="space-y-4">
     <div class="space-y-2">
-      <Label>Name</Label>
-      <Input bind:value={profileName} placeholder="e.g., NanoGPT Images" />
+      <Label>{t('images.name')}</Label>
+      <Input bind:value={profileName} placeholder={t('images.name_placeholder')} />
     </div>
 
     <div class="space-y-2">
-      <Label>Provider</Label>
+      <Label>{t('images.provider')}</Label>
       <Autocomplete
         items={providerTypes}
         selected={providerTypes.find((p) => p.value === profileProviderType)}
@@ -1345,20 +1343,20 @@
         }}
         itemLabel={(p: { label: string }) => p.label}
         itemValue={(p: { value: string }) => p.value}
-        placeholder="Select provider"
+        placeholder={t('images.select_provider')}
       />
     </div>
 
     <!-- comfy and a1111 don't require API keys -->
     {#if profileProviderType !== 'comfyui' && profileProviderType !== 'a1111'}
       <div class="space-y-2">
-        <Label>API Key</Label>
+        <Label>{t('images.api_key')}</Label>
         <div class="flex gap-2">
           <div class="relative flex-1">
             <Input
               type={showApiKey ? 'text' : 'password'}
               bind:value={profileApiKey}
-              placeholder="Enter API key"
+              placeholder={t('images.enter_api_key')}
             />
             <button
               type="button"
@@ -1382,7 +1380,7 @@
               onclick={() => (showCopyDropdown = !showCopyDropdown)}
             >
               <Copy class="mr-1 h-3 w-3" />
-              Copy from API Profile
+              {t('images.copy_from_api_profile')}
             </Button>
             {#if showCopyDropdown}
               <div class="bg-popover absolute z-10 mt-1 w-64 rounded-md border shadow-md">
@@ -1405,13 +1403,13 @@
 
     {#if profileProviderType === 'comfyui' || profileProviderType === 'openai' || profileProviderType === 'zhipu' || profileProviderType === 'a1111'}
       <div class="space-y-2">
-        <Label>Base URL (optional)</Label>
-        <Input bind:value={profileBaseUrl} placeholder="Custom base URL" />
+        <Label>{t('images.base_url_optional')}</Label>
+        <Input bind:value={profileBaseUrl} placeholder={t('images.custom_base_url')} />
       </div>
     {/if}
 
     {#snippet modelSelectContent()}
-      <Label>Model</Label>
+      <Label>{t('images.model')}</Label>
       <ImageModelSelect
         models={profileModels}
         selectedModelId={profileModel}
@@ -1430,12 +1428,11 @@
       />
       {#if referenceProfileImg2ImgWarning}
         <p class="text-warning mt-1 text-xs">
-          This profile is used for reference image generation (img2img), but the selected model does
-          not support img2img.
+          {t('images.img2img_warning')}
         </p>
       {:else}
         <p class="text-muted-foreground mt-1 text-xs">
-          The image model this profile will use for generation.
+          {t('images.model_description')}
         </p>
       {/if}
     {/snippet}
@@ -1451,15 +1448,15 @@
       </div>
       <div class="grid grid-cols-2 gap-4 pt-2">
         <div class="space-y-2">
-          <Label>Steps</Label>
+          <Label>{t('images.steps')}</Label>
           <Input type="number" bind:value={profileSteps} placeholder="20" min="1" />
         </div>
         <div class="space-y-2">
-          <Label>CFG Scale</Label>
+          <Label>{t('images.cfg_scale')}</Label>
           <Input type="number" bind:value={profileCfg} placeholder="7" step="0.5" />
         </div>
         <div class="space-y-2">
-          <Label>Sampler</Label>
+          <Label>{t('images.sampler')}</Label>
           <Autocomplete
             items={profileSamplers}
             selected={profileSamplers.find((s) => s.value === profileSampler)}
@@ -1472,7 +1469,7 @@
           />
         </div>
         <div class="space-y-2">
-          <Label>Scheduler</Label>
+          <Label>{t('images.scheduler')}</Label>
           <Autocomplete
             items={profileSchedulers}
             selected={profileSchedulers.find((s) => s.value === profileScheduler)}
@@ -1485,15 +1482,15 @@
           />
         </div>
         <div class="col-span-2 space-y-2">
-          <Label>Negative Prompt</Label>
-          <Textarea bind:value={profileNegativePrompt} placeholder="Negative prompt..." />
+          <Label>{t('images.negative_prompt')}</Label>
+          <Textarea bind:value={profileNegativePrompt} placeholder={t('images.negative_prompt_placeholder')} />
         </div>
       </div>
     {/if}
     {#if profileProviderType === 'comfyui'}
       <div class="grid grid-cols-2 gap-4 pt-2">
         <div class="col-span-2 space-y-2">
-          <Label>Mode</Label>
+          <Label>{t('images.mode')}</Label>
           <Autocomplete
             items={profileModes}
             selected={profileModes.find((s) => s.value === profileMode)}
@@ -1502,7 +1499,7 @@
             }}
             itemLabel={(s: { label: string }) => s.label}
             itemValue={(s: { value: string }) => s.value}
-            placeholder="Select mode"
+            placeholder={t('images.select_mode')}
           />
         </div>
         {#if profileMode !== ComfyMode.CustomWorkflow}
@@ -1510,7 +1507,7 @@
             {@render modelSelectContent()}
           </div>
           <div class="space-y-2">
-            <Label>Sampler</Label>
+            <Label>{t('images.sampler')}</Label>
             <Autocomplete
               items={profileSamplers}
               selected={profileSamplers.find((s) => s.value === profileSampler)}
@@ -1519,11 +1516,11 @@
               }}
               itemLabel={(s: { label: string }) => s.label}
               itemValue={(s: { value: string }) => s.value}
-              placeholder="Select sampler"
+              placeholder={t('images.select_sampler')}
             />
           </div>
           <div class="space-y-2">
-            <Label>Scheduler</Label>
+            <Label>{t('images.scheduler')}</Label>
             <Autocomplete
               items={profileSchedulers}
               selected={profileSchedulers.find((s) => s.value === profileScheduler)}
@@ -1532,25 +1529,25 @@
               }}
               itemLabel={(s: { label: string }) => s.label}
               itemValue={(s: { value: string }) => s.value}
-              placeholder="Select scheduler"
+              placeholder={t('images.select_scheduler')}
             />
           </div>
           <div class="space-y-2">
-            <Label>CFG</Label>
-            <Input type="number" bind:value={profileCfg} placeholder="Enter CFG" step="0.1" />
+            <Label>{t('images.cfg')}</Label>
+            <Input type="number" bind:value={profileCfg} placeholder={t('images.enter_cfg')} step="0.1" />
           </div>
           <div class="space-y-2">
-            <Label>Steps</Label>
-            <Input type="number" bind:value={profileSteps} placeholder="Enter Steps" />
+            <Label>{t('images.steps')}</Label>
+            <Input type="number" bind:value={profileSteps} placeholder={t('images.enter_steps')} />
           </div>
         {/if}
         <div class="col-span-2 space-y-2">
-          <Label>Positive Prompt Base</Label>
-          <Textarea bind:value={profilePositivePrompt} placeholder="Base positive prompt..." />
+          <Label>{t('images.positive_prompt_base')}</Label>
+          <Textarea bind:value={profilePositivePrompt} placeholder={t('images.positive_prompt_placeholder')} />
         </div>
         {#if (profileMode !== ComfyMode.CustomWorkflow && profileMode !== ComfyMode.UnetTxt2Img) || profileCustomWorkflow?.negativePromptPath}
           <div class="col-span-2 space-y-2">
-            <Label>Negative Prompt</Label>
+            <Label>{t('images.negative_prompt')}</Label>
             <Textarea bind:value={profileNegativePrompt} placeholder="Negative prompt..." />
           </div>
         {/if}
@@ -1558,7 +1555,7 @@
         {#if profileMode === ComfyMode.CustomWorkflow}
           <div class="col-span-2 space-y-3 border-t pt-3">
             <div class="flex items-center justify-between">
-              <Label>Custom Workflow (API format)</Label>
+              <Label>{t('images.custom_workflow')}</Label>
               {#if profileCustomWorkflow}
                 <button
                   type="button"
@@ -1576,23 +1573,23 @@
                 <p class="text-foreground font-medium">
                   ✓ {workflowFileName ?? 'Workflow loaded'} ({Object.keys(
                     profileCustomWorkflow.workflow,
-                  ).length} nodes)
+                  ).length} {t('images.nodes')})
                 </p>
                 <p class="text-muted-foreground">
-                  Prompt → <code class="text-xs">{profileCustomWorkflow.positivePromptPath}</code>
+                  {t('images.prompt_arrow')} <code class="text-xs">{profileCustomWorkflow.positivePromptPath}</code>
                 </p>
                 <p class="text-muted-foreground">
-                  Seed → <code class="text-xs">{profileCustomWorkflow.seedPath}</code>
+                  {t('images.seed_arrow')} <code class="text-xs">{profileCustomWorkflow.seedPath}</code>
                 </p>
                 {#if profileCustomWorkflow.negativePromptPath}
                   <p class="text-muted-foreground">
-                    Negative → <code class="text-xs"
+                    {t('images.negative_arrow')} <code class="text-xs"
                       >{profileCustomWorkflow.negativePromptPath}</code
                     >
                   </p>
                 {:else}
                   <p class="text-muted-foreground italic">
-                    No negative prompt node detected (ignored).
+                    {t('images.no_negative_detected')}
                   </p>
                 {/if}
               </div>
@@ -1600,7 +1597,7 @@
               <!-- Picker: multiple CLIPTextEncode positive nodes found -->
               <div class="bg-muted/40 space-y-2 rounded-md border px-3 py-2">
                 <p class="text-muted-foreground text-xs">
-                  Multiple prompt nodes found. Select the one to use as the positive prompt:
+                  {t('images.multiple_prompt_nodes')}
                 </p>
                 {#each workflowAmbiguousNodes as node (node.nodeId)}
                   <label
@@ -1629,7 +1626,7 @@
                   </label>
                 {/each}
                 <Button size="sm" class="w-full" onclick={confirmWorkflowPicker}
-                  >Confirm selection</Button
+                  >{t('images.confirm_selection')}</Button
                 >
               </div>
             {:else}
@@ -1638,7 +1635,7 @@
                 <summary
                   class="text-muted-foreground hover:text-foreground mb-2 cursor-pointer list-none select-none"
                 >
-                  <span class="underline underline-offset-2">How to get the workflow file ›</span>
+                  <span class="underline underline-offset-2">{t('images.how_to_get_workflow')} ›</span>
                 </summary>
                 <ol class="text-muted-foreground mt-1 space-y-1.5 pl-1">
                   <li>
@@ -1682,7 +1679,7 @@
                   class="hidden"
                   onchange={handleWorkflowFileInput}
                 />
-                <span class="text-muted-foreground">Upload workflow JSON (API format)</span>
+                <span class="text-muted-foreground">{t('images.upload_workflow_json')}</span>
               </label>
             {/if}
 
@@ -1695,7 +1692,7 @@
       {#if profileMode === ComfyMode.LoraTxt2Img}
         <div class="grid grid-cols-2 gap-4 pt-2">
           <div class="col-span-2 space-y-2">
-            <Label>LoRA Model</Label>
+            <Label>{t('images.lora_model')}</Label>
             <Autocomplete
               items={loraItems}
               selected={availableLoras.includes(profileLoraName)
@@ -1706,29 +1703,29 @@
               }}
               itemLabel={(s: { label: string }) => s.label}
               itemValue={(s: { value: string }) => s.value}
-              placeholder="Select LoRA..."
+              placeholder={t('images.select_lora')}
             />
             <p class="text-muted-foreground text-xs">
-              Select a LoRA to apply style or character details.
+              {t('images.lora_description')}
             </p>
           </div>
 
           {#if profileLoraName}
             <div class="space-y-2">
-              <Label>Model Strength</Label>
+              <Label>{t('images.model_strength')}</Label>
               <Input
                 type="number"
                 bind:value={profileLoraStrengthModel}
-                placeholder="Model Strength"
+                placeholder={t('images.model_strength_placeholder')}
                 step="0.05"
               />
             </div>
             <div class="space-y-2">
-              <Label>CLIP Strength</Label>
+              <Label>{t('images.clip_strength')}</Label>
               <Input
                 type="number"
                 bind:value={profileLoraStrengthClip}
-                placeholder="CLIP Strength"
+                placeholder={t('images.clip_strength_placeholder')}
                 step="0.05"
               />
             </div>
@@ -1739,14 +1736,14 @@
         <div class="grid grid-cols-2 gap-4 pt-2">
           <div class="col-span-2 space-y-2">
             <div class="flex items-center justify-between">
-              <Label>CLIP / Text Encoder</Label>
+              <Label>{t('images.clip_text_encoder')}</Label>
               <button
                 type="button"
                 class="text-muted-foreground hover:text-foreground text-xs underline"
                 disabled={isLoadingUnetModels}
                 onclick={loadUnetModels}
               >
-                {isLoadingUnetModels ? 'Loading…' : '↻ Refresh'}
+                {isLoadingUnetModels ? t('images.loading') : '↻ ' + t('images.refresh')}
               </button>
             </div>
             <Autocomplete
@@ -1765,15 +1762,15 @@
               }}
               itemLabel={(s: { label: string }) => s.label}
               itemValue={(s: { value: string }) => s.value}
-              placeholder="Auto-detect first available"
+              placeholder={t('images.auto_detect_clip')}
             />
             <p class="text-muted-foreground text-xs">
-              Leave empty to auto-detect the first text encoder found in ComfyUI.
+              {t('images.clip_auto_detect_description')}
             </p>
           </div>
 
           <div class="col-span-2 space-y-2">
-            <Label>VAE</Label>
+            <Label>{t('images.vae')}</Label>
             <Autocomplete
               items={vaeItems}
               selected={availableVaes.includes(profileVaeName)
@@ -1790,15 +1787,15 @@
               }}
               itemLabel={(s: { label: string }) => s.label}
               itemValue={(s: { value: string }) => s.value}
-              placeholder="Auto-detect first available"
+              placeholder={t('images.auto_detect_clip')}
             />
             <p class="text-muted-foreground text-xs">
-              Leave empty to auto-detect the first VAE found in ComfyUI.
+              {t('images.vae_auto_detect_description')}
             </p>
           </div>
 
           <div class="space-y-2">
-            <Label>CLIP Type</Label>
+            <Label>{t('images.clip_type')}</Label>
             <Autocomplete
               items={clipTypeItems}
               selected={clipTypeItems.find((s) => s.value === profileClipType)}
@@ -1807,12 +1804,12 @@
               }}
               itemLabel={(s: { label: string }) => s.label}
               itemValue={(s: { value: string }) => s.value}
-              placeholder="Select CLIP type"
+              placeholder={t('images.select_clip_type')}
             />
           </div>
 
           <div class="space-y-2">
-            <Label>Weight Dtype</Label>
+            <Label>{t('images.weight_dtype')}</Label>
             <Autocomplete
               items={weightDtypeItems}
               selected={weightDtypeItems.find((s) => s.value === profileWeightDtype)}
@@ -1821,7 +1818,7 @@
               }}
               itemLabel={(s: { label: string }) => s.label}
               itemValue={(s: { value: string }) => s.value}
-              placeholder="Select dtype"
+              placeholder={t('images.select_dtype')}
             />
           </div>
         </div>

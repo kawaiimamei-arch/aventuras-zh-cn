@@ -112,7 +112,7 @@
     }
   }
 
-  async function export{t('app.title')}() {
+  async function exportAventuras() {
     const currentStory = story.currentStory
     if (!currentStory) return
     // Gather inside the exportFn so handleExport's try/catch surfaces any failure as a toast

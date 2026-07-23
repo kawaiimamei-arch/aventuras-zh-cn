@@ -12,6 +12,7 @@
   import { Checkbox } from '$lib/components/ui/checkbox'
   import { Label } from '$lib/components/ui/label'
   import { cn } from '$lib/utils/cn'
+  import { t } from '$lib/i18n'
 
   let dragOver = $state(false)
   let parseResult = $state<LorebookImportExport.LorebookImportResult | null>(null)
@@ -151,10 +152,10 @@
     <ResponsiveModal.Header class="border-b px-6 py-4">
       <div class="flex items-center gap-2">
         <Upload class="text-primary h-5 w-5" />
-        <ResponsiveModal.Title>Import Lorebook</ResponsiveModal.Title>
+        <ResponsiveModal.Title>{t('lorebook.import')}</ResponsiveModal.Title>
       </div>
       <ResponsiveModal.Description>
-        Import entries from a JSON or Aventuras file.
+        {t('lorebook.import_description')}
       </ResponsiveModal.Description>
     </ResponsiveModal.Header>
 
@@ -177,19 +178,19 @@
           onkeydown={(e) => e.key === 'Enter' && handleBrowse()}
         >
           <FileJson class="text-muted-foreground mx-auto mb-3 h-12 w-12" />
-          <p class="text-foreground mb-1">Drop a lorebook file here</p>
-          <p class="text-muted-foreground text-sm">or click to browse</p>
+          <p class="text-foreground mb-1">{t('lorebook.drop_file_here')}</p>
+          <p class="text-muted-foreground text-sm">{t('lorebook.click_to_browse')}</p>
         </div>
 
         <p class="text-muted-foreground text-center text-xs">
-          Supports Aventuras (.avt, .json) and SillyTavern lorebook formats
+          {t('lorebook.supported_formats')}
         </p>
       {:else}
         <!-- Preview -->
         <div class="bg-muted/50 rounded-lg border p-4">
           <div class="mb-3 flex items-center gap-2">
             <Check class="h-5 w-5 text-green-500" />
-            <span class="text-foreground font-medium">Found {previewCount} entries</span>
+            <span class="text-foreground font-medium">{t('lorebook.found_entries', { count: previewCount })}</span>
           </div>
 
           <!-- Entry type breakdown -->
@@ -211,10 +212,10 @@
               for="ai-classification"
               class="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
             >
-              AI-powered classification
+              {t('lorebook.ai_classification')}
             </Label>
             <p class="text-muted-foreground text-xs">
-              Use AI to better categorize entry types based on their content
+              {t('lorebook.ai_classification_description')}
             </p>
           </div>
         </div>
@@ -237,19 +238,19 @@
             parseResult = null
           }}
         >
-          Choose a different file
+          {t('lorebook.choose_different_file')}
         </Button>
       {/if}
     </div>
 
     <ResponsiveModal.Footer class="mt-auto border-t px-6 py-4">
-      <Button variant="outline" onclick={close} disabled={importing}>Cancel</Button>
+      <Button variant="outline" onclick={close} disabled={importing}>{t('common.cancel')}</Button>
       <Button onclick={handleImport} disabled={!parseResult || importing} class="gap-2">
         {#if importing}
           <Loader2 class="h-4 w-4 animate-spin" />
-          {importProgress?.phase === 'classifying' ? 'Classifying...' : 'Importing...'}
+          {importProgress?.phase === 'classifying' ? t('lorebook.classifying') : t('lorebook.importing')}
         {:else}
-          Import {previewCount} Entries
+          {t('lorebook.import_entries', { count: previewCount })}
         {/if}
       </Button>
     </ResponsiveModal.Footer>
