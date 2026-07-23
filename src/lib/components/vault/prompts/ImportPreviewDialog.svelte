@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import type { ImportValidationResult, ConflictStrategy } from '$lib/services/packs/import-export'
   import type { PresetPack } from '$lib/services/packs/types'
   import * as ResponsiveModal from '$lib/components/ui/responsive-modal'

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import { Button } from '$lib/components/ui/button'
   import { Trash2, X, Check } from 'lucide-svelte'
   import type { Snippet } from 'svelte'

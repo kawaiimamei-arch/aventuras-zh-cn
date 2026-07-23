@@ -21,6 +21,7 @@
 </script>
 
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import { Dialog as SheetPrimitive, type WithoutChildrenOrChild } from 'bits-ui'
   import X from '@lucide/svelte/icons/x'
   import type { Snippet } from 'svelte'

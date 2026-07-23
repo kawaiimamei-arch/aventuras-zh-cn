@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import { slide } from 'svelte/transition'
   import { FileJson, Loader2, Check, Sparkles, PenTool, Book, X, ChevronDown } from 'lucide-svelte'
   import { Button } from '$lib/components/ui/button'

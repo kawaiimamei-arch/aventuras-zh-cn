@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import type { DiscoveryCard } from '$lib/services/discovery'
   import { Button } from '$lib/components/ui/button'
   import { Badge } from '$lib/components/ui/badge'

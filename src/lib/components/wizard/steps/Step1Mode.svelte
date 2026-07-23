@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import { Sword, Feather } from 'lucide-svelte'
   import * as Card from '$lib/components/ui/card'
   import type { StoryMode } from '$lib/types'

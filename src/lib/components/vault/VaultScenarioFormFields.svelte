@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import type { VaultScenarioInput } from '$lib/services/ai/sdk/schemas/vault'
   import type { VaultCharacter } from '$lib/types'
   import { characterVault } from '$lib/stores/characterVault.svelte'

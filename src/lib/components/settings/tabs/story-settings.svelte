@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import { onDestroy } from 'svelte'
   import { story } from '$lib/stores/story.svelte'
   import { hasRequiredCredentials } from '$lib/services/ai/image'

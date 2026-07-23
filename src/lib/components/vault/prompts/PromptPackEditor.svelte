@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import { untrack } from 'svelte'
   import type { FullPack } from '$lib/services/packs/types'
   import { allSamples } from './sampleContext'

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import type { PresetPack } from '$lib/services/packs/types'
   import { packService } from '$lib/services/packs/pack-service'
   import { database } from '$lib/services/database'

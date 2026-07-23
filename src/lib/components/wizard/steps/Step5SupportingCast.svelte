@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import { slide } from 'svelte/transition'
   import {
     Archive,

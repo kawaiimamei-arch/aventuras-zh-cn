@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import * as Dialog from '$lib/components/ui/dialog'
   import * as Drawer from '$lib/components/ui/drawer'
   import { getResponsiveModalContext } from './context'

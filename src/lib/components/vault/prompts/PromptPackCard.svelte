@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import type { PresetPack } from '$lib/services/packs/types'
   import { Card, CardContent } from '$lib/components/ui/card'
   import { Badge } from '$lib/components/ui/badge'

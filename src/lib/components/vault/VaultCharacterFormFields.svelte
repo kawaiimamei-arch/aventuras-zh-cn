@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import type { VaultCharacterInput } from '$lib/services/ai/sdk/schemas/vault'
   import { descriptorsToString, stringToDescriptors } from '$lib/utils/visualDescriptors'
   import { X, User, ImageUp, Loader2 } from 'lucide-svelte'

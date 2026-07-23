@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import { templateEngine } from '$lib/services/templates/engine'
   import { variableRegistry } from '$lib/services/templates/variables'
   import type { CustomVariable } from '$lib/services/packs/types'

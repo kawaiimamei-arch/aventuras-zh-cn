@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import type { ProviderType, TextModel } from '$lib/types'
   import { PROVIDERS, hasDefaultEndpoint } from '$lib/services/ai/sdk/providers/config'
   import ProviderTypeSelector from './ProviderTypeSelector.svelte'

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import type { FontSource } from '$lib/types'
   import { settings } from '$lib/stores/settings.svelte'
   import { Loader2 } from 'lucide-svelte'

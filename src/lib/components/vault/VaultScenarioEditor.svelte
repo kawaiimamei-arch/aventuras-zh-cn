@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import type { VaultScenario } from '$lib/types'
   import { scenarioVault } from '$lib/stores/scenarioVault.svelte'
   import { Save, MapPin, Loader2, Bot, X } from 'lucide-svelte'

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import { story } from '$lib/stores/story.svelte'
   import { Pencil, RotateCcw, Save } from 'lucide-svelte'
   import { Button } from '$lib/components/ui/button'

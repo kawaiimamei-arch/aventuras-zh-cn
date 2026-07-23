@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import { SvelteMap } from 'svelte/reactivity'
   import { onDestroy } from 'svelte'
   import { createDebouncedSave } from '$lib/utils/debounce'

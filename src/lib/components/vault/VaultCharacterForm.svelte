@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
   import type { VaultCharacter } from '$lib/types'
   import { characterVault } from '$lib/stores/characterVault.svelte'
   import { Loader2, Bot, X } from 'lucide-svelte'
