@@ -238,7 +238,7 @@
 
   <!-- Story Title -->
   <div class="space-y-2">
-    <Label for="story-title">Story Title</Label>
+    <Label for="story-title">{t('wizard.story_title')}</Label>
     <Input
       id="story-title"
       placeholder="Enter a title for your story"
@@ -249,7 +249,7 @@
 
   <!-- Tag & Description -->
   <div class="space-y-2">
-    <Label for="vault-tag">Tag</Label>
+    <Label for="vault-tag">{t('common.tag')}</Label>
     <Input
       id="vault-tag"
       placeholder="e.g. fantasy, sci-fi, romance"
@@ -258,7 +258,7 @@
     />
   </div>
   <div class="space-y-2">
-    <Label for="vault-description">Description</Label>
+    <Label for="vault-description">{t('common.description')}</Label>
     <Input
       id="vault-description"
       placeholder="Enter Description for your story"
@@ -332,7 +332,7 @@
         <Card.Content class="p-3">
           <div class="flex items-center gap-2">
             <MapPin class="text-muted-foreground h-4 w-4" />
-            <span class="text-sm font-medium">World Setting</span>
+            <span class="text-sm font-medium">{t('wizard.setting')}</span>
           </div>
           <p class="text-muted-foreground mt-1 line-clamp-2 text-xs">{settingSeed}</p>
         </Card.Content>
@@ -411,7 +411,7 @@
       {#if progressPercent > 0}
         <div class="space-y-1.5 border-b pb-3">
           <div class="text-muted-foreground flex justify-between text-xs">
-            <span>Overall progress</span>
+            <span>{t('wizard.overall_progress')}</span>
             <span class="text-foreground font-medium">{Math.round(progressPercent)}%</span>
           </div>
           <div class="bg-secondary h-2 w-full overflow-hidden rounded-full">

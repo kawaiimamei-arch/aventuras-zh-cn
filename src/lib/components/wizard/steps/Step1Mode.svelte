@@ -30,7 +30,7 @@
             <div class="bg-primary/10 rounded-lg p-3">
               <Sword class="text-primary h-6 w-6" />
             </div>
-            <Card.Title>Adventure Mode</Card.Title>
+            <Card.Title>{t('wizard.adventure_mode')}</Card.Title>
           </div>
         </Card.Header>
         <Card.Content>

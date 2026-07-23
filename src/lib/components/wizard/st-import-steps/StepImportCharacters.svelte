@@ -1,6 +1,7 @@
 <script lang="ts">
   import { User, Users, Edit3, Trash2, Archive, Check } from 'lucide-svelte'
   import * as Card from '$lib/components/ui/card'
+  import { t } from '$lib/i18n'
   import { Button } from '$lib/components/ui/button'
   import { Input } from '$lib/components/ui/input'
   import { Textarea } from '$lib/components/ui/textarea'

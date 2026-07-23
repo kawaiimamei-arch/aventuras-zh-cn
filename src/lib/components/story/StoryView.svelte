@@ -11,8 +11,7 @@
   import ActionChoices from './ActionChoices.svelte'
   import { Button } from '$lib/components/ui/button'
   import EmptyState from '$lib/components/ui/empty-state/empty-state.svelte'
-  import { t } from '$lib/i18n'
-
+  
   const storyMaxWidthStyle = $derived.by(() => {
     const maxWidth =
       STORY_WIDTH_OPTIONS.find((o) => o.key === settings.uiSettings.storyMaxWidth)?.maxWidth ??

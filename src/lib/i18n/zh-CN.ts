@@ -895,6 +895,16 @@ const zhCN: Record<string, string> = {
   "wizard.refining_opening": "改进开场中…",
   "wizard.lorebook_context": "知识库内容已添加到上下文",
   "wizard.lorebook_none": "无知识库内容",
+  "wizard.overall_progress": "总体进度",
+  "wizard.starting_fresh": "从角色卡开场重新开始",
+  "wizard.save_scenario": "保存场景到库",
+  "images.agentic_images": "AI 判断生成",
+  "images.no_image_generation": "不生成图片",
+  "common.tag": "标签",
+  "common.stop": "停止",
+  "wizard.adventure_mode": "冒险模式",
+  "wizard.creative_mode": "创作模式",
+  "wizard.creative_desc": "你作为作者掌控故事走向",
 }
 
 export type TranslationKey = keyof typeof zhCN

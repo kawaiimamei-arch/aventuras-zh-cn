@@ -1,6 +1,7 @@
 <script lang="ts">
   import * as RadioGroup from '$lib/components/ui/radio-group'
   import { Button } from '$lib/components/ui/button'
+  import { t } from '$lib/i18n'
   import { Label } from '$lib/components/ui/label'
   import { Input } from '$lib/components/ui/input'
   import { Switch } from '$lib/components/ui/switch'
@@ -184,7 +185,7 @@
             class="border-muted bg-popover hover:bg-accent has-[[data-state=checked]]:border-primary has-[[data-state=checked]]:bg-primary/5 flex h-full cursor-pointer flex-col justify-between rounded-xl border-2 p-4"
           >
             <div class="mb-2 flex w-full items-start justify-between">
-              <span class="font-semibold">Text Only</span>
+              <span class="font-semibold">{t('images.no_image_generation')}</span>
               <RadioGroup.Item value="none" id="img-none" class="sr-only" />
             </div>
             <div class="text-muted-foreground text-xs font-normal">
@@ -200,7 +201,7 @@
             class="border-muted bg-popover hover:bg-accent has-[[data-state=checked]]:border-primary has-[[data-state=checked]]:bg-primary/5 flex h-full cursor-pointer flex-col justify-between rounded-xl border-2 p-4"
           >
             <div class="mb-2 flex w-full items-start justify-between">
-              <span class="font-semibold">Agent Mode</span>
+              <span class="font-semibold">{t('images.agentic_images')}</span>
               <RadioGroup.Item value="agentic" id="img-auto" class="sr-only" />
             </div>
             <div class="text-muted-foreground text-xs font-normal">
@@ -216,7 +217,7 @@
             class="border-muted bg-popover hover:bg-accent has-[[data-state=checked]]:border-primary has-[[data-state=checked]]:bg-primary/5 flex h-full cursor-pointer flex-col justify-between rounded-xl border-2 p-4"
           >
             <div class="mb-2 flex w-full items-start justify-between">
-              <span class="font-semibold">Inline Mode</span>
+              <span class="font-semibold">{t('wizard.inline_images')}</span>
               <RadioGroup.Item value="inline" id="img-inline" class="sr-only" />
             </div>
             <div class="text-muted-foreground text-xs font-normal">
@@ -235,7 +236,7 @@
             onCheckedChange={onBackgroundImagesEnabledChange}
           />
           <div class="grid gap-1.5 leading-none">
-            <Label for="bg-images">Background Images</Label>
+            <Label for="bg-images">{t('wizard.background_images')}</Label>
             <p class="text-muted-foreground text-xs">
               Generate immersive background images for scenes.
             </p>
@@ -249,7 +250,7 @@
             onCheckedChange={onReferenceModeChange}
           />
           <div class="grid gap-1.5 leading-none">
-            <Label for="reference-mode">Portrait Reference Mode</Label>
+            <Label for="reference-mode">{t('wizard.reference_mode')}</Label>
             <p class="text-muted-foreground text-xs">
               Use character portraits as visual references.
             </p>
@@ -273,7 +274,7 @@
         disabled={disabledFields?.visualProseMode}
       />
       <div class="grid gap-1.5 leading-none">
-        <Label for="visual-prose">Visual Prose Styling</Label>
+        <Label for="visual-prose">{t('wizard.visual_prose')}</Label>
         <p class="text-muted-foreground text-xs">
           Enable rich text formatting (colors, fonts) for dialogue and actions.
         </p>
