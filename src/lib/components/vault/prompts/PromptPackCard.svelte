@@ -30,7 +30,7 @@
           <div class="flex flex-wrap items-center gap-2">
             <h3 class="truncate font-semibold">{pack.name}</h3>
             {#if usageCount > 0}
-              <Badge variant="outline" class="border-green-500/50 text-green-500">Active</Badge>
+              <Badge variant="outline" class="border-green-500/50 text-green-500">{t('vault.active')}</Badge>
             {/if}
           </div>
           <p class="text-muted-foreground mt-1 line-clamp-2 text-sm">

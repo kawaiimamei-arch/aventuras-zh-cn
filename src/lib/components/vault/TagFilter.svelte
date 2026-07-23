@@ -52,7 +52,7 @@
         {...props}
       >
         <Filter class="h-3 w-3" />
-        <span class="hidden sm:inline">Tags</span>
+        <span class="hidden sm:inline">{t('vault.tags')}</span>
         {#if selectedTags.length > 0}
           <Badge variant="secondary" class="h-5 px-0 text-sm">
             {selectedTags.length}

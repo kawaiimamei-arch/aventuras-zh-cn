@@ -1121,7 +1121,7 @@
     {:else if entry.type === 'system'}
       <div class="text-muted-foreground flex items-center gap-1.5">
         <Icon class="h-4 w-4 shrink-0 translate-y-px" />
-        <span class="text-xs font-medium tracking-wider uppercase">System</span>
+        <span class="text-xs font-medium tracking-wider uppercase">{t('common.system')}</span>
       </div>
     {:else}
       <Icon class="text-muted-foreground h-4 w-4 shrink-0 translate-y-px" />

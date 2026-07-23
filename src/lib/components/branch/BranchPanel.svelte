@@ -179,7 +179,7 @@
 <div class="space-y-3">
   <!-- Header -->
   <div class="flex items-center justify-between">
-    <h3 class="text-surface-200 font-medium">Branches</h3>
+    <h3 class="text-surface-200 font-medium">{t('sidebar.branches')}</h3>
     <button
       class="btn-ghost flex min-h-[40px] min-w-[40px] items-center justify-center rounded p-2 sm:min-h-0 sm:min-w-0 sm:p-1.5 {canCreateBranch
         ? 'text-surface-400 hover:text-surface-200'

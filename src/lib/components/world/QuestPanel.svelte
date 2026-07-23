@@ -189,7 +189,7 @@ import { t } from '$lib/i18n'
 <div class="flex flex-col gap-1 pb-12">
   <!-- Header -->
   <div class="mb-2 flex items-center justify-between">
-    <h3 class="text-foreground text-xl font-bold tracking-tight">Story Beats</h3>
+    <h3 class="text-foreground text-xl font-bold tracking-tight">{t('sidebar.quests')}</h3>
     <Button
       variant="text"
       size="icon"
@@ -272,7 +272,7 @@ import { t } from '$lib/i18n'
 
               <div class="space-y-2">
                 <div class="space-y-1">
-                  <Label class="text-xs">Title</Label>
+                  <Label class="text-xs">{t('common.title')}</Label>
                   <Input
                     type="text"
                     bind:value={editTitle}
@@ -283,7 +283,7 @@ import { t } from '$lib/i18n'
 
                 <div class="grid grid-cols-2 gap-2">
                   <div class="space-y-1">
-                    <Label class="text-xs">Type</Label>
+                    <Label class="text-xs">{t('common.type')}</Label>
                     <Select.Root type="single" bind:value={editType}>
                       <Select.Trigger class="h-8 w-full text-xs">
                         <div class="flex items-center gap-2 overflow-hidden">
@@ -300,7 +300,7 @@ import { t } from '$lib/i18n'
                     </Select.Root>
                   </div>
                   <div class="space-y-1">
-                    <Label class="text-xs">Status</Label>
+                    <Label class="text-xs">{t('common.status')}</Label>
                     <Select.Root type="single" bind:value={editStatus}>
                       <Select.Trigger class="h-8 w-full text-xs">
                         <div class="flex items-center gap-2 overflow-hidden">
@@ -318,7 +318,7 @@ import { t } from '$lib/i18n'
                 </div>
 
                 <div class="space-y-1">
-                  <Label class="text-xs">Description</Label>
+                  <Label class="text-xs">{t('common.description')}</Label>
                   <Textarea
                     bind:value={editDescription}
                     placeholder={t('common.description')}
@@ -506,7 +506,7 @@ import { t } from '$lib/i18n'
 
                 <div class="space-y-2">
                   <div class="space-y-1">
-                    <Label class="text-xs">Title</Label>
+                    <Label class="text-xs">{t('common.title')}</Label>
                     <Input
                       type="text"
                       bind:value={editTitle}
@@ -517,7 +517,7 @@ import { t } from '$lib/i18n'
 
                   <div class="grid grid-cols-2 gap-2">
                     <div class="space-y-1">
-                      <Label class="text-xs">Type</Label>
+                      <Label class="text-xs">{t('common.type')}</Label>
                       <Select.Root type="single" bind:value={editType}>
                         <Select.Trigger class="h-8 w-full text-xs">
                           <div class="flex items-center gap-2 overflow-hidden">
@@ -534,7 +534,7 @@ import { t } from '$lib/i18n'
                       </Select.Root>
                     </div>
                     <div class="space-y-1">
-                      <Label class="text-xs">Status</Label>
+                      <Label class="text-xs">{t('common.status')}</Label>
                       <Select.Root type="single" bind:value={editStatus}>
                         <Select.Trigger class="h-8 w-full text-xs">
                           <div class="flex items-center gap-2 overflow-hidden">
@@ -552,7 +552,7 @@ import { t } from '$lib/i18n'
                   </div>
 
                   <div class="space-y-1">
-                    <Label class="text-xs">Description</Label>
+                    <Label class="text-xs">{t('common.description')}</Label>
                     <Textarea
                       bind:value={editDescription}
                       placeholder={t('common.description')}

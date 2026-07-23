@@ -197,7 +197,7 @@ import { t } from '$lib/i18n'
 <div class="flex flex-col gap-1 pb-12">
   <!-- Header -->
   <div class="mb-2 flex items-center justify-between">
-    <h3 class="text-foreground text-xl font-bold tracking-tight">Inventory</h3>
+    <h3 class="text-foreground text-xl font-bold tracking-tight">{t('sidebar.inventory')}</h3>
     <Button
       variant="text"
       size="icon"
@@ -221,7 +221,7 @@ import { t } from '$lib/i18n'
         />
         <div class="flex items-center justify-end gap-3">
           <div class="flex items-center gap-2">
-            <Label class="text-muted-foreground text-xs">Quantity</Label>
+            <Label class="text-muted-foreground text-xs">{t('common.quantity')}</Label>
             <Input type="number" bind:value={newQuantity} min="1" class="h-8 w-20 text-sm" />
           </div>
         </div>
@@ -265,7 +265,7 @@ import { t } from '$lib/i18n'
 
               <div class="grid grid-cols-2 gap-3">
                 <div class="col-span-2 space-y-1 sm:col-span-1">
-                  <Label class="text-xs">Name</Label>
+                  <Label class="text-xs">{t('common.name')}</Label>
                   <Input
                     type="text"
                     bind:value={editName}
@@ -274,7 +274,7 @@ import { t } from '$lib/i18n'
                   />
                 </div>
                 <div class="col-span-2 space-y-1 sm:col-span-1">
-                  <Label class="text-xs">Quantity</Label>
+                  <Label class="text-xs">{t('common.quantity')}</Label>
                   <Input type="number" bind:value={editQuantity} min="1" class="h-8 text-sm" />
                 </div>
               </div>
@@ -290,7 +290,7 @@ import { t } from '$lib/i18n'
               </div>
 
               <div class="space-y-1">
-                <Label class="text-xs">Description</Label>
+                <Label class="text-xs">{t('common.description')}</Label>
                 <Textarea
                   bind:value={editDescription}
                   placeholder={t('common.description')}
@@ -510,7 +510,7 @@ import { t } from '$lib/i18n'
 
               <div class="grid grid-cols-2 gap-3">
                 <div class="col-span-2 space-y-1 sm:col-span-1">
-                  <Label class="text-xs">Name</Label>
+                  <Label class="text-xs">{t('common.name')}</Label>
                   <Input
                     type="text"
                     bind:value={editName}
@@ -519,7 +519,7 @@ import { t } from '$lib/i18n'
                   />
                 </div>
                 <div class="col-span-2 space-y-1 sm:col-span-1">
-                  <Label class="text-xs">Quantity</Label>
+                  <Label class="text-xs">{t('common.quantity')}</Label>
                   <Input type="number" bind:value={editQuantity} min="1" class="h-8 text-sm" />
                 </div>
               </div>
@@ -535,7 +535,7 @@ import { t } from '$lib/i18n'
               </div>
 
               <div class="space-y-1">
-                <Label class="text-xs">Description</Label>
+                <Label class="text-xs">{t('common.description')}</Label>
                 <Textarea
                   bind:value={editDescription}
                   placeholder={t('common.description')}
@@ -765,7 +765,7 @@ import { t } from '$lib/i18n'
 
               <div class="grid grid-cols-2 gap-3">
                 <div class="col-span-2 space-y-1 sm:col-span-1">
-                  <Label class="text-xs">Name</Label>
+                  <Label class="text-xs">{t('common.name')}</Label>
                   <Input
                     type="text"
                     bind:value={editName}
@@ -774,7 +774,7 @@ import { t } from '$lib/i18n'
                   />
                 </div>
                 <div class="col-span-2 space-y-1 sm:col-span-1">
-                  <Label class="text-xs">Quantity</Label>
+                  <Label class="text-xs">{t('common.quantity')}</Label>
                   <Input type="number" bind:value={editQuantity} min="1" class="h-8 text-sm" />
                 </div>
               </div>
@@ -783,7 +783,7 @@ import { t } from '$lib/i18n'
               <!-- The saveEdit function handles forcing equipped=false for non-inventory items -->
 
               <div class="space-y-1">
-                <Label class="text-xs">Description</Label>
+                <Label class="text-xs">{t('common.description')}</Label>
                 <Textarea
                   bind:value={editDescription}
                   placeholder={t('common.description')}

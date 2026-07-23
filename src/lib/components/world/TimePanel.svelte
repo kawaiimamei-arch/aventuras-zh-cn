@@ -52,7 +52,7 @@
 <div class="flex flex-col gap-1 pb-12">
   <!-- Header -->
   <div class="mb-2 flex items-center justify-between">
-    <h3 class="text-foreground text-xl font-bold tracking-tight">Time</h3>
+    <h3 class="text-foreground text-xl font-bold tracking-tight">{t('sidebar.time')}</h3>
     {#if !isEditing}
       <div class="flex items-center gap-1">
         <Button
@@ -81,19 +81,19 @@
     <div class="border-border bg-card rounded-lg border p-3 shadow-sm">
       <div class="mb-3 grid grid-cols-2 gap-3">
         <div class="space-y-1">
-          <Label class="text-xs">Years</Label>
+          <Label class="text-xs">{t('time.years')}</Label>
           <Input type="number" bind:value={editYears} min="0" class="h-8 text-sm" />
         </div>
         <div class="space-y-1">
-          <Label class="text-xs">Days</Label>
+          <Label class="text-xs">{t('time.days')}</Label>
           <Input type="number" bind:value={editDays} min="0" max="364" class="h-8 text-sm" />
         </div>
         <div class="space-y-1">
-          <Label class="text-xs">Hours</Label>
+          <Label class="text-xs">{t('time.hours')}</Label>
           <Input type="number" bind:value={editHours} min="0" max="23" class="h-8 text-sm" />
         </div>
         <div class="space-y-1">
-          <Label class="text-xs">Minutes</Label>
+          <Label class="text-xs">{t('time.minutes')}</Label>
           <Input type="number" bind:value={editMinutes} min="0" max="59" class="h-8 text-sm" />
         </div>
       </div>

@@ -72,7 +72,7 @@
       </div>
 
       <div class="flex flex-col gap-2">
-        <Label for="pack-description">Description</Label>
+        <Label for="pack-description">{t('common.description')}</Label>
         <p class="text-muted-foreground text-xs">Supports Markdown and HTML</p>
         <Textarea
           id="pack-description"

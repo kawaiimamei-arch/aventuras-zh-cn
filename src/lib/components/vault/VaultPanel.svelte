@@ -538,7 +538,7 @@
         {/each}
         <TabsTrigger value="prompts" class="flex items-center gap-2">
           <FileCode class="h-4 w-4" />
-          <span class="hidden sm:inline">Prompts</span>
+          <span class="hidden sm:inline">{t('vault.prompts')}</span>
         </TabsTrigger>
       </TabsList>
     </div>

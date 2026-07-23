@@ -66,7 +66,7 @@
               <div class="flex items-center gap-2">
                 {pack.name}
                 {#if pack.isDefault}
-                  <Badge variant="secondary" class="text-xs">Default</Badge>
+                  <Badge variant="secondary" class="text-xs">{t('common.default')}</Badge>
                 {/if}
               </div>
             </Select.Item>

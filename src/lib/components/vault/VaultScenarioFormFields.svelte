@@ -140,7 +140,7 @@
           </div>
 
           <div class="space-y-2 {changed('description')}">
-            <Label for="description">Description</Label>
+            <Label for="description">{t('common.description')}</Label>
             <Textarea
               id="description"
               value={data.description ?? ''}
@@ -184,7 +184,7 @@
           </div>
 
           <div class="space-y-2 {changed('tags')}">
-            <Label>Tags</Label>
+            <Label>{t('vault.tags')}</Label>
             <TagInput
               value={data.tags}
               type="scenario"
@@ -269,7 +269,7 @@
                     <div class="bg-muted/10 mt-2 space-y-4 border-t p-4 px-4 pt-0 pb-4">
                       <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <div class="space-y-2">
-                          <Label class="text-xs">Name</Label>
+                          <Label class="text-xs">{t('common.name')}</Label>
                           <Input bind:value={npc.name} oninput={handleInput} class="h-8" />
                         </div>
                         <div class="space-y-2">
@@ -279,7 +279,7 @@
                       </div>
 
                       <div class="space-y-2">
-                        <Label class="text-xs">Description</Label>
+                        <Label class="text-xs">{t('common.description')}</Label>
                         <Textarea
                           bind:value={npc.description}
                           oninput={handleInput}
@@ -290,7 +290,7 @@
 
                       <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <div class="space-y-2">
-                          <Label class="text-xs">Relationship</Label>
+                          <Label class="text-xs">{t('common.relationship')}</Label>
                           <Input bind:value={npc.relationship} oninput={handleInput} class="h-8" />
                         </div>
                         <div class="space-y-2">

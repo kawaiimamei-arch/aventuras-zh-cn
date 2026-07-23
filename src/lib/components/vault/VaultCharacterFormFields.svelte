@@ -129,7 +129,7 @@
 
   <!-- Description -->
   <div class="space-y-2 {changed('description')}">
-    <Label for="description">Description</Label>
+    <Label for="description">{t('common.description')}</Label>
     <Textarea
       id="description"
       bind:value={() => data.description ?? '', (v) => (data.description = v || null)}
@@ -175,7 +175,7 @@
 
   <!-- Portrait -->
   <div class="space-y-2">
-    <Label>Portrait</Label>
+    <Label>{t('character.portrait')}</Label>
     <div class="flex items-start gap-4">
       {#if data.portrait}
         <div class="group relative">
@@ -226,7 +226,7 @@
 
   <!-- Tags -->
   <div class="space-y-2 {changed('tags')}">
-    <Label for="tags">Tags</Label>
+    <Label for="tags">{t('vault.tags')}</Label>
     <TagInput
       value={data.tags}
       type="character"

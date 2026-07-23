@@ -269,7 +269,7 @@
             </Button>
           </div>
           <div>
-            <Label for="protagonist-name">Name</Label>
+            <Label for="protagonist-name">{t('common.name')}</Label>
             <Input
               id="protagonist-name"
               placeholder="Character name"
@@ -278,7 +278,7 @@
             />
           </div>
           <div>
-            <Label for="protagonist-desc">Description</Label>
+            <Label for="protagonist-desc">{t('common.description')}</Label>
             <Textarea
               id="protagonist-desc"
               placeholder="Brief character description"
@@ -472,7 +472,7 @@
                 />
               </div>
               <div>
-                <Label for="edit-relationship">Relationship</Label>
+                <Label for="edit-relationship">{t('common.relationship')}</Label>
                 <Input
                   id="edit-relationship"
                   value={editRelationship}

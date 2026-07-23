@@ -179,7 +179,7 @@
       <div class="space-y-6">
         <!-- Description -->
         <div>
-          <h3 class="text-surface-400 mb-2 text-sm font-medium">Description</h3>
+          <h3 class="text-surface-400 mb-2 text-sm font-medium">{t('common.description')}</h3>
           {#if entry.description}
             <p class="text-surface-200 whitespace-pre-wrap">{entry.description}</p>
           {:else}
@@ -190,7 +190,7 @@
         <!-- Aliases -->
         {#if entry.aliases.length > 0}
           <div>
-            <h3 class="text-surface-400 mb-2 text-sm font-medium">Aliases</h3>
+            <h3 class="text-surface-400 mb-2 text-sm font-medium">{t('lorebook.aliases')}</h3>
             <div class="flex flex-wrap gap-2">
               {#each entry.aliases as alias (alias)}
                 <span class="bg-surface-700 text-surface-300 rounded-full px-2 py-1 text-sm">
@@ -204,7 +204,7 @@
         <!-- Keywords -->
         {#if entry.injection.keywords.length > 0}
           <div>
-            <h3 class="text-surface-400 mb-2 text-sm font-medium">Keywords</h3>
+            <h3 class="text-surface-400 mb-2 text-sm font-medium">{t('lorebook.keywords')}</h3>
             <div class="flex flex-wrap gap-2">
               {#each entry.injection.keywords as keyword (keyword)}
                 <span class="bg-accent-500/20 text-accent-300 rounded-full px-2 py-1 text-sm">
@@ -217,7 +217,7 @@
 
         <!-- Context Inclusion -->
         <div>
-          <h3 class="text-surface-400 mb-2 text-sm font-medium">Context Inclusion</h3>
+          <h3 class="text-surface-400 mb-2 text-sm font-medium">{t('lorebook.context_inclusion')}</h3>
           <div class="flex items-center gap-4 text-sm">
             <div>
               <span class="text-surface-500">Mode:</span>
@@ -251,7 +251,7 @@
 
         <!-- Metadata -->
         <div>
-          <h3 class="text-surface-400 mb-2 text-sm font-medium">Metadata</h3>
+          <h3 class="text-surface-400 mb-2 text-sm font-medium">{t('lorebook.metadata')}</h3>
           <div class="text-surface-500 space-y-1 text-sm">
             <div>Created: {new Date(entry.createdAt).toLocaleDateString()}</div>
             <div>Updated: {new Date(entry.updatedAt).toLocaleDateString()}</div>

@@ -399,7 +399,7 @@
 <div class="border-t pt-6">
   <div class="mb-4 flex items-start justify-between sm:items-center">
     <div>
-      <h3 class="text-base font-medium">Agent Profiles</h3>
+      <h3 class="text-base font-medium">{t('settings.agent_profiles')}</h3>
       <p class="text-muted-foreground text-xs">Click a task to move it between profiles.</p>
     </div>
     <div class="flex items-center gap-2">
@@ -480,7 +480,7 @@
         <Card.Content class="grid gap-4">
           <div class="grid grid-cols-2 gap-3">
             <div class="grid gap-2">
-              <Label>Name</Label>
+              <Label>{t('common.name')}</Label>
               <Input
                 type="text"
                 bind:value={preset.name}
@@ -489,7 +489,7 @@
               />
             </div>
             <div class="grid gap-2">
-              <Label>Description</Label>
+              <Label>{t('common.description')}</Label>
               <Input
                 type="text"
                 bind:value={preset.description}

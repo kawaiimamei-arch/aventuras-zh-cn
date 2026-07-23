@@ -143,7 +143,7 @@
 
             <div class="mb-2 space-y-1.5">
               <Label class="text-muted-foreground text-[10px] tracking-wider uppercase"
-                >Appearance</Label
+                >{t('common.appearance')}</Label
               >
               <Textarea
                 value={protagonistVisualDescriptors}

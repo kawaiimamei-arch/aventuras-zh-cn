@@ -297,7 +297,7 @@
         </div>
 
         <div class="space-y-2">
-          <Label for="char-desc">Description</Label>
+          <Label for="char-desc">{t('common.description')}</Label>
           <Textarea
             id="char-desc"
             value={isEditingProtagonist ? editDescription : manualCharacterDescription}

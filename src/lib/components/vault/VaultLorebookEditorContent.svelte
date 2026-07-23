@@ -841,7 +841,7 @@
               </div>
 
               <div class="space-y-2">
-                <Label for="description">Description</Label>
+                <Label for="description">{t('common.description')}</Label>
                 <Textarea
                   id="description"
                   bind:value={description}
@@ -853,7 +853,7 @@
               </div>
 
               <div class="space-y-2">
-                <Label>Tags</Label>
+                <Label>{t('vault.tags')}</Label>
                 <TagInput
                   value={tags}
                   type="lorebook"

@@ -265,7 +265,7 @@
         </div>
 
         <div class="space-y-1.5">
-          <Label for="supp-desc" class="text-xs">Description</Label>
+          <Label for="supp-desc" class="text-xs">{t('common.description')}</Label>
           <Textarea
             id="supp-desc"
             value={supportingCharacterDescription}

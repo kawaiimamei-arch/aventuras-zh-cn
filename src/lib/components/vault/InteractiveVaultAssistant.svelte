@@ -1262,7 +1262,7 @@
                             onclick={() => toggleReasoning(message.id)}
                           >
                             <Brain class="h-3 w-3" />
-                            <span>Reasoning</span>
+                            <span>{t('vault.reasoning')}</span>
                             {#if expandedReasoning.has(message.id)}
                               <ChevronUp class="h-3 w-3" />
                             {:else}

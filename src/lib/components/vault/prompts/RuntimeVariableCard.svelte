@@ -516,7 +516,7 @@
 
       <!-- Description -->
       <div class="space-y-1.5">
-        <Label>Description</Label>
+        <Label>{t('common.description')}</Label>
         <Textarea
           bind:value={editDescription}
           onblur={handleFieldBlur}

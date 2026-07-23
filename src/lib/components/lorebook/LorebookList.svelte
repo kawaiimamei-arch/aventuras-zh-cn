@@ -292,7 +292,7 @@
         {/snippet}
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
-        <DropdownMenuLabel>Vault</DropdownMenuLabel>
+        <DropdownMenuLabel>{t('vault.title')}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem onclick={onImportFromVault}>
           <Upload class="mr-2 h-4 w-4" />

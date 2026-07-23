@@ -324,7 +324,7 @@
                     ? ''
                     : '-rotate-90'}"
                 />
-                <span class="text-sm font-medium">System</span>
+                <span class="text-sm font-medium">{t('common.system')}</span>
                 <Badge variant="default" class="text-[10px]">{filteredSystem.length}</Badge>
               </div>
             </Collapsible.Trigger>
@@ -404,7 +404,7 @@
         </Button>
         <div class="flex gap-2">
           <Button variant="outline" size="sm" onclick={() => onOpenChange(false)}>{t('common.cancel')}</Button>
-          <Button size="sm" onclick={handleApply}>Apply</Button>
+          <Button size="sm" onclick={handleApply}>{t('common.apply')}</Button>
         </div>
       </div>
     </ResponsiveModal.Footer>

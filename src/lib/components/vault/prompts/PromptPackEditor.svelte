@@ -299,7 +299,7 @@
               class="mr-1 gap-0"
             >
               <ToggleGroup.Item value="system" class="h-7 rounded-r-none px-2.5 text-xs"
-                >System</ToggleGroup.Item
+                >{t('common.system')}</ToggleGroup.Item
               >
               <ToggleGroup.Item value="user" class="h-7 rounded-l-none px-2.5 text-xs"
                 >User</ToggleGroup.Item
@@ -396,7 +396,7 @@
             class="gap-0"
           >
             <ToggleGroup.Item value="system" class="h-7 rounded-r-none px-2.5 text-xs"
-              >System</ToggleGroup.Item
+              >{t('common.system')}</ToggleGroup.Item
             >
             <ToggleGroup.Item value="user" class="h-7 rounded-l-none px-2.5 text-xs"
               >User</ToggleGroup.Item
@@ -534,7 +534,7 @@
                 <!-- Edit mode -->
                 <div class="space-y-4">
                   <div class="space-y-1.5">
-                    <Label for="pack-name">Name</Label>
+                    <Label for="pack-name">{t('common.name')}</Label>
                     <Input id="pack-name" bind:value={settingsDraft.name} placeholder="Pack name" />
                   </div>
 
@@ -548,7 +548,7 @@
                   </div>
 
                   <div class="space-y-1.5">
-                    <Label for="pack-desc">Description</Label>
+                    <Label for="pack-desc">{t('common.description')}</Label>
                     <p class="text-muted-foreground text-xs">Supports Markdown and HTML</p>
                     <Textarea
                       id="pack-desc"
@@ -574,7 +574,7 @@
                 <!-- Read-only display -->
                 <div class="space-y-4">
                   <div class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
-                    <span class="text-muted-foreground">Name</span>
+                    <span class="text-muted-foreground">{t('common.name')}</span>
                     <span>{fullPack.pack.name}</span>
                     <span class="text-muted-foreground">Author</span>
                     <span>{fullPack.pack.author || '—'}</span>

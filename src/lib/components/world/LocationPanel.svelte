@@ -127,7 +127,7 @@
 <div class="flex flex-col gap-1 pb-12">
   <!-- Header -->
   <div class="mb-2 flex items-center justify-between">
-    <h3 class="text-foreground text-xl font-bold tracking-tight">Locations</h3>
+    <h3 class="text-foreground text-xl font-bold tracking-tight">{t('sidebar.locations')}</h3>
     <Button
       variant="text"
       size="icon"
@@ -361,7 +361,7 @@
               </div>
 
               <div class="space-y-1">
-                <Label class="text-xs">Name</Label>
+                <Label class="text-xs">{t('common.name')}</Label>
                 <Input
                   type="text"
                   bind:value={editName}
@@ -371,7 +371,7 @@
               </div>
 
               <div class="space-y-1">
-                <Label class="text-xs">Description</Label>
+                <Label class="text-xs">{t('common.description')}</Label>
                 <Textarea
                   bind:value={editDescription}
                   placeholder={t('common.description')}

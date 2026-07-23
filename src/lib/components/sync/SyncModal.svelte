@@ -485,7 +485,7 @@
           </div>
           <h3 class="mb-2 text-lg font-semibold">Sync Complete!</h3>
           <p class="text-muted-foreground">{syncMessage}</p>
-          <Button class="mt-6" onclick={close}>Done</Button>
+          <Button class="mt-6" onclick={close}>{t('common.done')}</Button>
         </div>
       {:else if ui.syncMode === 'select'}
         <!-- Mode Selection -->

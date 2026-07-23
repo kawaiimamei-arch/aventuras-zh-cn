@@ -204,13 +204,13 @@
 
       <!-- Description -->
       <div class="space-y-1.5">
-        <Label>Description</Label>
+        <Label>{t('common.description')}</Label>
         <Input bind:value={editDescription} placeholder="Help text shown in wizard" />
       </div>
 
       <!-- Type -->
       <div class="space-y-1.5">
-        <Label>Type</Label>
+        <Label>{t('common.type')}</Label>
         <Select.Root type="single" value={editType} onValueChange={handleTypeChange}>
           <Select.Trigger class="h-9 w-full">
             {TYPE_LABELS[editType]}

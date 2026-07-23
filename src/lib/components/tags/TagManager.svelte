@@ -97,7 +97,7 @@
       <!-- Tabs -->
       <Tabs value={activeTab} onValueChange={(v) => (activeTab = v as VaultType)}>
         <TabsList class="grid w-full grid-cols-3">
-          <TabsTrigger value="character">Characters</TabsTrigger>
+          <TabsTrigger value="character">{t('sidebar.characters')}</TabsTrigger>
           <TabsTrigger value="lorebook">Lorebooks</TabsTrigger>
           <TabsTrigger value="scenario">Scenarios</TabsTrigger>
         </TabsList>

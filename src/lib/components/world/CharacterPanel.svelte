@@ -566,11 +566,11 @@
 
               <div class="grid grid-cols-2 gap-3">
                 <div class="col-span-2 space-y-1 sm:col-span-1">
-                  <Label class="text-xs">Name</Label>
+                  <Label class="text-xs">{t('common.name')}</Label>
                   <Input type="text" bind:value={editName} placeholder={t('common.name')} class="h-8 text-sm" />
                 </div>
                 <div class="col-span-2 space-y-1 sm:col-span-1">
-                  <Label class="text-xs">Relationship</Label>
+                  <Label class="text-xs">{t('common.relationship')}</Label>
                   <Input
                     type="text"
                     bind:value={editRelationship}
@@ -582,7 +582,7 @@
               </div>
 
               <div class="space-y-1">
-                <Label class="text-xs">Status</Label>
+                <Label class="text-xs">{t('common.status')}</Label>
                 <ToggleGroup.Root
                   type="single"
                   value={editStatus}
@@ -632,7 +632,7 @@
               </div>
 
               <div class="space-y-1">
-                <Label class="text-xs">Description</Label>
+                <Label class="text-xs">{t('common.description')}</Label>
                 <Textarea
                   bind:value={editDescription}
                   placeholder={t('common.description')}
@@ -658,7 +658,7 @@
                 <div
                   class="text-muted-foreground mb-2 flex items-center justify-between text-xs font-medium"
                 >
-                  <span>Portrait</span>
+                  <span>{t('character.portrait')}</span>
                   {#if editPortrait}
                     <Button
                       variant="destructive"
@@ -903,7 +903,7 @@
                           descriptorsExpanded && 'rotate-180',
                         )}
                       />
-                      <span class="font-medium">Appearance</span>
+                      <span class="font-medium">{t('common.appearance')}</span>
                     </button>
                     {#if descriptorsExpanded}
                       <div class="flex flex-col gap-1">
