@@ -1,6 +1,6 @@
 <script lang="ts">
   import { settings, type ProviderPreset } from '$lib/stores/settings.svelte'
-import { t } from '$lib/i18n'
+  import { t } from '$lib/i18n'
   import {
     Check,
     ExternalLink,
@@ -24,7 +24,6 @@ import { t } from '$lib/i18n'
   import { Label } from '$lib/components/ui/label'
   import { Switch } from '$lib/components/ui/switch'
   import * as Select from '$lib/components/ui/select'
-  import { t } from '$lib/i18n'
 
   interface Props {
     onComplete: () => void
