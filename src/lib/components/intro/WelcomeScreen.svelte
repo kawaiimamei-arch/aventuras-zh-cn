@@ -1,5 +1,6 @@
 <script lang="ts">
   import { settings, type ProviderPreset } from '$lib/stores/settings.svelte'
+import { t } from '$lib/i18n'
   import {
     Check,
     ExternalLink,
@@ -109,7 +110,7 @@
     if (!providerInfo) return
 
     if (providerInfo.requiresKey && !apiKey.trim()) {
-      error = 'Please enter your API key'
+      error = '{t('intro.enter_api_key')}'
       return
     }
 
@@ -139,15 +140,15 @@
   out:fade={{ duration: 300 }}
 >
   <div class="mb-8 space-y-2">
-    <h1 class="text-foreground text-4xl font-bold tracking-tight">Welcome to Aventuras</h1>
+    <h1 class="text-foreground text-4xl font-bold tracking-tight">{t('intro.welcome')}</h1>
     <p class="text-muted-foreground text-lg">
       {#if step === 'interface'}
-        Customize your reading environment
+        {t('intro.customize_environment')}
       {:else if step === 'select'}
-        Choose your AI provider to get started
+        {t('intro.choose_provider')}
       {:else}
         {@const p = getSelectedProviderInfo()}
-        Configure {p?.name ?? 'Provider'}
+        {t('intro.configure')} {p?.name ?? 'Provider'}
       {/if}
     </p>
   </div>
@@ -174,7 +175,7 @@
               >
                 <Select.Trigger class="w-full">
                   {THEMES.find((t) => t.id === settings.uiSettings.theme)?.label ??
-                    'Select a theme'}
+                    '{t('intro.select_theme')}'}
                 </Select.Trigger>
                 <Select.Content>
                   {#each THEMES as theme (theme.id)}
@@ -222,7 +223,7 @@
                   transition:slide={{ duration: 200, axis: 'y' }}
                 >
                   <div class="space-y-2">
-                    <Label for="lang-select" class="text-sm">Target Language</Label>
+                    <Label for="lang-select" class="text-sm">{t('intro.target_language')}</Label>
                     <Select.Root
                       type="single"
                       value={settings.translationSettings.targetLanguage}
@@ -234,7 +235,7 @@
                       <Select.Trigger id="lang-select" class="w-full">
                         {getSupportedLanguages().find(
                           (l) => l.code === settings.translationSettings.targetLanguage,
-                        )?.name ?? 'Select language'}
+                        )?.name ?? '{t('intro.select_language')}'}
                       </Select.Trigger>
                       <Select.Content class="max-h-[200px] overflow-y-auto">
                         {#each getSupportedLanguages() as lang (lang.code)}
@@ -246,7 +247,7 @@
 
                   <div class="flex items-center justify-between pt-2">
                     <Label class="text-muted-foreground text-sm font-normal"
-                      >Translate my input</Label
+                      >{t('intro.translate_input')}</Label
                     >
                     <Switch
                       checked={settings.translationSettings.translateUserInput}
@@ -259,7 +260,7 @@
 
                   <div class="flex items-center justify-between">
                     <Label class="text-muted-foreground text-sm font-normal"
-                      >Translate World State</Label
+                      >{t('intro.translate_world_state')}</Label
                     >
                     <Switch
                       checked={settings.translationSettings.translateWorldState}
@@ -275,7 +276,7 @@
           </Card.Content>
           <Card.Footer>
             <Button class="w-full" size="lg" onclick={goToSelect}>
-              Next Step <ArrowRight class="ml-2 h-4 w-4" />
+              {t('intro.next_step')} <ArrowRight class="ml-2 h-4 w-4" />
             </Button>
           </Card.Footer>
         </Card.Root>
@@ -313,7 +314,7 @@
             onclick={() => (step = 'interface')}
             class="text-muted-foreground hover:text-foreground"
           >
-            <ArrowLeft size={16} class="mr-2" /> Back to Customization
+            <ArrowLeft size={16} class="mr-2" /> {t('intro.back_to_customization')}
           </Button>
         </div>
       </div>
@@ -329,12 +330,12 @@
           <Card.Root class="bg-card/95 border-border w-full shadow-2xl backdrop-blur-sm">
             <Card.Header>
               <div class="flex items-center gap-4">
-                <Button variant="ghost" size="icon" onclick={goBack} title="Go back">
+                <Button variant="ghost" size="icon" onclick={goBack} title="{t('intro.go_back')}">
                   <ArrowLeft size={20} />
                 </Button>
                 <div class="flex items-center gap-3">
                   <provider.icon size={24} class={provider.iconColor} />
-                  <Card.Title>Setup</Card.Title>
+                  <Card.Title>{t('intro.setup')}</Card.Title>
                 </div>
               </div>
             </Card.Header>
@@ -342,7 +343,7 @@
               {#if provider.requiresKey}
                 <div class="space-y-2">
                   <div class="flex items-center justify-between">
-                    <Label for="api-key">API Key</Label>
+                    <Label for="api-key">{t('intro.api_key')}</Label>
                     {#if provider.signupUrl}
                       <a
                         href={provider.signupUrl}

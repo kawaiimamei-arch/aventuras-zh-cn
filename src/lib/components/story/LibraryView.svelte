@@ -8,6 +8,7 @@
   import SetupWizard from '../wizard/SetupWizard.svelte'
   import STImportWizard from '../wizard/STImportWizard.svelte'
 
+  import { t } from '$lib/i18n'
   import { Button } from '$lib/components/ui/button'
   import EmptyState from '$lib/components/ui/empty-state/empty-state.svelte'
   import StoryCard from '$lib/components/story/StoryCard.svelte'
@@ -109,7 +110,7 @@
           icon={Upload}
           label="Import"
           variant="outline"
-          title="Import Story"
+          title={t('library.import_story')}
           onclick={triggerImport}
         />
         <Button
@@ -133,7 +134,7 @@
     {#if story.allStories.length === 0}
       <EmptyState
         icon={BookOpen}
-        title="No stories yet"
+        title={t()}
         description="Create your first adventure to get started."
         actionLabel="Create Story"
         onAction={openSetupWizard}
