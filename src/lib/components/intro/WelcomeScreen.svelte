@@ -109,7 +109,7 @@
     if (!providerInfo) return
 
     if (providerInfo.requiresKey && !apiKey.trim()) {
-      error = '{t('intro.enter_api_key')}'
+      error = t('intro.enter_api_key')
       return
     }
 
@@ -174,7 +174,7 @@
               >
                 <Select.Trigger class="w-full">
                   {THEMES.find((t) => t.id === settings.uiSettings.theme)?.label ??
-                    '{t('intro.select_theme')}'}
+                    t('intro.select_theme')
                 </Select.Trigger>
                 <Select.Content>
                   {#each THEMES as theme (theme.id)}
@@ -234,7 +234,7 @@
                       <Select.Trigger id="lang-select" class="w-full">
                         {getSupportedLanguages().find(
                           (l) => l.code === settings.translationSettings.targetLanguage,
-                        )?.name ?? '{t('intro.select_language')}'}
+                        )?.name ?? t('intro.select_language')
                       </Select.Trigger>
                       <Select.Content class="max-h-[200px] overflow-y-auto">
                         {#each getSupportedLanguages() as lang (lang.code)}
@@ -329,7 +329,7 @@
           <Card.Root class="bg-card/95 border-border w-full shadow-2xl backdrop-blur-sm">
             <Card.Header>
               <div class="flex items-center gap-4">
-                <Button variant="ghost" size="icon" onclick={goBack} title="{t('intro.go_back')}">
+                <Button variant="ghost" size="icon" onclick={goBack} title={t('intro.go_back')}>
                   <ArrowLeft size={20} />
                 </Button>
                 <div class="flex items-center gap-3">
