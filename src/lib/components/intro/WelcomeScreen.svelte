@@ -174,7 +174,7 @@
               >
                 <Select.Trigger class="w-full">
                   {THEMES.find((t) => t.id === settings.uiSettings.theme)?.label ??
-                    t('intro.select_theme')
+                    t('intro.select_theme')}
                 </Select.Trigger>
                 <Select.Content>
                   {#each THEMES as theme (theme.id)}
@@ -234,7 +234,7 @@
                       <Select.Trigger id="lang-select" class="w-full">
                         {getSupportedLanguages().find(
                           (l) => l.code === settings.translationSettings.targetLanguage,
-                        )?.name ?? t('intro.select_language')
+                        )?.name ?? t('intro.select_language')}
                       </Select.Trigger>
                       <Select.Content class="max-h-[200px] overflow-y-auto">
                         {#each getSupportedLanguages() as lang (lang.code)}
