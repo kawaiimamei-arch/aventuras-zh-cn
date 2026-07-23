@@ -531,7 +531,7 @@
               <div
                 class="absolute inset-0 hidden items-center justify-center bg-black/40 opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:flex"
               >
-                <Button variant="default" size="sm">View</Button>
+                <Button variant="default" size="sm">{t('common.view')}</Button>
               </div>
             </div>
 

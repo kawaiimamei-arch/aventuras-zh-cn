@@ -437,7 +437,7 @@
                     title="Hide NSFW"
                   >
                     <EyeOff class="h-3.5 w-3.5" />
-                    <span class="hidden lg:inline">Hide</span>
+                    <span class="hidden lg:inline">{t('common.hide')}</span>
                   </ToggleGroup.Item>
                   <ToggleGroup.Item
                     value="blur"

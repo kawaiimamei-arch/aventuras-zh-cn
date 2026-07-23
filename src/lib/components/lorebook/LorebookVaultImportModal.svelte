@@ -79,7 +79,7 @@
     </div>
 
     <ResponsiveModal.Footer class="border-t px-6 py-3">
-      <Button variant="outline" onclick={onClose}>Cancel</Button>
+      <Button variant="outline" onclick={onClose}>{t('common.cancel')}</Button>
     </ResponsiveModal.Footer>
   </ResponsiveModal.Content>
 </ResponsiveModal.Root>

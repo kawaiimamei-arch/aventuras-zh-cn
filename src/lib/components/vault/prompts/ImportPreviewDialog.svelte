@@ -124,7 +124,7 @@
           >
         {:else}
           <Button variant="outline" onclick={onCancel}>Cancel</Button>
-          <Button onclick={() => onConfirm('rename')}>Import</Button>
+          <Button onclick={() => onConfirm('rename')}>{t('common.import')}</Button>
         {/if}
       </ResponsiveModal.Footer>
     {/if}

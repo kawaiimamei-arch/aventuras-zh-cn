@@ -168,7 +168,7 @@
     SillyTavern Chat (.jsonl)
   </DropdownMenu.Item>
   <DropdownMenu.Separator />
-  <DropdownMenu.Label>Export</DropdownMenu.Label>
+  <DropdownMenu.Label>{t('common.export')}</DropdownMenu.Label>
   <DropdownMenu.Item onclick={exportAventuras}>
     <FileJson class="text-accent-400 h-4 w-4" />
     Aventuras (.avt)

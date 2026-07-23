@@ -456,7 +456,7 @@
                   size="icon"
                   class="text-muted-foreground hover:text-foreground h-7 w-7"
                   onclick={handleStartEdit}
-                  title="Edit"
+                  title={t('common.edit')}
                 >
                   <PenTool class="h-3.5 w-3.5" />
                 </Button>

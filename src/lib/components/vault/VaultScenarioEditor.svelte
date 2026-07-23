@@ -210,7 +210,7 @@
         <div class="flex items-center gap-2">
           <Button variant="outline" onclick={handleCloseAttempt} disabled={saving}>
             <X class="h-4 w-4" />
-            <span class="hidden sm:inline">Close</span>
+            <span class="hidden sm:inline">{t('common.close')}</span>
           </Button>
           <Button onclick={handleSave} disabled={saving || !formData.name.trim() || !hasChanges}>
             {#if saving}

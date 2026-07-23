@@ -359,7 +359,7 @@
             rows={6}
           />
           <div class="flex justify-end gap-2">
-            <Button variant="secondary" size="sm" onclick={onCancelEdit}>Cancel</Button>
+            <Button variant="secondary" size="sm" onclick={onCancelEdit}>{t('common.cancel')}</Button>
             <Button size="sm" onclick={onSaveEdit} disabled={!openingDraft?.trim()}>
               Save Changes
             </Button>

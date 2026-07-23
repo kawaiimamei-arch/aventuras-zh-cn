@@ -132,7 +132,7 @@
     </div>
 
     <ResponsiveModal.Footer class="mt-auto border-t px-6 py-4">
-      <Button variant="outline" onclick={onClose} disabled={exporting}>Cancel</Button>
+      <Button variant="outline" onclick={onClose} disabled={exporting}>{t('common.cancel')}</Button>
       <Button onclick={handleExport} disabled={exporting} class="gap-2">
         {#if exporting}
           <Loader2 class="h-4 w-4 animate-spin" />

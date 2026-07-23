@@ -410,7 +410,7 @@
           size="sm"
           class="text-muted-foreground hover:text-foreground w-5 px-0 hover:bg-transparent"
           onclick={() => (resettingProfiles = false)}
-          title="Cancel"
+          title={t('common.cancel')}
         >
           <X class="h-3.5 w-3.5" />
         </Button>

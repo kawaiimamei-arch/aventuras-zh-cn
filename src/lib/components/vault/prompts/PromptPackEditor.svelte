@@ -319,7 +319,7 @@
             class="h-8 w-8"
             disabled={!isEditorDirty}
             onclick={() => editorRef?.save()}
-            title="Save"
+            title={t('common.save')}
           >
             <Save class="h-3.5 w-3.5" />
           </Button>
@@ -416,7 +416,7 @@
             class="h-8 w-8"
             disabled={!isEditorDirty}
             onclick={() => editorRef?.save()}
-            title="Save"
+            title={t('common.save')}
           >
             <Save class="h-3.5 w-3.5" />
           </Button>

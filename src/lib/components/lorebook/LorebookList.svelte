@@ -393,7 +393,7 @@
             onclick={handleConfirmBulkDelete}
           >
             <Trash2 class="h-3.5 w-3.5" />
-            <span class="xs:inline hidden">Delete</span>
+            <span class="xs:inline hidden">{t('common.delete')}</span>
           </Button>
           <Button variant="ghost" size="sm" class="h-7 px-2 text-xs" onclick={handleClearSelection}>
             Cancel

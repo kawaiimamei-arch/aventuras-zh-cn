@@ -715,7 +715,7 @@
       </Dialog.Description>
     </Dialog.Header>
     <Dialog.Footer class="gap-2 sm:gap-0">
-      <Button variant="outline" onclick={() => (showBackupConfirm = false)}>Cancel</Button>
+      <Button variant="outline" onclick={() => (showBackupConfirm = false)}>{t('common.cancel')}</Button>
       <Button onclick={handleBackupConfirmed} class="gap-2">
         <Download class="h-4 w-4" />
         Continue
@@ -747,7 +747,7 @@
       </Dialog.Description>
     </Dialog.Header>
     <Dialog.Footer class="mt-4 justify-between sm:justify-between">
-      <Button variant="outline" onclick={() => (showRestoreConfirm = false)}>Cancel</Button>
+      <Button variant="outline" onclick={() => (showRestoreConfirm = false)}>{t('common.cancel')}</Button>
       <Button
         variant="outline"
         onclick={handleRestoreConfirmed}

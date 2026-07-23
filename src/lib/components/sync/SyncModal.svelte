@@ -533,7 +533,7 @@
               it will create a "Pre-sync backup" checkpoint first. Continue?
             </p>
             <div class="flex gap-3">
-              <Button variant="outline" onclick={cancelReceivedImport}>Cancel</Button>
+              <Button variant="outline" onclick={cancelReceivedImport}>{t('common.cancel')}</Button>
               <Button onclick={importReceivedStory}>Replace</Button>
             </div>
           </div>
@@ -580,7 +580,7 @@
               Syncing between different versions may cause issues. Continue anyway?
             </p>
             <div class="flex gap-3">
-              <Button variant="outline" onclick={cancelVersionMismatch}>Cancel</Button>
+              <Button variant="outline" onclick={cancelVersionMismatch}>{t('common.cancel')}</Button>
               <Button onclick={proceedWithVersionMismatch}>Continue Anyway</Button>
             </div>
           </div>
@@ -615,7 +615,7 @@
                 replace it after creating a "Pre-sync backup" checkpoint.
               </p>
               <div class="mt-3 flex gap-2">
-                <Button variant="secondary" size="sm" onclick={cancelConflict}>Cancel</Button>
+                <Button variant="secondary" size="sm" onclick={cancelConflict}>{t('common.cancel')}</Button>
                 <Button size="sm" onclick={pullStory}>Continue Anyway</Button>
               </div>
             </div>
@@ -721,7 +721,7 @@
     {#if ui.syncMode === 'connected' && !showConflictWarning && !loading && !syncSuccess}
       <ResponsiveModal.Footer>
         <div class="flex w-full justify-end gap-2">
-          <Button variant="outline" onclick={close}>Cancel</Button>
+          <Button variant="outline" onclick={close}>{t('common.cancel')}</Button>
           {#if selectedRemoteStory}
             <Button onclick={pullStory}>
               <Download class="mr-2 h-4 w-4" />

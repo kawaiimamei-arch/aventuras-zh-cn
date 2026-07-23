@@ -696,7 +696,7 @@
                         <span>Uploading...</span>
                       {:else}
                         <ImageUp class="h-3.5 w-3.5" />
-                        <span>Upload</span>
+                        <span>{t('common.upload')}</span>
                       {/if}
                       <input
                         type="file"

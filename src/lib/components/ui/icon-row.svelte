@@ -70,7 +70,7 @@
           e.stopPropagation()
           confirming = true
         }}
-        title="Delete"
+        title={t('common.delete')}
       >
         <Trash2 class="h-3.5 w-3.5" />
       </Button>

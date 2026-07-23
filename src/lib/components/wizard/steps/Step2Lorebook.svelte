@@ -224,7 +224,7 @@
                   size="icon"
                   class="text-muted-foreground hover:text-destructive h-8 w-8 opacity-0 transition-opacity group-hover:opacity-100"
                   onclick={() => onRemoveLorebook(lorebook.id)}
-                  title="Remove"
+                  title={t('common.remove')}
                 >
                   <X class="h-4 w-4" />
                 </Button>

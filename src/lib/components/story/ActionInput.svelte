@@ -1206,7 +1206,7 @@
         <button
           onclick={dismissError}
           class="text-surface-400 hover:bg-surface-700 hover:text-surface-200 rounded p-1.5"
-          title="Dismiss"><X class="h-4 w-4" /></button
+          title={t('common.dismiss')}><X class="h-4 w-4" /></button
         >
       </div>
     </div>

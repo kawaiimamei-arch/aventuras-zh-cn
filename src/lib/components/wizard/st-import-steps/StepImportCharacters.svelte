@@ -378,7 +378,7 @@
                     size="icon"
                     class="text-muted-foreground hover:text-foreground h-7 w-7"
                     onclick={() => startEdit(i)}
-                    title="Edit"
+                    title={t('common.edit')}
                   >
                     <Edit3 class="h-3 w-3" />
                   </Button>

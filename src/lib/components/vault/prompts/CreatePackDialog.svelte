@@ -89,7 +89,7 @@
     </div>
 
     <ResponsiveModal.Footer class="border-t px-6 py-4">
-      <Button variant="outline" onclick={() => handleOpenChange(false)}>Cancel</Button>
+      <Button variant="outline" onclick={() => handleOpenChange(false)}>{t('common.cancel')}</Button>
       <Button onclick={handleCreate} disabled={!canCreate}>
         {#if creating}
           Creating...

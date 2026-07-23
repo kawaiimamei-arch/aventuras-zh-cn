@@ -167,7 +167,7 @@
         >
           <Save class="h-3.5 w-3.5" />
         </Button>
-        <Button variant="ghost" size="icon" class="h-7 w-7" onclick={cancelEdit} title="Cancel">
+        <Button variant="ghost" size="icon" class="h-7 w-7" onclick={cancelEdit} title={t('common.cancel')}>
           <X class="h-3.5 w-3.5" />
         </Button>
       </div>

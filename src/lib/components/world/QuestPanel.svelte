@@ -436,7 +436,7 @@ import { t } from '$lib/i18n'
                   size="icon"
                   class="text-muted-foreground hover:text-foreground h-6 w-6"
                   onclick={() => startEdit(beat)}
-                  title="Edit"
+                  title={t('common.edit')}
                 >
                   <Pencil class="h-3.5 w-3.5" />
                 </Button>
@@ -676,7 +676,7 @@ import { t } from '$lib/i18n'
                     size="icon"
                     class="text-muted-foreground hover:text-foreground h-6 w-6"
                     onclick={() => startEdit(beat)}
-                    title="Edit"
+                    title={t('common.edit')}
                   >
                     <Pencil class="h-3.5 w-3.5" />
                   </Button>

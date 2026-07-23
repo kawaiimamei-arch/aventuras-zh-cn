@@ -255,7 +255,7 @@
     {#if isDirty}
       <div class="mt-3 flex items-center justify-between gap-2">
         <p class="text-muted-foreground text-xs">Unsaved changes</p>
-        <Button size="sm" onclick={savePrompt} disabled={!canSave}>Save</Button>
+        <Button size="sm" onclick={savePrompt} disabled={!canSave}>{t('common.save')}</Button>
       </div>
     {/if}
 

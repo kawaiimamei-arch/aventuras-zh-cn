@@ -340,7 +340,7 @@
           {/if}
         </Button>
       {:else}
-        <Button variant="outline" onclick={close} disabled={importing}>Cancel</Button>
+        <Button variant="outline" onclick={close} disabled={importing}>{t('common.cancel')}</Button>
         <Button
           onclick={handleImport}
           disabled={!parseResult || importing || story.branches.length > 0}

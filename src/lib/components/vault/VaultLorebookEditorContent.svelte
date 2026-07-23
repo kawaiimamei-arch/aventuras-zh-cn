@@ -1258,7 +1258,7 @@
         title="Export lorebook"
       >
         <Download class="h-3.5 w-3.5" />
-        <span class="hidden sm:inline">Export</span>
+        <span class="hidden sm:inline">{t('common.export')}</span>
       </Button>
       <div class="flex flex-1 items-center justify-end gap-2">
         <Button

@@ -92,7 +92,7 @@
     </div>
 
     <ResponsiveModal.Footer class="mt-auto border-t px-4 py-4">
-      <Button variant="outline" onclick={onClose}>Cancel</Button>
+      <Button variant="outline" onclick={onClose}>{t('common.cancel')}</Button>
       <Button onclick={handleConfirm} disabled={entries.length === 0 || ui.memoryLoading}>
         {#if ui.memoryLoading}
           Creating...

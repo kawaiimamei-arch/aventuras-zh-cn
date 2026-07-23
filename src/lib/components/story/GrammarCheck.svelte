@@ -134,7 +134,7 @@
               e.stopPropagation()
               handleDismiss(index)
             }}
-            title="Dismiss"
+            title={t('common.dismiss')}
           >
             <X class="h-4 w-4" />
           </button>

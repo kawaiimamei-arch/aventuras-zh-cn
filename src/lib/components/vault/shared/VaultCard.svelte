@@ -162,7 +162,7 @@
                     e.stopPropagation()
                     onExport?.()
                   }}
-                  title="Export"
+                  title={t('common.export')}
                 />
               {/if}
               {#if onDuplicate}

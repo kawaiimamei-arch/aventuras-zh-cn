@@ -158,7 +158,7 @@
         variant="outline"
         onclick={() => {
           deleteTarget = null
-        }}>Cancel</Button
+        }}>{t('common.cancel')}</Button
       >
       <Button variant="destructive" onclick={handleConfirmDelete} disabled={deleting}>
         {deleting ? 'Deleting...' : 'Delete'}

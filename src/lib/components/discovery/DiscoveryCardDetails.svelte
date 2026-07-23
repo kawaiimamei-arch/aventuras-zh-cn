@@ -69,7 +69,7 @@
       class="order-2 h-8 w-8 shrink-0 sm:order-1 sm:-ml-2"
     >
       <ArrowLeft class="h-5 w-5" />
-      <span class="sr-only">Back</span>
+      <span class="sr-only">{t('common.back')}</span>
     </Button>
     <h2 class="order-1 flex-1 truncate text-left text-lg font-semibold sm:order-2">
       {card.name}
@@ -245,7 +245,7 @@
 
   <!-- Desktop Footer Actions -->
   <div class="bg-muted/10 hidden shrink-0 items-center justify-end gap-3 border-t p-4 md:flex">
-    <Button variant="outline" onclick={onBack}>Back</Button>
+    <Button variant="outline" onclick={onBack}>{t('common.back')}</Button>
     <Button
       variant={isImported ? 'secondary' : 'default'}
       class="min-w-[120px] gap-2"

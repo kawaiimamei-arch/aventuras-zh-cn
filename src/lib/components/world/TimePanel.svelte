@@ -101,7 +101,7 @@
       <p class="text-muted-foreground mb-3 text-xs">Time will be automatically normalized.</p>
 
       <div class="border-border flex justify-end gap-2 border-t pt-2">
-        <Button variant="text" size="sm" class="h-7 text-xs" onclick={cancelEdit}>Cancel</Button>
+        <Button variant="text" size="sm" class="h-7 text-xs" onclick={cancelEdit}>{t('common.cancel')}</Button>
         <Button size="sm" class="h-7 px-4 text-xs" onclick={saveEdit}>
           <Save class="h-3.5 w-3.5" />
           Save

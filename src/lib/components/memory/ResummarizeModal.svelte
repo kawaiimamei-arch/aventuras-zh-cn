@@ -89,7 +89,7 @@
 
     <ResponsiveModal.Footer class="mt-auto border-t px-4 py-4">
       {#if !ui.memoryLoading}
-        <Button variant="outline" onclick={onClose}>Cancel</Button>
+        <Button variant="outline" onclick={onClose}>{t('common.cancel')}</Button>
       {/if}
       <Button onclick={onConfirm} disabled={!chapter || ui.memoryLoading} class="gap-2">
         {#if ui.memoryLoading}

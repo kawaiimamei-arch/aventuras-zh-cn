@@ -447,7 +447,7 @@
       {/if}
     </div>
     <Dialog.Footer>
-      <Button variant="outline" onclick={() => (showCustomModelDialog = false)}>Cancel</Button>
+      <Button variant="outline" onclick={() => (showCustomModelDialog = false)}>{t('common.cancel')}</Button>
       <Button onclick={handleAddCustomModelFromDialog} disabled={!customModelDialogInput.trim()}>
         Add
       </Button>

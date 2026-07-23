@@ -403,7 +403,7 @@
           Clear All
         </Button>
         <div class="flex gap-2">
-          <Button variant="outline" size="sm" onclick={() => onOpenChange(false)}>Cancel</Button>
+          <Button variant="outline" size="sm" onclick={() => onOpenChange(false)}>{t('common.cancel')}</Button>
           <Button size="sm" onclick={handleApply}>Apply</Button>
         </div>
       </div>

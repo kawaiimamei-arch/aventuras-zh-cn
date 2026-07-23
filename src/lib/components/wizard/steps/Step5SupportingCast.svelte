@@ -398,7 +398,7 @@
                     size="icon"
                     class="text-muted-foreground hover:text-foreground h-6 w-6"
                     onclick={() => onEditSupportingCharacter(index)}
-                    title="Edit"
+                    title={t('common.edit')}
                   >
                     <PenTool class="h-3 w-3" />
                   </Button>
