@@ -10,8 +10,7 @@
   import { RadioGroup, RadioGroupItem } from '$lib/components/ui/radio-group'
   import { Label } from '$lib/components/ui/label'
   import { cn } from '$lib/utils/cn'
-
-  let selectedFormat = $state<LorebookImportExport.ExportFormat>('aventura')
+  import { t } from '$lib/i18n' = $state<LorebookImportExport.ExportFormat>('aventura')
   let exportSelected = $state(false)
   let exporting = $state(false)
 
@@ -60,7 +59,7 @@
     <ResponsiveModal.Header class="border-b px-6 py-4">
       <div class="flex items-center gap-2">
         <Download class="text-primary h-5 w-5" />
-        <ResponsiveModal.Title>Export Lorebook</ResponsiveModal.Title>
+        <ResponsiveModal.Title>{t('lorebook.export')}</ResponsiveModal.Title>
       </div>
     </ResponsiveModal.Header>
 
@@ -68,7 +67,7 @@
       <!-- Export scope -->
       {#if hasSelection}
         <div class="space-y-3">
-          <Label>What to export</Label>
+          <Label>{t('lorebook.what_to_export')}</Label>
           <RadioGroup
             value={exportSelected ? 'selected' : 'all'}
             onValueChange={(v) => (exportSelected = v === 'selected')}
@@ -81,7 +80,7 @@
             >
               <RadioGroupItem value="all" id="scope-all" />
               <Label for="scope-all" class="flex-1 cursor-pointer">
-                <div class="font-medium">All entries</div>
+                <div class="font-medium">{t('lorebook.all_entries')}</div>
                 <div class="text-muted-foreground text-xs">
                   {story.lorebookEntries.length} entries
                 </div>
@@ -96,7 +95,7 @@
             >
               <RadioGroupItem value="selected" id="scope-selected" />
               <Label for="scope-selected" class="flex-1 cursor-pointer">
-                <div class="font-medium">Selected only</div>
+                <div class="font-medium">{t('lorebook.selected_only')}</div>
                 <div class="text-muted-foreground text-xs">
                   {ui.lorebookBulkSelection.size} entries
                 </div>
@@ -106,14 +105,14 @@
         </div>
       {:else}
         <div class="bg-muted/50 rounded-lg border p-3">
-          <div class="text-foreground font-medium">{story.lorebookEntries.length} entries</div>
-          <div class="text-muted-foreground text-xs">All lorebook entries will be exported</div>
+          <div class="text-foreground font-medium">{story.lorebookEntries.length} {t('lorebook.entries')}</div>
+          <div class="text-muted-foreground text-xs">{t('lorebook.all_entries_exported')}</div>
         </div>
       {/if}
 
       <!-- Format selection -->
       <div class="space-y-3">
-        <Label>Export format</Label>
+        <Label>{t('lorebook.export_format')}</Label>
         <RadioGroup
           value={selectedFormat}
           onValueChange={(v) => (selectedFormat = v as LorebookImportExport.ExportFormat)}
@@ -153,14 +152,14 @@
     </div>
 
     <ResponsiveModal.Footer class="mt-auto border-t px-6 py-4">
-      <Button variant="outline" onclick={close} disabled={exporting}>Cancel</Button>
+      <Button variant="outline" onclick={close} disabled={exporting}>{t('common.cancel')}</Button>
       <Button onclick={handleExport} disabled={exporting || entryCount === 0} class="gap-2">
         {#if exporting}
           <Loader2 class="h-4 w-4 animate-spin" />
-          Exporting...
+          {t('lorebook.exporting')}
         {:else}
           <Download class="h-4 w-4" />
-          Export
+          {t('lorebook.export')}
         {/if}
       </Button>
     </ResponsiveModal.Footer>

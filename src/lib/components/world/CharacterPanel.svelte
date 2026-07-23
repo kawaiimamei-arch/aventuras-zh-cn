@@ -477,13 +477,13 @@
 <div class="flex flex-col gap-1 pb-12">
   <!-- Header -->
   <div class="mb-2 flex items-center justify-between">
-    <h3 class="text-foreground text-xl font-bold tracking-tight">Characters</h3>
+    <h3 class="text-foreground text-xl font-bold tracking-tight">{t('sidebar.characters')}</h3>
     <Button
       variant="text"
       size="icon"
       class="text-muted-foreground hover:text-foreground h-6 w-6"
       onclick={() => (showAddForm = !showAddForm)}
-      title="Add character"
+      title={t('character.add')}
     >
       <Plus class="h-6! w-6!" />
     </Button>
@@ -493,7 +493,7 @@
   {#if showAddForm}
     <div class="border-border bg-card rounded-lg border p-3 shadow-sm">
       <div class="space-y-3">
-        <Input type="text" bind:value={newName} placeholder="Name" class="h-8 text-sm" />
+        <Input type="text" bind:value={newName} placeholder={t('common.name')} class="h-8 text-sm" />
         <Input
           type="text"
           bind:value={newRelationship}
@@ -511,7 +511,7 @@
         <Button variant="text" size="sm" class="h-7" onclick={() => (showAddForm = false)}>
           Cancel
         </Button>
-        <Button size="sm" class="h-7" onclick={addCharacter} disabled={!newName.trim()}>Add</Button>
+        <Button size="sm" class="h-7" onclick={addCharacter} disabled={!newName.trim()}>{t('common.add')}</Button>
       </div>
     </div>
   {/if}
@@ -567,7 +567,7 @@
               <div class="grid grid-cols-2 gap-3">
                 <div class="col-span-2 space-y-1 sm:col-span-1">
                   <Label class="text-xs">Name</Label>
-                  <Input type="text" bind:value={editName} placeholder="Name" class="h-8 text-sm" />
+                  <Input type="text" bind:value={editName} placeholder={t('common.name')} class="h-8 text-sm" />
                 </div>
                 <div class="col-span-2 space-y-1 sm:col-span-1">
                   <Label class="text-xs">Relationship</Label>
@@ -635,7 +635,7 @@
                 <Label class="text-xs">Description</Label>
                 <Textarea
                   bind:value={editDescription}
-                  placeholder="Description"
+                  placeholder={t('common.description')}
                   class="min-h-[60px] resize-none text-xs"
                 />
               </div>

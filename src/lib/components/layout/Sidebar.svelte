@@ -129,7 +129,7 @@
       title="Story"
     >
       <BookOpen class="h-4 w-4" />
-      <span>Story</span>
+      <span>{t('sidebar.story')}</span>
     </Button>
     <Button
       variant="ghost"
@@ -141,7 +141,7 @@
       title="Lorebook"
     >
       <BookMarked class="h-4 w-4" />
-      <span>Lorebook</span>
+      <span>{t('sidebar.lorebook')}</span>
     </Button>
     <Button
       variant="ghost"
@@ -153,7 +153,7 @@
       title="Memory"
     >
       <Brain class="h-4 w-4" />
-      <span>Memory</span>
+      <span>{t('sidebar.memory')}</span>
     </Button>
   </div>
 </aside>

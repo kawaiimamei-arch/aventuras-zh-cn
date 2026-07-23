@@ -203,7 +203,7 @@ import { t } from '$lib/i18n'
       size="icon"
       class="text-muted-foreground hover:text-foreground h-6 w-6"
       onclick={() => (showAddForm = !showAddForm)}
-      title="Add item"
+      title={t('item.add')}
     >
       <Plus class="h-6! w-6!" />
     </Button>
@@ -212,7 +212,7 @@ import { t } from '$lib/i18n'
   {#if showAddForm}
     <div class="border-border bg-card mb-2 rounded-lg border p-3 shadow-sm">
       <div class="space-y-3">
-        <Input type="text" bind:value={newName} placeholder="Item name" class="h-8 text-sm" />
+        <Input type="text" bind:value={newName} placeholder={t('item.name_placeholder')} class="h-8 text-sm" />
         <Textarea
           bind:value={newDescription}
           placeholder="Description (optional)"
@@ -230,7 +230,7 @@ import { t } from '$lib/i18n'
         <Button variant="text" size="sm" class="h-7" onclick={() => (showAddForm = false)}>
           Cancel
         </Button>
-        <Button size="sm" class="h-7" onclick={addItem} disabled={!newName.trim()}>Add</Button>
+        <Button size="sm" class="h-7" onclick={addItem} disabled={!newName.trim()}>{t('common.add')}</Button>
       </div>
     </div>
   {/if}
@@ -269,7 +269,7 @@ import { t } from '$lib/i18n'
                   <Input
                     type="text"
                     bind:value={editName}
-                    placeholder="Item name"
+                    placeholder={t('item.name_placeholder')}
                     class="h-8 text-sm"
                   />
                 </div>
@@ -293,7 +293,7 @@ import { t } from '$lib/i18n'
                 <Label class="text-xs">Description</Label>
                 <Textarea
                   bind:value={editDescription}
-                  placeholder="Description"
+                  placeholder={t('common.description')}
                   class="min-h-15 resize-none text-xs"
                 />
               </div>
@@ -514,7 +514,7 @@ import { t } from '$lib/i18n'
                   <Input
                     type="text"
                     bind:value={editName}
-                    placeholder="Item name"
+                    placeholder={t('item.name_placeholder')}
                     class="h-8 text-sm"
                   />
                 </div>
@@ -538,7 +538,7 @@ import { t } from '$lib/i18n'
                 <Label class="text-xs">Description</Label>
                 <Textarea
                   bind:value={editDescription}
-                  placeholder="Description"
+                  placeholder={t('common.description')}
                   class="min-h-[60px] resize-none text-xs"
                 />
               </div>
@@ -769,7 +769,7 @@ import { t } from '$lib/i18n'
                   <Input
                     type="text"
                     bind:value={editName}
-                    placeholder="Item name"
+                    placeholder={t('item.name_placeholder')}
                     class="h-8 text-sm"
                   />
                 </div>
@@ -786,7 +786,7 @@ import { t } from '$lib/i18n'
                 <Label class="text-xs">Description</Label>
                 <Textarea
                   bind:value={editDescription}
-                  placeholder="Description"
+                  placeholder={t('common.description')}
                   class="min-h-15 resize-none text-xs"
                 />
               </div>

@@ -133,7 +133,7 @@
       size="icon"
       class="text-muted-foreground hover:text-foreground h-6 w-6"
       onclick={() => (showAddForm = !showAddForm)}
-      title="Add location"
+      title={t('location.add')}
     >
       <Plus class="h-6! w-6!" />
     </Button>
@@ -143,10 +143,10 @@
   {#if showAddForm}
     <div class="border-border bg-card rounded-lg border p-3 shadow-sm">
       <div class="space-y-3">
-        <Input type="text" bind:value={newName} placeholder="Location name" class="h-8 text-sm" />
+        <Input type="text" bind:value={newName} placeholder={t('location.name_placeholder')} class="h-8 text-sm" />
         <Textarea
           bind:value={newDescription}
-          placeholder="Description (optional)"
+          placeholder={t('location.description_placeholder')}
           class="min-h-[60px] resize-none text-sm"
           rows={2}
         />
@@ -155,7 +155,7 @@
         <Button variant="text" size="sm" class="h-7" onclick={() => (showAddForm = false)}>
           Cancel
         </Button>
-        <Button size="sm" class="h-7" onclick={addLocation} disabled={!newName.trim()}>Add</Button>
+        <Button size="sm" class="h-7" onclick={addLocation} disabled={!newName.trim()}>{t('common.add')}</Button>
       </div>
     </div>
   {/if}
@@ -188,7 +188,7 @@
             <Input
               type="text"
               bind:value={editName}
-              placeholder="Location name"
+              placeholder={t('location.name_placeholder')}
               class="h-8 text-sm"
             />
           </div>
@@ -196,7 +196,7 @@
           <div class="space-y-1">
             <Textarea
               bind:value={editDescription}
-              placeholder="Description"
+              placeholder={t('common.description')}
               class="min-h-[60px] resize-none text-xs"
             />
           </div>
@@ -306,7 +306,7 @@
               size="icon"
               class="text-accent-500 hover:text-accent-600 h-6 w-6"
               onclick={() => startEdit(currentLocation)}
-              title="Edit location"
+              title={t('location.edit_current')}
             >
               <Pencil class="h-3.5 w-3.5" />
             </Button>
@@ -365,7 +365,7 @@
                 <Input
                   type="text"
                   bind:value={editName}
-                  placeholder="Location name"
+                  placeholder={t('location.name_placeholder')}
                   class="h-8 text-sm"
                 />
               </div>
@@ -374,7 +374,7 @@
                 <Label class="text-xs">Description</Label>
                 <Textarea
                   bind:value={editDescription}
-                  placeholder="Description"
+                  placeholder={t('common.description')}
                   class="min-h-[60px] resize-none text-xs"
                 />
               </div>

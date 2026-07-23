@@ -112,7 +112,7 @@
     }
   }
 
-  async function exportAventuras() {
+  async function export{t('app.title')}() {
     const currentStory = story.currentStory
     if (!currentStory) return
     // Gather inside the exportFn so handleExport's try/catch surfaces any failure as a toast
@@ -226,7 +226,7 @@
       {#if ui.isGenerating}
         <div class="text-accent-400 hidden items-center gap-1.5 text-sm sm:flex">
           <div class="bg-accent-500 h-2 w-2 animate-pulse rounded-full"></div>
-          <span>Generating...</span>
+          <span>{t('app.generating')}</span>
         </div>
       {/if}
 
@@ -237,7 +237,7 @@
           title="Analyzing scene for images"
         >
           <ImageIcon class="h-3.5 w-3.5 animate-pulse" />
-          <span class="hidden sm:inline">Analyzing...</span>
+          <span class="hidden sm:inline">{t('app.analyzing')}</span>
         </div>
       {:else if ui.imagesGenerating > 0}
         <div class="flex items-center gap-1.5 text-sm text-emerald-400" title="Generating images">

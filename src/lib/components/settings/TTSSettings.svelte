@@ -8,6 +8,7 @@
   import { Slider } from '$lib/components/ui/slider'
   import { Play, Square, RefreshCw, Loader2 } from 'lucide-svelte'
   import { GOOGLE_TRANSLATE_LANGUAGES, aiTTSService } from '$lib/services/ai/utils/TTSService'
+  import { t } from '$lib/i18n'
 
   const PREVIEW_TEXT =
     'This is a preview of the selected voice. The story narration will sound like this.'
@@ -137,8 +138,8 @@
   <!-- Enable TTS Toggle -->
   <div class="flex items-center justify-between">
     <div>
-      <Label>Enable Text-to-Speech</Label>
-      <p class="text-muted-foreground text-xs">Configure text-to-speech settings for narration.</p>
+      <Label>{t('tts.enable')}</Label>
+      <p class="text-muted-foreground text-xs">{t('tts.enable_description')}</p>
     </div>
     <Switch
       checked={settings.systemServicesSettings.tts.enabled}
@@ -152,7 +153,7 @@
   {#if settings.systemServicesSettings.tts.enabled}
     <!-- Provider Selection -->
     <div>
-      <Label class="mb-2 block">TTS Provider</Label>
+      <Label class="mb-2 block">{t('tts.provider')}</Label>
       <Select.Root
         type="single"
         value={settings.systemServicesSettings.tts.provider}
@@ -206,7 +207,7 @@
     {#if settings.systemServicesSettings.tts.provider === 'openai'}
       <!-- API Endpoint -->
       <div>
-        <Label class="mb-2 block">API Endpoint</Label>
+        <Label class="mb-2 block">{t('tts.api_endpoint')}</Label>
         <Input
           type="text"
           class="w-full"
@@ -221,7 +222,7 @@
 
       <!-- API Key -->
       <div>
-        <Label class="mb-2 block">API Key</Label>
+        <Label class="mb-2 block">{t('tts.api_key')}</Label>
         <Input
           type="password"
           class="w-full"
@@ -230,13 +231,13 @@
             settings.systemServicesSettings.tts.apiKey = e.currentTarget.value
             settings.saveSystemServicesSettings()
           }}
-          placeholder="Enter your API key"
+          placeholder={t('tts.api_key_placeholder')}
         />
       </div>
 
       <!-- TTS Model -->
       <div>
-        <Label class="mb-2 block">TTS Model</Label>
+        <Label class="mb-2 block">{t('tts.model')}</Label>
         <Input
           type="text"
           class="w-full"
@@ -251,7 +252,7 @@
 
       <!-- Voice -->
       <div>
-        <Label class="mb-2 block">Voice</Label>
+        <Label class="mb-2 block">{t('tts.voice')}</Label>
         <Input
           type="text"
           class="w-full"
@@ -270,15 +271,15 @@
     {:else if settings.systemServicesSettings.tts.provider === 'microsoft'}
       <!-- Windows System Voice Selection -->
       <div>
-        <Label class="mb-2 block">System Voice</Label>
+        <Label class="mb-2 block">{t('tts.system_voice')}</Label>
         {#if isLoadingVoices}
           <div class="text-muted-foreground flex items-center gap-2 text-sm">
             <Loader2 class="h-4 w-4 animate-spin" />
-            Loading system voices...
+            {t('tts.loading_voices')}
           </div>
         {:else if systemVoices.length === 0}
           <div class="text-muted-foreground text-sm">
-            No system voices found. Make sure you're running on Windows with TTS voices installed.
+            {t('tts.no_voices_found')}
           </div>
         {:else}
           <Select.Root
@@ -310,7 +311,7 @@
     {:else if settings.systemServicesSettings.tts.provider === 'google'}
       <!-- Language Selection -->
       <div>
-        <Label class="mb-2 block">Language</Label>
+        <Label class="mb-2 block">{t('tts.language')}</Label>
         <Select.Root
           type="single"
           value={settings.systemServicesSettings.tts.voice}
@@ -348,13 +349,13 @@
       >
         {#if isLoadingPreview}
           <Loader2 class="mr-2 h-4 w-4 animate-spin" />
-          Loading...
+          {t('common.loading')}
         {:else if isPlayingPreview}
           <Square class="mr-2 h-4 w-4" />
-          Stop
+          {t('tts.stop')}
         {:else}
           <Play class="mr-2 h-4 w-4" />
-          Preview Voice
+          {t('tts.preview_voice')}
         {/if}
       </Button>
       {#if previewError}
@@ -366,8 +367,8 @@
     <div class="border-border bg-muted/20 space-y-4 rounded-lg border p-4">
       <div class="flex items-center justify-between">
         <div>
-          <Label>Volume Override</Label>
-          <p class="text-muted-foreground text-xs">Manually control TTS narration volume.</p>
+          <Label>{t('tts.volume_override')}</Label>
+          <p class="text-muted-foreground text-xs">{t('tts.volume_override_description')}</p>
         </div>
         <Switch
           checked={settings.systemServicesSettings.tts.volumeOverride}
@@ -381,7 +382,7 @@
       {#if settings.systemServicesSettings.tts.volumeOverride}
         <div>
           <Label class="mb-2 block">
-            Narration Volume: {Math.round(settings.systemServicesSettings.tts.volume * 100)}%
+            {t('tts.narration_volume')}: {Math.round(settings.systemServicesSettings.tts.volume * 100)}%
           </Label>
           <Slider
             value={settings.systemServicesSettings.tts.volume}
@@ -402,7 +403,7 @@
     <!-- Speech Speed -->
     <div>
       <Label class="mb-2 block">
-        Speech Speed: {settings.systemServicesSettings.tts.speed.toFixed(2)}x
+        {t('tts.speech_speed')}: {settings.systemServicesSettings.tts.speed.toFixed(2)}x
       </Label>
       <Slider
         value={settings.systemServicesSettings.tts.speed}
@@ -417,16 +418,16 @@
         class="w-full"
       />
       <p class="text-muted-foreground mt-1 text-xs">
-        Adjust the speed of speech generation (0.25-4.0).
+        {t('tts.speech_speed_description')}
       </p>
     </div>
 
     <!-- Auto-Play Toggle -->
     <div class="flex items-center justify-between">
       <div>
-        <Label>Auto-Play Narration</Label>
+        <Label>{t('tts.auto_play')}</Label>
         <p class="text-muted-foreground text-xs">
-          Automatically play TTS audio when story is narrated.
+          {t('tts.auto_play_description')}
         </p>
       </div>
       <Switch
@@ -440,7 +441,7 @@
 
     <!-- Excluded Characters -->
     <div>
-      <Label class="mb-2 block">Excluded Characters</Label>
+      <Label class="mb-2 block">{t('tts.excluded_characters')}</Label>
       <Input
         type="text"
         class="w-full"
@@ -449,17 +450,17 @@
           settings.systemServicesSettings.tts.excludedCharacters = e.currentTarget.value
           settings.saveSystemServicesSettings()
         }}
-        placeholder="Comma-separated characters (e.g., *, #, _, ~)"
+        placeholder={t('tts.excluded_characters_placeholder')}
       />
-      <p class="text-muted-foreground mt-1 text-xs">Characters excluded from TTS narration.</p>
+      <p class="text-muted-foreground mt-1 text-xs">{t('tts.excluded_characters_description')}</p>
     </div>
     <div class="border-border bg-muted/20 space-y-4 rounded-lg border p-4">
       <!-- Remove HTML tags Toggle -->
       <div class="flex items-center justify-between">
         <div>
-          <Label>Remove HTML tags</Label>
+          <Label>{t('tts.remove_html_tags')}</Label>
           <p class="text-muted-foreground text-xs">
-            Remove HTML tags from narrated text before sending to TTS.
+            {t('tts.remove_html_tags_description')}
           </p>
         </div>
         <Switch
@@ -474,7 +475,7 @@
       {#if settings.systemServicesSettings.tts.removeHtmlTags}
         <!-- HTML tags to remove content from -->
         <div>
-          <Label class="mb-2 block">HTML tags to remove content from</Label>
+          <Label class="mb-2 block">{t('tts.html_tags_to_remove')}</Label>
           <Input
             type="text"
             class="w-full"
@@ -483,20 +484,20 @@
               settings.systemServicesSettings.tts.htmlTagsToRemoveContent = e.currentTarget.value
               settings.saveSystemServicesSettings()
             }}
-            placeholder="Comma-separated HTML tags (e.g., div, span, font)"
+            placeholder={t('tts.html_tags_to_remove_placeholder')}
             disabled={settings.systemServicesSettings.tts.removeAllHtmlContent}
           />
           <p class="text-muted-foreground mt-1 text-xs">
-            Comma-separated list of HTML tags whose content should be removed before narration.
+            {t('tts.html_tags_to_remove_description')}
           </p>
         </div>
 
         <!-- Remove all tag content Toggle -->
         <div class="flex items-center justify-between">
           <div>
-            <Label>Remove all tag content</Label>
+            <Label>{t('tts.remove_all_tag_content')}</Label>
             <p class="text-muted-foreground text-xs">
-              Removes content inside any HTML tag before narration.
+              {t('tts.remove_all_tag_content_description')}
             </p>
           </div>
           <Switch
@@ -512,7 +513,7 @@
     <!-- Reset Button -->
     <Button variant="outline" size="sm" onclick={resetSettings}>
       <RefreshCw class="mr-1 h-3 w-3" />
-      Reset to Defaults
+      {t('common.reset_to_defaults')}
     </Button>
   {/if}
 </div>
