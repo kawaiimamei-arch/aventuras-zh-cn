@@ -1201,7 +1201,7 @@
         <button
           onclick={handleRetry}
           class="btn flex items-center gap-1.5 bg-red-500/20 text-sm text-red-400 hover:bg-red-500/30"
-          ><RefreshCw class="h-4 w-4" />Retry</button
+          ><RefreshCw class="h-4 w-4" />{t('common.retry')}</button
         >
         <button
           onclick={dismissError}

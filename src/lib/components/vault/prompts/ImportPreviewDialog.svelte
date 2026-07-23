@@ -82,7 +82,7 @@
       </div>
 
       <ResponsiveModal.Footer class="border-t px-6 py-4">
-        <Button variant="outline" onclick={onCancel}>Close</Button>
+        <Button variant="outline" onclick={onCancel}>{t('common.close')}</Button>
       </ResponsiveModal.Footer>
     {:else if validationResult && isValid && pack}
       <!-- Valid state: pack preview -->
@@ -117,13 +117,13 @@
 
       <ResponsiveModal.Footer class="border-t px-6 py-4">
         {#if conflictPack}
-          <Button variant="ghost" onclick={onCancel}>Cancel</Button>
+          <Button variant="ghost" onclick={onCancel}>{t('common.cancel')}</Button>
           <Button variant="outline" onclick={() => onConfirm('rename')}>Import as Copy</Button>
           <Button variant="destructive" onclick={() => onConfirm('replace')}
             >Replace Existing</Button
           >
         {:else}
-          <Button variant="outline" onclick={onCancel}>Cancel</Button>
+          <Button variant="outline" onclick={onCancel}>{t('common.cancel')}</Button>
           <Button onclick={() => onConfirm('rename')}>{t('common.import')}</Button>
         {/if}
       </ResponsiveModal.Footer>

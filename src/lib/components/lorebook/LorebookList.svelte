@@ -340,7 +340,7 @@
             <Dialog.Footer>
               <Dialog.Close>
                 {#snippet child({ props })}
-                  <Button {...props} variant="outline">Cancel</Button>
+                  <Button {...props} variant="outline">{t('common.cancel')}</Button>
                 {/snippet}
               </Dialog.Close>
               <Button

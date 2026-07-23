@@ -89,7 +89,7 @@
 {#if importError}
   <Alert.Root variant="destructive">
     <AlertCircle class="h-4 w-4" />
-    <Alert.Title>Error</Alert.Title>
+    <Alert.Title>{t('common.error')}</Alert.Title>
     <Alert.Description>{importError}</Alert.Description>
   </Alert.Root>
 {/if}

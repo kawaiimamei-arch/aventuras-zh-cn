@@ -1268,7 +1268,7 @@
           disabled={saving}
         >
           <X class="h-3.5 w-3.5" />
-          <span class="hidden sm:inline">Cancel</span>
+          <span class="hidden sm:inline">{t('common.cancel')}</span>
         </Button>
         <Button
           class="h-8 flex-1 text-xs sm:flex-none"

@@ -426,7 +426,7 @@
           {:else}
             <!-- Edit Actions -->
             <div class="flex items-center justify-end gap-2">
-              <Button variant="ghost" size="sm" onclick={handleCancelEdit}>Cancel</Button>
+              <Button variant="ghost" size="sm" onclick={handleCancelEdit}>{t('common.cancel')}</Button>
               <Button size="sm" onclick={handleSaveEdit}>Save Changes</Button>
             </div>
           {/if}

@@ -81,7 +81,7 @@
 <div class="flex h-full flex-col overflow-hidden">
   {#if !hideHeader}
     <div class="border-b px-4 py-2">
-      <h4 class="text-muted-foreground text-xs font-medium tracking-wide uppercase">Preview</h4>
+      <h4 class="text-muted-foreground text-xs font-medium tracking-wide uppercase">{t('common.preview')}</h4>
     </div>
   {/if}
 

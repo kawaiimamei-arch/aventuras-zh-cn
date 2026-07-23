@@ -162,7 +162,7 @@
 </script>
 
 {#snippet importExportMenuItems()}
-  <DropdownMenu.Label>Import</DropdownMenu.Label>
+  <DropdownMenu.Label>{t('common.import')}</DropdownMenu.Label>
   <DropdownMenu.Item onclick={() => ui.openSTChatImport()}>
     <MessageSquare class="text-muted-foreground h-4 w-4" />
     SillyTavern Chat (.jsonl)

@@ -427,7 +427,7 @@
             class="h-8 gap-1 px-2.5 text-xs"
           >
             <X class="h-3.5 w-3.5" />
-            <span class="hidden sm:inline">Close</span>
+            <span class="hidden sm:inline">{t('common.close')}</span>
           </Button>
         </div>
       {/if}

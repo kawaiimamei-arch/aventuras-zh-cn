@@ -453,7 +453,7 @@
                     title="Show NSFW"
                   >
                     <Eye class="h-3.5 w-3.5" />
-                    <span class="hidden lg:inline">Show</span>
+                    <span class="hidden lg:inline">{t('common.show')}</span>
                   </ToggleGroup.Item>
                 </ToggleGroup.Root>
               </div>

@@ -91,7 +91,7 @@
   {#if portraitError}
     <Alert.Root variant="destructive" class="py-2">
       <AlertCircle class="h-4 w-4" />
-      <Alert.Title class="text-xs font-semibold">Error</Alert.Title>
+      <Alert.Title class="text-xs font-semibold">{t('common.error')}</Alert.Title>
       <Alert.Description class="text-xs">{portraitError}</Alert.Description>
     </Alert.Root>
   {/if}

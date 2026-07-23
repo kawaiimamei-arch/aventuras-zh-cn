@@ -723,7 +723,7 @@
                         <span>Generating...</span>
                       {:else}
                         <Wand2 class="h-3.5 w-3.5" />
-                        <span>Generate</span>
+                        <span>{t('common.generate')}</span>
                       {/if}
                     </Button>
                   </div>

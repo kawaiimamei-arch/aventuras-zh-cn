@@ -348,7 +348,7 @@
         <Separator class="my-2" />
 
         <div class="flex justify-end gap-2">
-          <Button variant="ghost" onclick={onCancelSupportingForm}>Cancel</Button>
+          <Button variant="ghost" onclick={onCancelSupportingForm}>{t('common.cancel')}</Button>
           <Button
             class="gap-2"
             onclick={onUseSupportingAsIs}

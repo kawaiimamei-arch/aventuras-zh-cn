@@ -297,7 +297,7 @@
   <!-- Font Preview -->
   {#if fontSource !== 'default'}
     <div class="border-surface-600 bg-surface-800 mt-4 rounded-lg border p-4">
-      <p class="text-surface-400 mb-2 text-xs font-medium tracking-wider uppercase">Preview</p>
+      <p class="text-surface-400 mb-2 text-xs font-medium tracking-wider uppercase">{t('common.preview')}</p>
       <p
         class="text-lg leading-relaxed"
         style="font-family: '{selectedFont}', Georgia, serif; color: var(--text-secondary);"

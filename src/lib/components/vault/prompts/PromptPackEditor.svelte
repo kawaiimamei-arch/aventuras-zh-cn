@@ -645,7 +645,7 @@
       <Dialog.Description>You have unsaved changes. What would you like to do?</Dialog.Description>
     </Dialog.Header>
     <Dialog.Footer class="flex gap-2 sm:justify-end">
-      <Button variant="outline" onclick={handleCancelSwitch}>Cancel</Button>
+      <Button variant="outline" onclick={handleCancelSwitch}>{t('common.cancel')}</Button>
       <Button variant="secondary" onclick={handleDiscardAndSwitch}>Discard</Button>
       <Button onclick={handleSaveAndSwitch}>Save & Continue</Button>
     </Dialog.Footer>
